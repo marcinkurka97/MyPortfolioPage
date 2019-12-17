@@ -1,21 +1,32 @@
 import React from "react"
-import { Link } from "gatsby"
+import styled from "styled-components"
+import MainTemplate from "../template/MainTemplate"
+import Header from "../components/organisms/Header/Header"
+import LeftSideBar from "../components/molecules/LeftSideBar/LeftSideBar"
+import RightSideBar from "../components/molecules/RightSideBar/RightSideBar"
+import Footer from "../components/molecules/Footer/Footer"
+import ContentWindow from "../components/organisms/ContentWindow/ContentWindow"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+const MainContainer = styled.section`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 87.5vw;
+  height: 90vh;
+  margin: auto auto;
+`
 
 const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
+  <MainTemplate>
+    <MainContainer>
+      <Header />
+      <LeftSideBar />
+      <ContentWindow>hello</ContentWindow>
+      <RightSideBar />
+      <Footer />
+    </MainContainer>
+  </MainTemplate>
 )
 
 export default IndexPage
