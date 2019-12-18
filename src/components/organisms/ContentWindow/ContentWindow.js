@@ -1,6 +1,9 @@
-import React from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
-import Heading from "../../atoms/Heading/Heading"
+import LandingPage from "../../../views/LandingPage"
+import FirstProject from "../../../views/FirstProject"
+import About from "../../../views/About"
+import Contact from "../../../views/Contact"
 
 const ContentContainer = styled.section`
   position: absolute;
@@ -9,47 +12,37 @@ const ContentContainer = styled.section`
   transform: translate(-50%, -50%);
   height: 75%;
   width: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
+  overflow-y: scroll;
+  overflow-x: hidden;
 
-const LandingPage = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
-  &:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 53%;
-    height: 100%;
-    background-color: ${({ theme }) => theme.yellow};
-    z-index: -1;
+  & {
+    -ms-overflow-style: none;
   }
 `
 
-const LandingHeading = styled(Heading)`
-  font-size: 16rem;
-  width: 55rem;
-  line-height: 14rem;
-
-  span {
-    color: ${({ theme }) => theme.yellow};
+class ContentWindow extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
   }
-`
 
-const ContentWindow = () => (
-  <ContentContainer>
-    <LandingPage>
-      <LandingHeading>
-        Hello World<span>!</span>
-      </LandingHeading>
-    </LandingPage>
-  </ContentContainer>
-)
+  render() {
+    return (
+      <ContentContainer
+        onScroll={this.props.scrollEventHandler}
+        id="content-container"
+      >
+        <LandingPage />
+        <FirstProject />
+        <About />
+        <Contact />
+      </ContentContainer>
+    )
+  }
+}
 
 export default ContentWindow

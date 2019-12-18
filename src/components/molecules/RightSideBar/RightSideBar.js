@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import Paragraph from "../../atoms/Paragraph/Paragraph"
 
 const SideBarContainer = styled.div`
   position: absolute;
@@ -29,7 +28,7 @@ const ProgressDot = styled.span`
   background-color: ${({ theme }) => theme.gray};
   transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-  &:first-of-type {
+  &:nth-child(1) {
     background-color: ${({ theme }) => theme.yellow};
   }
 
@@ -39,16 +38,25 @@ const ProgressDot = styled.span`
   }
 `
 
-const RightSideBar = () => (
-  <SideBarContainer>
-    <ProgressBarContainer>
-      <ProgressDot />
-      <ProgressDot />
-      <ProgressDot />
-      <ProgressDot />
-      <ProgressDot />
-    </ProgressBarContainer>
-  </SideBarContainer>
-)
+class RightSideBar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
+  render() {
+    return (
+      <SideBarContainer>
+        <ProgressBarContainer>
+          <ProgressDot />
+          <ProgressDot />
+          <ProgressDot />
+          <ProgressDot />
+          <ProgressDot />
+        </ProgressBarContainer>
+      </SideBarContainer>
+    )
+  }
+}
 
 export default RightSideBar
