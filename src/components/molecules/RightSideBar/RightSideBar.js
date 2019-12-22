@@ -1,5 +1,65 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
+
+const RevealDot1 = keyframes`
+  0% {
+    transform: translateY(8.1rem)
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+`
+
+const RevealDot2 = keyframes`
+  0% {
+    transform: translateY(5.4rem)
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+`
+
+const RevealDot3 = keyframes`
+  0% {
+    transform: translateY(2.7rem)
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+`
+
+const RevealDot5 = keyframes`
+  0% {
+    transform: translateY(-2.7rem)
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+`
+
+const RevealDot6 = keyframes`
+  0% {
+    transform: translateY(-5.4rem)
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+`
+
+const RevealDot7 = keyframes`
+  0% {
+    transform: translateY(-8.1rem)
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+`
 
 const SideBarContainer = styled.div`
   position: absolute;
@@ -26,33 +86,72 @@ const ProgressDot = styled.span`
   margin: 0.75rem 0;
   border-radius: 50%;
   background-color: ${({ theme }) => theme.gray};
-  transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: background, transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-  &:nth-child(1) {
+  &:first-of-type {
+    animation: ${RevealDot1} 1.3s 0.15s cubic-bezier(0.34, 0.615, 0.4, 0.985)
+      backwards;
     background-color: ${({ theme }) => theme.yellow};
+  }
+
+  &:nth-of-type(2) {
+    animation: ${RevealDot2} 1.3s 0.45s cubic-bezier(0.34, 0.615, 0.4, 0.985)
+      backwards;
+  }
+
+  &:nth-of-type(3) {
+    animation: ${RevealDot3} 1.3s 0.65s cubic-bezier(0.34, 0.615, 0.4, 0.985)
+      backwards;
+  }
+
+  &:nth-of-type(5) {
+    animation: ${RevealDot5} 1.3s 0.65s cubic-bezier(0.34, 0.615, 0.4, 0.985)
+      backwards;
+  }
+
+  &:nth-of-type(6) {
+    animation: ${RevealDot6} 1.3s 0.45s cubic-bezier(0.34, 0.615, 0.4, 0.985)
+      backwards;
+  }
+
+  &:last-of-type {
+    animation: ${RevealDot7} 1.3s 0.15s cubic-bezier(0.34, 0.615, 0.4, 0.985)
+      backwards;
   }
 
   &:hover {
     cursor: pointer;
-    transform: scale(1.25);
+    transform: scale(1.25) !important;
+    background: ${({ theme }) => theme.yellow} !important;
   }
 `
 
 class RightSideBar extends React.Component {
   constructor(props) {
     super(props)
+    this.dotsNode = React.createRef()
     this.state = {}
+  }
+
+  scrollTo = element => {
+    document.getElementById("content-container").scroll({
+      top: document.getElementById(element).offsetTop + 5,
+      left: 0,
+      behavior: "smooth",
+    })
   }
 
   render() {
     return (
       <SideBarContainer>
-        <ProgressBarContainer>
-          <ProgressDot />
-          <ProgressDot />
-          <ProgressDot />
-          <ProgressDot />
-          <ProgressDot />
+        <ProgressBarContainer id="progress-bar" ref={this.dotsNode}>
+          <ProgressDot onClick={() => this.scrollTo("landing-page")} />
+          <ProgressDot onClick={() => this.scrollTo("first-project-page")} />
+          <ProgressDot onClick={() => this.scrollTo("second-project-page")} />
+          <ProgressDot onClick={() => this.scrollTo("third-project-page")} />
+          <ProgressDot onClick={() => this.scrollTo("fourth-project-page")} />
+          <ProgressDot onClick={() => this.scrollTo("about-page")} />
+          <ProgressDot onClick={() => this.scrollTo("contact-page")} />
         </ProgressBarContainer>
       </SideBarContainer>
     )

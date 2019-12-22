@@ -12,7 +12,6 @@ const Button = styled.button`
   border: none;
   width: 160px;
   height: 60px;
-  font-family: "Montserrat";
   font-weight: 600;
   font-size: 16px;
 
@@ -22,7 +21,7 @@ const Button = styled.button`
     width: 100%;
     height: 100%;
     border: 1px solid ${({ theme }) => theme.gray};
-    transition: transform 0.15s ease-out 0s;
+    transition: transform 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) 0s;
   }
 
   &:after {
@@ -33,7 +32,7 @@ const Button = styled.button`
     border: 1px solid ${({ theme }) => theme.yellow};
     top: 0.75rem;
     right: 0.75rem;
-    transition: transform 0.15s ease-out 0s;
+    transition: transform 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) 0s;
   }
 
   &:hover {

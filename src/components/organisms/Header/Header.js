@@ -1,8 +1,17 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import Heading from "../../atoms/Heading/Heading"
 import Paragraph from "../../atoms/Paragraph/Paragraph"
 import NavLink from "../../atoms/NavLink/NavLink"
+
+const MoveIn = keyframes`
+  0% {
+    transform: translateX(5rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+`
 
 const StyledHeading = styled(Heading)`
   flex: 20% 0 0;
@@ -31,6 +40,7 @@ const NavLinksContainer = styled.div`
 
   a {
     margin: 0 2.5rem;
+    animation: ${MoveIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985);
 
     &:first-of-type {
       color: ${({ theme }) => theme.yellow};
@@ -43,34 +53,43 @@ const NavLinksContainer = styled.div`
   }
 `
 
-const Header = () => {
-  const scrollTo = element => {
+class Header extends React.Component {
+  constructor(props) {
+    super(props)
+    this.navLinksRef = React.createRef()
+    this.state = {}
+  }
+
+  scrollTo = element => {
     document.getElementById("content-container").scroll({
-      top: document.getElementById(element).offsetTop,
+      top: document.getElementById(element).offsetTop + 5,
       left: 0,
       behavior: "smooth",
     })
   }
 
-  return (
-    <HeaderContainer>
-      <StyledHeading big>MyLogo</StyledHeading>
-      <StyledParagraph>I like programing</StyledParagraph>
-      <NavLinksContainer>
-        <NavLink onClick={() => scrollTo("landing-page")}>
-          Home. <span>1</span>
-        </NavLink>
-        <NavLink onClick={() => scrollTo("first-project-page")}>
-          Projects. <span>2</span>
-        </NavLink>
-        <NavLink onClick={() => scrollTo("about-page")}>
-          About. <span>3</span>
-        </NavLink>
-        <NavLink onClick={() => scrollTo("contact-page")}>
-          Contact. <span>4</span>
-        </NavLink>
-      </NavLinksContainer>
-    </HeaderContainer>
-  )
+  render() {
+    return (
+      <HeaderContainer>
+        <StyledHeading big>MyLogo</StyledHeading>
+        <StyledParagraph>Marcin Kurka Portfolio</StyledParagraph>
+        <NavLinksContainer id="nav-links" ref={this.navLinksRef}>
+          <NavLink onClick={() => this.scrollTo("landing-page")}>
+            Home. <span>1</span>
+          </NavLink>
+          <NavLink onClick={() => this.scrollTo("first-project-page")}>
+            Projects. <span>2</span>
+          </NavLink>
+          <NavLink onClick={() => this.scrollTo("about-page")}>
+            About. <span>3</span>
+          </NavLink>
+          <NavLink onClick={() => this.scrollTo("contact-page")}>
+            Contact. <span>4</span>
+          </NavLink>
+        </NavLinksContainer>
+      </HeaderContainer>
+    )
+  }
 }
+
 export default Header

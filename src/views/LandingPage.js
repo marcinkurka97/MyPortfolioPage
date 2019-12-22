@@ -32,7 +32,7 @@ const LandingPageContainer = styled.div`
     height: 100%;
     background-color: ${({ theme }) => theme.yellow};
     z-index: -1;
-    animation: ${ScaleBox} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: ${ScaleBox} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both;
   }
 `
 
@@ -42,7 +42,7 @@ const LandingHeading = styled(Heading)`
   line-height: 14rem;
   transform: translate3d(0px, 0%, 0px);
 
-  &::last-child {
+  &:nth-last-of-type() {
     color: ${({ theme }) => theme.yellow};
   }
 
@@ -53,42 +53,41 @@ const LandingHeading = styled(Heading)`
   }
 `
 
-const dataText = ["Hello World!"]
-
-const typeWriter = (text, i, fnCallback) => {
-  if (i < text.length) {
-    document.getElementById("text-typing").innerHTML =
-      text.substring(0, i + 1) + '<span aria-hidden="true"></span>'
-
-    setTimeout(function() {
-      typeWriter(text, i + 1, fnCallback)
-    }, 150)
-  }
-}
-
-const StartTextAnimation = i => {
-  if (typeof dataText[i] == "undefined") {
-    setTimeout(function() {
-      StartTextAnimation(0)
-    }, 20000)
-  }
-  if (i < dataText[i].length) {
-    typeWriter(dataText[i], 0, function() {
-      StartTextAnimation(i + 1)
-    })
-  }
-}
-
 class LandingPage extends React.Component {
   constructor(props) {
     super(props)
+    this.dataText = ["Hello World!"]
     this.state = {}
   }
 
-  componentDidMount() {
-    setTimeout(function() {
-      StartTextAnimation(0, dataText)
-    }, 850)
+  componentDidMount = () => {
+    setTimeout(() => {
+      this.StartTextAnimation(0, this.dataText)
+    }, 1000)
+  }
+
+  typeWriter = (text, i, fnCallback) => {
+    if (i < text.length) {
+      document.getElementById("text-typing").innerHTML =
+        text.substring(0, i + 1) + '<span aria-hidden="true"></span>'
+
+      setTimeout(() => {
+        this.typeWriter(text, i + 1, fnCallback)
+      }, 150)
+    }
+  }
+
+  StartTextAnimation = i => {
+    if (typeof this.dataText[i] == "undefined") {
+      setTimeout(() => {
+        this.StartTextAnimation(0)
+      }, 20000)
+    }
+    if (i < this.dataText[i].length) {
+      this.typeWriter(this.dataText[i], 0, () => {
+        this.StartTextAnimation(i + 1)
+      })
+    }
   }
 
   render() {

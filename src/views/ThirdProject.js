@@ -4,38 +4,31 @@ import Heading from "../components/atoms/Heading/Heading"
 import Paragraph from "../components/atoms/Paragraph/Paragraph"
 import Button from "../components/atoms/Button/Button"
 import NavLink from "../components/atoms/NavLink/NavLink"
-import SortingImg from "../assets/sorting.png"
+import PathfindingImg from "../assets/PathfindingVisualization.png"
 
 const ScaleBox = keyframes`
   0% {
-    min-width: 0%;
+    min-height: 0%;
     opacity: 1;
   }
   100% {
-    min-width: 100%;
+    min-height: 100%;
     opacity: 1;
   }
 `
-
 const ScaleBoxAfter = keyframes`
   0% {
-    min-width: 0%;
+    min-height: 0%;
+    opacity: 1;
+  }
+  80% {
+    min-height: 100%;
     opacity: 1;
   }
   100% {
-    min-width: 100%;
+    transform: translate(2.5%, 5%);
     opacity: 1;
-    transform: translate(-2.5%, 5%);
-  }
-`
-const TextSlideIn = keyframes`
-  0% {
-    opacity: 0;
-    transform: translate3d(0, -200%, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0%, 0);
+    min-height: 100%;
   }
 `
 
@@ -48,8 +41,6 @@ const ProjectContainer = styled.div`
 `
 
 const ProjectDescriptionContainer = styled.div`
-  position: absolute;
-  left: 0;
   height: 100%;
   width: 50%;
   display: flex;
@@ -63,79 +54,61 @@ const ProjectDescription = styled.div`
   height: auto;
 `
 
-const ProjectImageContainer = styled.div`
-  position: absolute;
-  right: 0;
+const ProjectImage = styled.div`
+  position: relative;
   height: 50%;
   width: 50%;
-  z-index: 5;
-`
 
-const ProjectImageBox = styled.div`
-  position: absolute;
-  right: 0;
-  min-width: 100%;
-  height: 100%;
-  background: ${({ theme }) => theme.yellow};
-  opacity: 0;
-  animation: ${({ active }) =>
-    active &&
-    css`
-      ${ScaleBoxAfter} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
-    `};
-`
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    z-index: 1;
+    opacity: 0;
+    background: ${({ theme }) => theme.yellow};
+    animation: ${({ active }) =>
+      active &&
+      css`
+        ${ScaleBoxAfter} 0.5s cubic-bezier(.34,.615,.4,.985) both
+      `};
+  }
 
-const ProjectImage = styled.div`
-  position: absolute;
-  right: 0;
-  min-width: 100%;
-  height: 100%;
-  background-image: url(${SortingImg});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  opacity: 0;
-  animation: ${({ active }) =>
-    active &&
-    css`
-      ${ScaleBox} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
-    `};
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    z-index: 1;
+    opacity: 0;
+    background-image: url(${PathfindingImg});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    animation: ${({ active }) =>
+      active &&
+      css`
+        ${ScaleBox} 0.5s 0.25s cubic-bezier(.34,.615,.4,.985) both
+      `};
+  }
 `
 
 const StyledHeading = styled(Heading)`
   color: ${({ theme }) => theme.yellow};
   margin-bottom: 3rem;
   width: 100%;
-  opacity: 0;
-  animation: ${({ active }) =>
-    active &&
-    css`
-      ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
-    `};
 `
 
 const StyledParagraph = styled(Paragraph)`
   width: 100%;
   text-align: left;
   color: ${({ theme }) => theme.gray};
-  opacity: 0;
-  animation: ${({ active }) =>
-    active &&
-    css`
-      ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
-    `};
 `
 
 const ProjectButtons = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  opacity: 0;
-  animation: ${({ active }) =>
-    active &&
-    css`
-      ${TextSlideIn} 1s 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both
-    `};
 `
 
 const StyledNavLink = styled(NavLink)`
@@ -152,7 +125,7 @@ const StyledButton = styled(Button)`
   margin: 3rem 0;
 `
 
-class FirstProject extends React.Component {
+class ThirdProject extends React.Component {
   constructor(props) {
     super(props)
     this.state = { activeTab: false }
@@ -170,32 +143,27 @@ class FirstProject extends React.Component {
   render() {
     const { activeTab } = this.state
     return (
-      <ProjectContainer id="first-project-page">
+      <ProjectContainer id="third-project-page">
+        <ProjectImage active={activeTab} />
         <ProjectDescriptionContainer>
           <ProjectDescription>
-            <StyledHeading big active={activeTab}>
-              Sorting Visualizer App
-            </StyledHeading>
-            <StyledParagraph active={activeTab}>
+            <StyledHeading big>Sorting Visualizer App</StyledHeading>
+            <StyledParagraph>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Quibusdam id odit unde quasi molestiae rerum. Voluptatibus
               veritatis saepe quae beatae facilis, in natus nam laborum eum
               autem neque impedit sapiente odio soluta repellat, doloribus
               suscipit voluptates aliquid.
             </StyledParagraph>
-            <ProjectButtons active={activeTab}>
+            <ProjectButtons>
               <StyledButton>Preview</StyledButton>
               <StyledNavLink>GitHub Code</StyledNavLink>
             </ProjectButtons>
           </ProjectDescription>
         </ProjectDescriptionContainer>
-        <ProjectImageContainer>
-          <ProjectImageBox active={activeTab} />
-          <ProjectImage active={activeTab} />
-        </ProjectImageContainer>
       </ProjectContainer>
     )
   }
 }
 
-export default FirstProject
+export default ThirdProject

@@ -25,7 +25,7 @@ const FooterLine = styled.span`
   width: 75%;
   height: 1px;
   background-color: ${({ theme }) => theme.gray};
-  animation: ${ExpandLine} 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: ${ExpandLine} 2s cubic-bezier(0.34, 0.615, 0.4, 0.985) both;
 `
 
 const Footer = () => (

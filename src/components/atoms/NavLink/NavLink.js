@@ -10,8 +10,8 @@ const NavLink = styled.a`
 
   &:hover {
     cursor: pointer;
-    color: ${({ theme }) => theme.yellow};
-    transform: translateX(1rem);
+    color: ${({ theme }) => theme.yellow} !important;
+    transform: translateX(1rem) !important;
   }
 `
 

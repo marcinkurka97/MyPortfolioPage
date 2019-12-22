@@ -8,6 +8,7 @@ const AboutContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `
 
 class About extends React.Component {
@@ -20,6 +21,13 @@ class About extends React.Component {
     return (
       <AboutContainer id="about-page">
         <Heading big>About</Heading>
+        <p>asas</p>
+        <p>asas</p>
+        <p>asas</p>
+        <p>asas</p>
+        <p>asas</p>
+        <p>asas</p>
+        <p>asas</p>
       </AboutContainer>
     )
   }

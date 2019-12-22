@@ -1,10 +1,19 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 import Heading from "../components/atoms/Heading/Heading"
 import Button from "../components/atoms/Button/Button"
 import { Formik, Form, Field } from "formik"
 import axios from "axios"
 import * as Yup from "yup"
+
+const ScaleBox = keyframes`
+  0% {
+    min-width: 0%;
+  }
+  100% {
+    min-width: 100%;
+  }
+`
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -19,13 +28,24 @@ const SignupSchema = Yup.object().shape({
     .required("Required"),
 })
 
+const StyledHeading = styled(Heading)`
+  font-size: 6rem;
+`
+
 const ContactContainer = styled.div`
-  width: 100%;
+  min-width: 100%;
   height: 100%;
+  left: 0;
+  background: ${({ theme }) => theme.yellow};
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${ScaleBox} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both;
+    `};
 `
 
 const StyledButton = styled(Button)`
@@ -33,6 +53,15 @@ const StyledButton = styled(Button)`
   width: 200px;
   height: 80px;
   font-size: ${({ theme }) => theme.fontSize.m};
+  color: ${({ theme }) => theme.white};
+
+  &:before {
+    border: 1px solid ${({ theme }) => theme.white};
+  }
+
+  &:after {
+    border: 1px solid ${({ theme }) => theme.black};
+  }
 `
 
 const StyledForm = styled(Form)`
@@ -53,35 +82,53 @@ const StyledForm = styled(Form)`
   input {
     width: 40%;
     background: none;
-    border: 1px solid white;
+    border: 1px solid ${({ theme }) => theme.black};
     padding: 10px 14px;
     margin: 0 10px;
     font-size: ${({ theme }) => theme.fontSize.l};
     color: ${({ theme }) => theme.white};
+
+    ::placeholder {
+      color: ${({ theme }) => theme.white};
+    }
   }
 
   textarea {
     width: calc(80% + 20px);
     height: 80%;
     background: none;
-    border: 1px solid white;
+    border: 1px solid ${({ theme }) => theme.black};
     padding: 1rem 1.4rem;
     margin: 2rem 1rem 0 1rem;
     font-size: ${({ theme }) => theme.fontSize.l};
     color: ${({ theme }) => theme.white};
+
+    ::placeholder {
+      color: ${({ theme }) => theme.white};
+    }
   }
 `
 
 class Contact extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = { activeTab: false }
+  }
+
+  componentDidUpdate() {
+    if (
+      this.props.active === true &&
+      this.props.active !== this.state.activeTab
+    ) {
+      this.setState({ activeTab: this.props.active })
+    }
   }
 
   render() {
+    const { activeTab } = this.state
     return (
-      <ContactContainer id="contact-page">
-        <Heading big>Contact</Heading>
+      <ContactContainer id="contact-page" active={activeTab}>
+        <StyledHeading>Contact</StyledHeading>
         <Formik
           initialValues={{ email: "", subject: "", content: "" }}
           validate={values => {
