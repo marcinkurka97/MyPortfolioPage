@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Montserrat", sans-serif;
     background-color: #282828;
     overflow-x: hidden;
+    overflow-y: hidden;
   }
 `
 

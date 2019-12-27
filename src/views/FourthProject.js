@@ -1,86 +1,88 @@
 import React from "react"
-import styled, { keyframes } from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 import Heading from "../components/atoms/Heading/Heading"
 import Paragraph from "../components/atoms/Paragraph/Paragraph"
 import Button from "../components/atoms/Button/Button"
 import NavLink from "../components/atoms/NavLink/NavLink"
-import PathfindingImg from "../assets/PathfindingVisualization.png"
+import KasiaPortfolio from "../assets/kasiaPortfolio.png"
 
-const SlideIn = keyframes`
+const ScaleBox = keyframes`
   0% {
-    transform: translateY(100px);
-    opacity: 0;
+    min-height: 0%;
+    opacity: 1;
   }
   100% {
-    transform: translateY(0);
-    opacity: 1;
+    min-height: 100%;
+    opacity: 0.5;
   }
 `
 
 const ProjectContainer = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: ${SlideIn} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-`
-
-const ProjectDescriptionContainer = styled.div`
-  height: 100%;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`
-
-const ProjectDescription = styled.div`
-  width: 70%;
-  height: auto;
-`
-
-const ProjectImage = styled.div`
-  position: relative;
-  height: 50%;
-  width: 50%;
-  background-image: url(${PathfindingImg});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
 
   &:before {
     content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: ${({ theme }) => theme.yellow};
+    background-image: url(${KasiaPortfolio});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 0;
+    opacity: 0;
     z-index: -1;
-    left: 2.5%;
-    top: -5%;
+    width: 100%;
+    min-height: 100%;
+    top: 0;
+    filter: blur(2px);
+    animation: ${({ active }) =>
+      active &&
+      css`
+        ${ScaleBox} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      `};
   }
 `
 
+const ProjectDescription = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40%;
+  height: 50%;
+`
+
 const StyledHeading = styled(Heading)`
+  font-size: ${({ theme }) => theme.fontSize.xxl};
   color: ${({ theme }) => theme.yellow};
-  margin-bottom: 3rem;
-  width: 100%;
+  text-shadow: 2px 2px 10px #000;
 `
 
 const StyledParagraph = styled(Paragraph)`
-  width: 100%;
-  text-align: left;
-  color: ${({ theme }) => theme.gray};
+  text-align: center;
+  text-shadow: 2px 2px 10px #000;
+  font-size: ${({ theme }) => theme.fontSize.m};
+  font-weight: ${({ theme }) => theme.bold};
 `
 
 const ProjectButtons = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  width: 100%;
+`
+
+const StyledButton = styled(Button)`
+  margin: 3rem 0;
+  color: ${({ theme }) => theme.white};
 `
 
 const StyledNavLink = styled(NavLink)`
-  border-bottom: 1px solid ${({ theme }) => theme.gray};
+  color: ${({ theme }) => theme.white};
+  border-bottom: 1px solid ${({ theme }) => theme.white};
   font-size: ${({ theme }) => theme.fontSize.s};
 
   &:hover {
@@ -89,36 +91,39 @@ const StyledNavLink = styled(NavLink)`
   }
 `
 
-const StyledButton = styled(Button)`
-  margin: 3rem 0;
-`
-
 class FourthProject extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = { activeTab: false }
+  }
+
+  componentDidUpdate() {
+    if (
+      this.props.active === true &&
+      this.props.active !== this.state.activeTab
+    ) {
+      this.setState({ activeTab: this.props.active })
+    }
   }
 
   render() {
+    const { activeTab } = this.state
     return (
-      <ProjectContainer id="fourth-project-page">
-        <ProjectImage />
-        <ProjectDescriptionContainer>
-          <ProjectDescription>
-            <StyledHeading big>Sorting Visualizer App</StyledHeading>
-            <StyledParagraph>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Quibusdam id odit unde quasi molestiae rerum. Voluptatibus
-              veritatis saepe quae beatae facilis, in natus nam laborum eum
-              autem neque impedit sapiente odio soluta repellat, doloribus
-              suscipit voluptates aliquid.
-            </StyledParagraph>
-            <ProjectButtons>
-              <StyledButton>Preview</StyledButton>
-              <StyledNavLink>GitHub Code</StyledNavLink>
-            </ProjectButtons>
-          </ProjectDescription>
-        </ProjectDescriptionContainer>
+      <ProjectContainer active={activeTab} id="fourth-project-page">
+        <ProjectDescription>
+          <StyledHeading big>HousePin</StyledHeading>
+          <StyledParagraph>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam
+            id odit unde quasi molestiae rerum. Voluptatibus veritatis saepe
+            quae beatae facilis, in natus nam laborum eum autem neque impedit
+            sapiente odio soluta repellat, doloribus suscipit voluptates
+            aliquid.
+          </StyledParagraph>
+          <ProjectButtons>
+            <StyledButton>Preview</StyledButton>
+            <StyledNavLink>GitHub Code</StyledNavLink>
+          </ProjectButtons>
+        </ProjectDescription>
       </ProjectContainer>
     )
   }

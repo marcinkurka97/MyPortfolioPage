@@ -17,9 +17,18 @@ const Caret = keyframes`
   }
 `
 
-const LandingPageContainer = styled.div`
+const LandingPageContainer = styled.section`
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const LandingPageBox = styled.div`
+  position: relative;
+  width: 70%;
+  height: 63%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,7 +71,7 @@ class LandingPage extends React.Component {
 
   componentDidMount = () => {
     setTimeout(() => {
-      this.StartTextAnimation(0, this.dataText)
+      this.typeWriter(this.dataText[0], 0)
     }, 1000)
   }
 
@@ -77,23 +86,12 @@ class LandingPage extends React.Component {
     }
   }
 
-  StartTextAnimation = i => {
-    if (typeof this.dataText[i] == "undefined") {
-      setTimeout(() => {
-        this.StartTextAnimation(0)
-      }, 20000)
-    }
-    if (i < this.dataText[i].length) {
-      this.typeWriter(this.dataText[i], 0, () => {
-        this.StartTextAnimation(i + 1)
-      })
-    }
-  }
-
   render() {
     return (
       <LandingPageContainer id="landing-page">
-        <LandingHeading id="text-typing"></LandingHeading>
+        <LandingPageBox>
+          <LandingHeading id="text-typing"></LandingHeading>
+        </LandingPageBox>
       </LandingPageContainer>
     )
   }

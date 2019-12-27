@@ -12,10 +12,10 @@ const ExpandLine = keyframes`
 `
 
 const FooterContainer = styled.div`
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 5vh;
   height: ${({ theme }) => theme.fontSize.s};
-  width: 100%;
+  width: 87.5%;
   display: flex;
   justify-content: center;
   align-items: center;

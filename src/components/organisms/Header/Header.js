@@ -18,12 +18,14 @@ const StyledHeading = styled(Heading)`
 `
 
 const HeaderContainer = styled.header`
-  position: relative;
+  position: fixed;
   padding: 0 7.5rem;
-  width: 100%;
+  top: 5vh;
+  width: 87.5%;
   height: 50px;
   display: flex;
   align-items: center;
+  z-index: 10;
 `
 
 const StyledParagraph = styled(Paragraph)`
@@ -61,8 +63,8 @@ class Header extends React.Component {
   }
 
   scrollTo = element => {
-    document.getElementById("content-container").scroll({
-      top: document.getElementById(element).offsetTop + 5,
+    document.getElementById("app-container").scroll({
+      top: document.getElementById(element).offsetTop,
       left: 0,
       behavior: "smooth",
     })

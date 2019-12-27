@@ -9,51 +9,43 @@ import About from "../../../views/About"
 import Contact from "../../../views/Contact"
 
 const ContentContainer = styled.section`
-  position: absolute;
-  height: 75%;
-  width: 80%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  justify-self: center;
-  align-self: center;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  & {
-    -ms-overflow-style: none;
-  }
+  width: 100%;
 `
 
 class ContentWindow extends Component {
   constructor(props) {
     super(props)
-    this.state = { componentHeight: 0, currentScrollHeight: 0 }
+    this.state = { currentScrollHeight: 0 }
   }
 
   componentDidMount() {
-    const COMPONENT_HEIGHT = document.getElementById("content-container")
+    document
+      .getElementById("app-container")
+      .addEventListener("scroll", this.handleScroll)
+
+    const COMPONENT_HEIGHT = document.getElementById("app-container")
       .clientHeight
 
     this.setState({ componentHeight: COMPONENT_HEIGHT })
   }
 
-  scrollEventHandler = e => {
-    this.props.scrollEventHandler(e)
+  componentWillUnmount() {
+    document
+      .getElementById("app-container")
+      .removeEventListener("scroll", this.handleScroll)
+  }
+
+  handleScroll = e => {
     this.setState({ currentScrollHeight: e.target.scrollTop })
   }
 
   render() {
     return (
-      <ContentContainer
-        onScroll={this.scrollEventHandler}
-        id="content-container"
-      >
+      <ContentContainer id="content-container">
         <LandingPage />
         <FirstProject
           active={
-            this.state.currentScrollHeight >= this.state.componentHeight / 1.25
+            this.state.currentScrollHeight >= this.state.componentHeight / 2
               ? true
               : false
           }
@@ -61,7 +53,7 @@ class ContentWindow extends Component {
         <SecondProject
           active={
             this.state.currentScrollHeight >=
-            (this.state.componentHeight * 2) / 1.25
+            (this.state.componentHeight * 2 * 0.75) / 1.25
               ? true
               : false
           }

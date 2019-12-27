@@ -12,8 +12,8 @@ const FadeIn = keyframes`
 `
 
 const SideBarContainer = styled.div`
-  position: absolute;
-  left: 0;
+  position: fixed;
+  left: 6.25vw;
   height: calc(100% - 50px);
   width: ${({ theme }) => theme.fontSize.s};
   display: flex;

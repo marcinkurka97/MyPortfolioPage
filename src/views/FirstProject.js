@@ -4,30 +4,36 @@ import Heading from "../components/atoms/Heading/Heading"
 import Paragraph from "../components/atoms/Paragraph/Paragraph"
 import Button from "../components/atoms/Button/Button"
 import NavLink from "../components/atoms/NavLink/NavLink"
-import SortingImg from "../assets/sorting.png"
+import SortingImg from "../assets/sortingApp.png"
+import ContentTemplate from "../template/ContentTemplate"
 
 const ScaleBox = keyframes`
   0% {
-    min-width: 0%;
+    min-height: 0%;
     opacity: 1;
   }
   100% {
-    min-width: 100%;
+    min-height: 100%;
     opacity: 1;
+  }
+`
+const ScaleBoxAfter = keyframes`
+  0% {
+    min-height: 0%;
+    opacity: 1;
+  }
+  60% {
+    transform: translate(0, 0);
+    min-height: 100%;
+    opacity: 1;
+  }
+  100% {
+    transform: translate(2.5%, 5%);
+    opacity: 1;
+    min-height: 100%;
   }
 `
 
-const ScaleBoxAfter = keyframes`
-  0% {
-    min-width: 0%;
-    opacity: 1;
-  }
-  100% {
-    min-width: 100%;
-    opacity: 1;
-    transform: translate(-2.5%, 5%);
-  }
-`
 const TextSlideIn = keyframes`
   0% {
     opacity: 0;
@@ -39,17 +45,7 @@ const TextSlideIn = keyframes`
   }
 `
 
-const ProjectContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
 const ProjectDescriptionContainer = styled.div`
-  position: absolute;
-  left: 0;
   height: 100%;
   width: 50%;
   display: flex;
@@ -63,43 +59,41 @@ const ProjectDescription = styled.div`
   height: auto;
 `
 
-const ProjectImageContainer = styled.div`
-  position: absolute;
-  right: 0;
-  height: 50%;
-  width: 50%;
-  z-index: 5;
-`
-
-const ProjectImageBox = styled.div`
-  position: absolute;
-  right: 0;
-  min-width: 100%;
-  height: 100%;
-  background: ${({ theme }) => theme.yellow};
-  opacity: 0;
-  animation: ${({ active }) =>
-    active &&
-    css`
-      ${ScaleBoxAfter} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
-    `};
-`
-
 const ProjectImage = styled.div`
-  position: absolute;
-  right: 0;
-  min-width: 100%;
-  height: 100%;
-  background-image: url(${SortingImg});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  opacity: 0;
-  animation: ${({ active }) =>
-    active &&
-    css`
-      ${ScaleBox} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
-    `};
+  position: relative;
+  height: 40%;
+  width: 50%;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    background: ${({ theme }) => theme.yellow};
+    animation: ${({ active }) =>
+      active &&
+      css`
+        ${ScaleBoxAfter} 2s cubic-bezier(.34,.615,.4,.985) both
+      `};
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    background-image: url(${SortingImg});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    animation: ${({ active }) =>
+      active &&
+      css`
+        ${ScaleBox} 1s 0.25s cubic-bezier(.34,.615,.4,.985) both
+      `};
+  }
 `
 
 const StyledHeading = styled(Heading)`
@@ -122,7 +116,7 @@ const StyledParagraph = styled(Paragraph)`
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${TextSlideIn} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 `
 
@@ -134,7 +128,7 @@ const ProjectButtons = styled.div`
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1s 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both
+      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 `
 
@@ -170,7 +164,7 @@ class FirstProject extends React.Component {
   render() {
     const { activeTab } = this.state
     return (
-      <ProjectContainer id="first-project-page">
+      <ContentTemplate id="first-project-page">
         <ProjectDescriptionContainer>
           <ProjectDescription>
             <StyledHeading big active={activeTab}>
@@ -189,11 +183,8 @@ class FirstProject extends React.Component {
             </ProjectButtons>
           </ProjectDescription>
         </ProjectDescriptionContainer>
-        <ProjectImageContainer>
-          <ProjectImageBox active={activeTab} />
-          <ProjectImage active={activeTab} />
-        </ProjectImageContainer>
-      </ProjectContainer>
+        <ProjectImage active={activeTab} />
+      </ContentTemplate>
     )
   }
 }

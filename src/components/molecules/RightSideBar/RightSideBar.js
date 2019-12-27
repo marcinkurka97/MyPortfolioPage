@@ -62,8 +62,8 @@ const RevealDot7 = keyframes`
 `
 
 const SideBarContainer = styled.div`
-  position: absolute;
-  right: 0;
+  position: fixed;
+  right: 6.25vw;
   height: calc(100% - 50px);
   width: ${({ theme }) => theme.fontSize.s};
   display: flex;
@@ -134,8 +134,8 @@ class RightSideBar extends React.Component {
   }
 
   scrollTo = element => {
-    document.getElementById("content-container").scroll({
-      top: document.getElementById(element).offsetTop + 5,
+    document.getElementById("app-container").scroll({
+      top: document.getElementById(element).offsetTop,
       left: 0,
       behavior: "smooth",
     })
