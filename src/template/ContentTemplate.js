@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import media from "../theme/media"
 
 const ContentContainer = styled.section`
   position: relative;
@@ -17,6 +18,11 @@ const ProjectContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${media.phone`
+    width: 100%;
+    flex-direction: column;
+  `}
 `
 
 const ContentTemplate = ({ children, id }) => (

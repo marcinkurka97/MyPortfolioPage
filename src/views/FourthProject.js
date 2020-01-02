@@ -5,6 +5,7 @@ import Paragraph from "../components/atoms/Paragraph/Paragraph"
 import Button from "../components/atoms/Button/Button"
 import NavLink from "../components/atoms/NavLink/NavLink"
 import KasiaPortfolio from "../assets/kasiaPortfolio.jpg"
+import media from "../theme/media"
 
 const ScaleBox = keyframes`
   0% {
@@ -53,6 +54,11 @@ const ProjectContent = styled.div`
     css`
       ${ScaleBox} 2s cubic-bezier(.34,.615,.4,.985) both
     `};
+
+  ${media.phone`
+    width: 100%;
+    min-height: 100%;
+  `}
 `
 
 const StyledHeading = styled(Heading)`
@@ -70,6 +76,10 @@ const StyledHeading = styled(Heading)`
     css`
       ${FadeIn} 1s 2s cubic-bezier(.34,.615,.4,.985) both
     `};
+
+  ${media.phone`
+    font-size: 3rem;
+  `}
 `
 
 const ProjectDescription = styled.div`
@@ -90,6 +100,11 @@ const ProjectDescription = styled.div`
     css`
       ${FadeIn} 1s 2s cubic-bezier(.34,.615,.4,.985) both
     `};
+
+  ${media.phone`
+    left: 2.5%;
+    width: 95%;
+  `}
 `
 
 const StyledParagraph = styled(Paragraph)`
@@ -97,6 +112,10 @@ const StyledParagraph = styled(Paragraph)`
   color: ${({ theme }) => theme.black};
   font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: ${({ theme }) => theme.bold};
+
+  ${media.phone`
+    font-size: ${({ theme }) => theme.fontSize.s};
+  `}
 `
 
 const ProjectButtons = styled.div`
@@ -120,6 +139,10 @@ const StyledNavLink = styled(NavLink)`
     transform: initial;
     border-bottom: 1px solid ${({ theme }) => theme.yellow};
   }
+
+  ${media.phone`
+    font-size: ${({ theme }) => theme.fontSize.xs};
+  `}
 `
 
 class FourthProject extends React.Component {

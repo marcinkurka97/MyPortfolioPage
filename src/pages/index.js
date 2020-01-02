@@ -6,6 +6,7 @@ import LeftSideBar from "../components/molecules/LeftSideBar/LeftSideBar"
 import RightSideBar from "../components/molecules/RightSideBar/RightSideBar"
 import Footer from "../components/molecules/Footer/Footer"
 import ContentWindow from "../components/organisms/ContentWindow/ContentWindow"
+import MobileMenu from "../views/MobileMenu"
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -31,7 +32,7 @@ class IndexPage extends React.Component {
     this.appRef = React.createRef()
     this.rightSideBar = React.createRef()
     this.headerRef = React.createRef()
-    this.state = { componentHeight: 0 }
+    this.state = { componentHeight: 0, hamburgerIsOpen: false }
   }
 
   componentDidMount() {
@@ -123,6 +124,19 @@ class IndexPage extends React.Component {
       "#F2C218"
   }
 
+  scrollTo = element => {
+    document.getElementById("app-container").scroll({
+      top: document.getElementById(element).offsetTop,
+      left: 0,
+      behavior: "smooth",
+    })
+  }
+
+  handleHamburgerOpening = () => {
+    this.setState({ hamburgerIsOpen: !this.state.hamburgerIsOpen })
+    console.log(this.state.hamburgerIsOpen)
+  }
+
   render() {
     return (
       <MainTemplate>
@@ -131,11 +145,20 @@ class IndexPage extends React.Component {
           onScroll={this.scrollEventHandler}
           ref={this.appRef}
         >
-          <Header ref={this.headerRef} />
+          <Header
+            ref={this.headerRef}
+            handleHamburgerOpening={this.handleHamburgerOpening}
+            hamburgerIsOpen={this.state.hamburgerIsOpen}
+            scrollTo={this.scrollTo}
+          />
           <LeftSideBar />
           {this.appRef !== null ? <ContentWindow appRef={this.appRef} /> : ""}
           <RightSideBar ref={this.rightSideBar} />
           <Footer />
+          <MobileMenu
+            hamburgerIsOpen={this.state.hamburgerIsOpen}
+            scrollTo={this.scrollTo}
+          />
         </AppContainer>
       </MainTemplate>
     )

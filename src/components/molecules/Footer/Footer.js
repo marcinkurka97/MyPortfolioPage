@@ -1,5 +1,6 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
+import media from "../../../theme/media"
 
 const ExpandLine = keyframes`
   0% {
@@ -19,6 +20,10 @@ const FooterContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${media.phone`
+    bottom: 3vh;
+  `}
 `
 
 const FooterLine = styled.span`

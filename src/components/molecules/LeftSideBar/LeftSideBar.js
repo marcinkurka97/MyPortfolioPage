@@ -1,6 +1,7 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
 import Paragraph from "../../atoms/Paragraph/Paragraph"
+import media from "../../../theme/media"
 
 const FadeIn = keyframes`
   0% {
@@ -20,6 +21,10 @@ const SideBarContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 10;
+
+  ${media.phone`
+    display: none;
+  `}
 `
 
 const StyledParagraph = styled(Paragraph)`

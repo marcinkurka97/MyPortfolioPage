@@ -6,6 +6,7 @@ import Button from "../components/atoms/Button/Button"
 import NavLink from "../components/atoms/NavLink/NavLink"
 import SortingImg from "../assets/sorting.gif"
 import ContentTemplate from "../template/ContentTemplate"
+import media from "../theme/media"
 
 const ScaleBox = keyframes`
   0% {
@@ -52,6 +53,11 @@ const ProjectDescriptionContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  ${media.phone`
+    width: 100%;
+    height: auto;
+  `}
 `
 
 const ProjectDescription = styled.div`
@@ -94,6 +100,12 @@ const ProjectImage = styled.div`
         ${ScaleBox} 1s 0.25s cubic-bezier(.34,.615,.4,.985) both
       `};
   }
+
+  ${media.phone`
+    margin-top: 3rem;
+    height: 30%;
+    width: 90%;
+  `}
 `
 
 const StyledHeading = styled(Heading)`
@@ -106,6 +118,12 @@ const StyledHeading = styled(Heading)`
     css`
       ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.phone`
+    font-size: ${({ theme }) => theme.fontSize.m};
+    text-align: center;
+    margin-bottom: 1rem;
+  `}
 `
 
 const StyledParagraph = styled(Paragraph)`
@@ -118,6 +136,10 @@ const StyledParagraph = styled(Paragraph)`
     css`
       ${TextSlideIn} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.phone`
+    font-size: 1.4rem;
+  `}
 `
 
 const StyledList = styled.ul`
@@ -128,6 +150,10 @@ const StyledList = styled.ul`
     css`
       ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.phone`
+    font-size: 1.4rem;
+  `}
 `
 
 const ProjectButtons = styled.div`
@@ -150,10 +176,18 @@ const StyledNavLink = styled(NavLink)`
     transform: initial;
     border-bottom: 1px solid ${({ theme }) => theme.yellow};
   }
+
+  ${media.phone`
+    font-size: ${({ theme }) => theme.fontSize.xs};
+  `}
 `
 
 const StyledButton = styled(Button)`
   margin: 3rem 0;
+
+  ${media.phone`
+    margin: 0;
+  `}
 `
 
 class FirstProject extends React.Component {

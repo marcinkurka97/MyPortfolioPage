@@ -1,5 +1,6 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
+import media from "../../../theme/media"
 
 const RevealDot1 = keyframes`
   0% {
@@ -69,6 +70,10 @@ const SideBarContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${media.phone`
+    display: none;
+  `}
 `
 
 const ProgressBarContainer = styled.div`

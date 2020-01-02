@@ -3,6 +3,8 @@ import styled, { keyframes } from "styled-components"
 import Paragraph from "../../atoms/Paragraph/Paragraph"
 import NavLink from "../../atoms/NavLink/NavLink"
 import Logo from "../../../assets/logoWhite.svg"
+import media from "../../../theme/media"
+import HamburgerMenu from "../HamburgerMenu/HamburgerMenu"
 
 const MoveIn = keyframes`
   0% {
@@ -20,6 +22,10 @@ const StyledLogo = styled.div`
   background: url(${Logo});
   background-repeat: no-repeat;
   background-size: contain;
+
+  ${media.phone`
+    flex: 50% 0 0;
+  `}
 `
 
 const HeaderContainer = styled.header`
@@ -31,11 +37,22 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   z-index: 10;
+
+  ${media.phone`
+    padding: 0;
+    top: 3vh;
+    width: 95%;
+    justify-content: space-between;
+  `}
 `
 
 const StyledParagraph = styled(Paragraph)`
   color: ${({ theme }) => theme.gray};
   font-size: ${({ theme }) => theme.fontSize.s};
+
+  ${media.phone`
+    display: none;
+  `}
 `
 
 const NavLinksContainer = styled.div`
@@ -58,6 +75,10 @@ const NavLinksContainer = styled.div`
       font-size: ${({ theme }) => theme.fontSize.xs};
     }
   }
+
+  ${media.phone`
+    display: none;
+  `}
 `
 
 class Header extends React.Component {
@@ -67,33 +88,29 @@ class Header extends React.Component {
     this.state = {}
   }
 
-  scrollTo = element => {
-    document.getElementById("app-container").scroll({
-      top: document.getElementById(element).offsetTop,
-      left: 0,
-      behavior: "smooth",
-    })
-  }
-
   render() {
     return (
       <HeaderContainer>
         <StyledLogo />
         <StyledParagraph>Marcin Kurka Portfolio</StyledParagraph>
         <NavLinksContainer id="nav-links" ref={this.navLinksRef}>
-          <NavLink onClick={() => this.scrollTo("landing-page")}>
+          <NavLink onClick={() => this.props.scrollTo("landing-page")}>
             Home. <span>1</span>
           </NavLink>
-          <NavLink onClick={() => this.scrollTo("first-project-page")}>
+          <NavLink onClick={() => this.props.scrollTo("first-project-page")}>
             Projects. <span>2</span>
           </NavLink>
-          <NavLink onClick={() => this.scrollTo("about-page")}>
+          <NavLink onClick={() => this.props.scrollTo("about-page")}>
             About. <span>3</span>
           </NavLink>
-          <NavLink onClick={() => this.scrollTo("footer-page")}>
+          <NavLink onClick={() => this.props.scrollTo("footer-page")}>
             Contact. <span>4</span>
           </NavLink>
         </NavLinksContainer>
+        <HamburgerMenu
+          handleHamburgerOpening={this.props.handleHamburgerOpening}
+          hamburgerIsOpen={this.props.hamburgerIsOpen}
+        />
       </HeaderContainer>
     )
   }

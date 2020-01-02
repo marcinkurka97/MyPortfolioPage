@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Contact from "./Contact"
 import Heading from "../components/atoms/Heading/Heading"
+import media from "../theme/media"
 
 const FooterContainer = styled.footer`
   position: relative;
@@ -11,6 +12,10 @@ const FooterContainer = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${media.phone`
+    height: 80%;
+  `}
 `
 
 const StyledHeading = styled(Heading)`
@@ -20,6 +25,12 @@ const StyledHeading = styled(Heading)`
   border-radius: 0.5rem;
   padding: 2rem 4rem;
   font-size: 6rem;
+
+  ${media.phone`
+    top: -3rem;
+    padding: 2rem 4rem;
+    font-size: 3rem;
+  `}
 `
 
 class FirstProject extends React.Component {

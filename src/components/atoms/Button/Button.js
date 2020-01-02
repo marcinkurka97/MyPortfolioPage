@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import media from "../../../theme/media"
 
 const Button = styled.button`
   position: relative;
@@ -13,7 +14,7 @@ const Button = styled.button`
   width: 160px;
   height: 60px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSize.s};
 
   &:before {
     content: "";
@@ -46,6 +47,12 @@ const Button = styled.button`
       transform: translate(0.75rem, -0.75rem);
     }
   }
+
+  ${media.phone`
+    width: 100px;
+    height: 40px;
+    font-size: ${({ theme }) => theme.fontSize.xs};
+  `}
 `
 
 export default Button

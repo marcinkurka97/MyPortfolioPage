@@ -1,6 +1,6 @@
 import React from "react"
 import styled, { keyframes, css } from "styled-components"
-import Heading from "../components/atoms/Heading/Heading"
+import media from "../theme/media"
 import Button from "../components/atoms/Button/Button"
 import { Formik, Form, Field } from "formik"
 import axios from "axios"
@@ -45,6 +45,11 @@ const ContactContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${media.phone`
+    width: 100%;
+    height: 50%;
+  `}
 `
 
 const ContactContent = styled.div`

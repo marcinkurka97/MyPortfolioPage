@@ -5,6 +5,7 @@ import Paragraph from "../components/atoms/Paragraph/Paragraph"
 import Button from "../components/atoms/Button/Button"
 import NavLink from "../components/atoms/NavLink/NavLink"
 import HomePingImg from "../assets/HomePin.png"
+import media from "../theme/media"
 
 const ScaleBox = keyframes`
   0% {
@@ -53,16 +54,30 @@ const ProjectDescription = styled.div`
   flex-direction: column;
   width: 40%;
   height: 50%;
+
+  ${media.phone`
+    width: 80%;
+    height: auto;
+  `}
 `
 
 const StyledHeading = styled(Heading)`
   font-size: 6rem;
   color: ${({ theme }) => theme.yellow};
+
+  ${media.phone`
+    font-size: ${({ theme }) => theme.fontSize.xl};
+    margin-bottom: 2rem;
+  `}
 `
 
 const StyledParagraph = styled(Paragraph)`
   text-align: center;
   font-size: ${({ theme }) => theme.fontSize.m};
+
+  ${media.phone`
+    font-size: ${({ theme }) => theme.fontSize.s};
+  `}
 `
 
 const StyledListContainer = styled.div`
@@ -73,6 +88,10 @@ const StyledListContainer = styled.div`
   flex-direction: column;
   color: ${({ theme }) => theme.white};
   font-size: ${({ theme }) => theme.fontSize.m};
+
+  ${media.phone`
+    font-size: ${({ theme }) => theme.fontSize.s};
+  `}
 `
 
 const ProjectButtons = styled.div`
@@ -96,6 +115,10 @@ const StyledNavLink = styled(NavLink)`
     transform: initial;
     border-bottom: 1px solid ${({ theme }) => theme.yellow};
   }
+
+  ${media.phone`
+    font-size: ${({ theme }) => theme.fontSize.xs};
+  `}
 `
 
 class SecondProject extends React.Component {

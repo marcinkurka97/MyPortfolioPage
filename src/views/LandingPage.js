@@ -1,6 +1,7 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
 import Heading from "../components/atoms/Heading/Heading"
+import media from "../theme/media"
 
 const ScaleBox = keyframes`
   0% {
@@ -43,6 +44,11 @@ const LandingPageBox = styled.div`
     z-index: -1;
     animation: ${ScaleBox} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both;
   }
+
+  ${media.phone`
+    width: 90%;
+    height: 50%;
+  `}
 `
 
 const LandingHeading = styled(Heading)`
@@ -51,15 +57,17 @@ const LandingHeading = styled(Heading)`
   line-height: 14rem;
   transform: translate3d(0px, 0%, 0px);
 
-  &:nth-last-of-type() {
-    color: ${({ theme }) => theme.yellow};
-  }
-
   span {
     margin-left: 1rem;
     border-right: 0.05em solid;
     animation: ${Caret} 1s steps(1) infinite;
   }
+
+  ${media.phone`
+      font-size: 7rem;
+      line-height: 5.5rem;
+      width: 75%;
+  `}
 `
 
 class LandingPage extends React.Component {

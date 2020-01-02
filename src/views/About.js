@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Heading from "../components/atoms/Heading/Heading"
 import Paragraph from "../components/atoms/Paragraph/Paragraph"
+import media from "../theme/media"
 
 const AboutContainer = styled.div`
   width: 100%;
@@ -15,6 +16,10 @@ const AboutContainer = styled.div`
 const StyledHeading = styled(Heading)`
   color: ${({ theme }) => theme.yellow};
   font-size: 6rem;
+
+  ${media.phone`
+    font-size: 3rem;
+  `}
 `
 
 const StyledParagraph = styled(Paragraph)`
@@ -23,12 +28,21 @@ const StyledParagraph = styled(Paragraph)`
   color: ${({ theme }) => theme.gray};
   font-size: 1.8rem;
   margin: 3% 0;
+
+  ${media.phone`
+    width: 90%;
+    font-size: 1.2rem;
+  `}
 `
 
 const SkillsContainer = styled.div`
   width: 50%;
   display: flex;
   justify-content: space-evenly;
+
+  ${media.phone`
+    width: 100%;
+  `}
 `
 
 const Skills = styled.div`
@@ -50,6 +64,12 @@ const Skills = styled.div`
   .value-style {
     color: #98b755;
   }
+
+  ${media.phone`
+    width: 50%;
+    font-size: 1.1rem;
+    line-height: 1.8rem;
+  `}
 `
 
 class About extends React.Component {
