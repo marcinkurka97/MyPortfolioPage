@@ -28,7 +28,7 @@ const LandingPageContainer = styled.section`
 const LandingPageBox = styled.div`
   position: relative;
   width: 70%;
-  height: 63%;
+  height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;

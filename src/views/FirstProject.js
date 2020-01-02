@@ -4,7 +4,7 @@ import Heading from "../components/atoms/Heading/Heading"
 import Paragraph from "../components/atoms/Paragraph/Paragraph"
 import Button from "../components/atoms/Button/Button"
 import NavLink from "../components/atoms/NavLink/NavLink"
-import SortingImg from "../assets/sortingApp.png"
+import SortingImg from "../assets/sorting.gif"
 import ContentTemplate from "../template/ContentTemplate"
 
 const ScaleBox = keyframes`
@@ -120,6 +120,16 @@ const StyledParagraph = styled(Paragraph)`
     `};
 `
 
+const StyledList = styled.ul`
+  color: ${({ theme }) => theme.gray};
+  opacity: 0;
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
+`
+
 const ProjectButtons = styled.div`
   display: flex;
   align-items: center;
@@ -128,7 +138,7 @@ const ProjectButtons = styled.div`
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${TextSlideIn} 1.3s 0.75s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 `
 
@@ -171,15 +181,32 @@ class FirstProject extends React.Component {
               Sorting Visualizer App
             </StyledHeading>
             <StyledParagraph active={activeTab}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Quibusdam id odit unde quasi molestiae rerum. Voluptatibus
-              veritatis saepe quae beatae facilis, in natus nam laborum eum
-              autem neque impedit sapiente odio soluta repellat, doloribus
-              suscipit voluptates aliquid.
+              App made in React showing how particular sorting algorithms works.
+              This app will help you understand:
             </StyledParagraph>
+            <StyledList active={activeTab}>
+              <li>Bubble Sort</li>
+              <li>Selection Sort</li>
+              <li>Insertion Sort</li>
+              <li>Quick Sort</li>
+              <li>Merge Sort</li>
+            </StyledList>
             <ProjectButtons active={activeTab}>
-              <StyledButton>Preview</StyledButton>
-              <StyledNavLink>GitHub Code</StyledNavLink>
+              <a
+                style={{ textDecoration: "none" }}
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://patinos123.github.io/sorting-app/"
+              >
+                <StyledButton>Preview</StyledButton>
+              </a>
+              <StyledNavLink
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/patinos123/sorting-app"
+              >
+                GitHub Code
+              </StyledNavLink>
             </ProjectButtons>
           </ProjectDescription>
         </ProjectDescriptionContainer>

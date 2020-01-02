@@ -42,7 +42,6 @@ class IndexPage extends React.Component {
   }
 
   scrollEventHandler = e => {
-    console.log(e.target.scrollTop)
     this.currentScrollHeight = e.target.scrollTop
     this.handleChangingActivePage(
       this.currentScrollHeight,
@@ -93,14 +92,14 @@ class IndexPage extends React.Component {
     // About Me
     else if (
       scrollHeight >= contentSize * 5 &&
-      scrollHeight < contentSize * 6
+      scrollHeight < contentSize * 5.7
     ) {
       this.activeDot = 5
       this.changeActiveDotStyle(this.activeDot)
       this.changeActiveNavLinkStyle(2)
     }
     // Contact
-    else if (scrollHeight >= contentSize * 6) {
+    else if (scrollHeight >= contentSize * 5.7) {
       this.activeDot = 6
       this.changeActiveDotStyle(this.activeDot)
       this.changeActiveNavLinkStyle(3)

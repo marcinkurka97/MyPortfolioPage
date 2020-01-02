@@ -1,8 +1,8 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
-import Heading from "../../atoms/Heading/Heading"
 import Paragraph from "../../atoms/Paragraph/Paragraph"
 import NavLink from "../../atoms/NavLink/NavLink"
+import Logo from "../../../assets/logoWhite.svg"
 
 const MoveIn = keyframes`
   0% {
@@ -13,8 +13,13 @@ const MoveIn = keyframes`
   }
 `
 
-const StyledHeading = styled(Heading)`
+const StyledLogo = styled.div`
   flex: 20% 0 0;
+  width: 100%;
+  height: 100%;
+  background: url(${Logo});
+  background-repeat: no-repeat;
+  background-size: contain;
 `
 
 const HeaderContainer = styled.header`
@@ -22,7 +27,7 @@ const HeaderContainer = styled.header`
   padding: 0 7.5rem;
   top: 5vh;
   width: 87.5%;
-  height: 50px;
+  height: 60px;
   display: flex;
   align-items: center;
   z-index: 10;
@@ -73,7 +78,7 @@ class Header extends React.Component {
   render() {
     return (
       <HeaderContainer>
-        <StyledHeading big>MyLogo</StyledHeading>
+        <StyledLogo />
         <StyledParagraph>Marcin Kurka Portfolio</StyledParagraph>
         <NavLinksContainer id="nav-links" ref={this.navLinksRef}>
           <NavLink onClick={() => this.scrollTo("landing-page")}>
@@ -85,7 +90,7 @@ class Header extends React.Component {
           <NavLink onClick={() => this.scrollTo("about-page")}>
             About. <span>3</span>
           </NavLink>
-          <NavLink onClick={() => this.scrollTo("contact-page")}>
+          <NavLink onClick={() => this.scrollTo("footer-page")}>
             Contact. <span>4</span>
           </NavLink>
         </NavLinksContainer>

@@ -101,6 +101,7 @@ const ProjectImage = styled.div`
 const StyledHeading = styled(Heading)`
   color: ${({ theme }) => theme.yellow};
   margin-bottom: 3rem;
+  text-align: center;
   width: 100%;
   opacity: 0;
   animation: ${({ active }) =>
@@ -122,6 +123,20 @@ const StyledParagraph = styled(Paragraph)`
     `};
 `
 
+const ListContainer = styled.div`
+  color: ${({ theme }) => theme.gray};
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
+  opacity: 0;
+`
+
+const StyledList = styled.ul`
+  color: ${({ theme }) => theme.gray};
+`
+
 const ProjectButtons = styled.div`
   display: flex;
   align-items: center;
@@ -130,7 +145,7 @@ const ProjectButtons = styled.div`
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${TextSlideIn} 1.3s 0.75s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 `
 
@@ -171,18 +186,42 @@ class ThirdProject extends React.Component {
         <ProjectDescriptionContainer>
           <ProjectDescription>
             <StyledHeading big active={activeTab}>
-              Sorting Visualizer App
+              Pathfinding and Maze Generation App
             </StyledHeading>
             <StyledParagraph active={activeTab}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Quibusdam id odit unde quasi molestiae rerum. Voluptatibus
-              veritatis saepe quae beatae facilis, in natus nam laborum eum
-              autem neque impedit sapiente odio soluta repellat, doloribus
-              suscipit voluptates aliquid.
+              React app visualizing building mazes and then finding the best
+              path between two given points.
+              <br />
+              <br />
             </StyledParagraph>
+            <ListContainer active={activeTab}>
+              Maze generation algorithms:
+              <StyledList>
+                <li>Recursive Division</li>
+                <li>Recursive Backtracking</li>
+              </StyledList>
+              Pathfinding algorithms:
+              <StyledList>
+                <li>Dijkstra Algorithm</li>
+              </StyledList>
+            </ListContainer>
             <ProjectButtons active={activeTab}>
-              <StyledButton>Preview</StyledButton>
-              <StyledNavLink>GitHub Code</StyledNavLink>
+              <a
+                style={{ textDecoration: "none" }}
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://patinos123.github.io/pathfinding-app/"
+              >
+                <StyledButton>Preview</StyledButton>
+              </a>
+
+              <StyledNavLink
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/patinos123/pathfinding-app"
+              >
+                GitHub Code
+              </StyledNavLink>
             </ProjectButtons>
           </ProjectDescription>
         </ProjectDescriptionContainer>

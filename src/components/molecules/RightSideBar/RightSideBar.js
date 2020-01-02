@@ -87,11 +87,13 @@ const ProgressDot = styled.span`
   border-radius: 50%;
   background-color: ${({ theme }) => theme.gray};
   transition: background, transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid ${({ theme }) => theme.black};
 
   &:first-of-type {
     animation: ${RevealDot1} 1.3s 0.15s cubic-bezier(0.34, 0.615, 0.4, 0.985)
       backwards;
     background-color: ${({ theme }) => theme.yellow};
+    transform: scale(1.5);
   }
 
   &:nth-of-type(2) {
@@ -151,7 +153,7 @@ class RightSideBar extends React.Component {
           <ProgressDot onClick={() => this.scrollTo("third-project-page")} />
           <ProgressDot onClick={() => this.scrollTo("fourth-project-page")} />
           <ProgressDot onClick={() => this.scrollTo("about-page")} />
-          <ProgressDot onClick={() => this.scrollTo("contact-page")} />
+          <ProgressDot onClick={() => this.scrollTo("footer-page")} />
         </ProgressBarContainer>
       </SideBarContainer>
     )

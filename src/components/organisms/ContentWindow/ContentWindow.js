@@ -6,7 +6,7 @@ import SecondProject from "../../../views/SecondProject"
 import ThirdProject from "../../../views/ThirdProject"
 import FourthProject from "../../../views/FourthProject"
 import About from "../../../views/About"
-import Contact from "../../../views/Contact"
+import Footer from "../../../views/Footer"
 
 const ContentContainer = styled.section`
   width: 100%;
@@ -53,7 +53,7 @@ class ContentWindow extends Component {
         <SecondProject
           active={
             this.state.currentScrollHeight >=
-            (this.state.componentHeight * 2 * 0.75) / 1.25
+            (this.state.componentHeight * 2) / 1.1
               ? true
               : false
           }
@@ -82,7 +82,7 @@ class ContentWindow extends Component {
               : false
           }
         />
-        <Contact
+        <Footer
           active={
             this.state.currentScrollHeight >=
             (this.state.componentHeight * 6) / 1.1

@@ -37,11 +37,11 @@ const ProjectContainer = styled.div`
     width: 100%;
     min-height: 100%;
     top: 0;
-    filter: blur(2px);
+    filter: blur(1px);
     animation: ${({ active }) =>
       active &&
       css`
-        ${ScaleBox} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+        ${ScaleBox} 1.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
       `};
   }
 `
@@ -56,16 +56,23 @@ const ProjectDescription = styled.div`
 `
 
 const StyledHeading = styled(Heading)`
-  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-size: 6rem;
   color: ${({ theme }) => theme.yellow};
-  text-shadow: 2px 2px 10px #000;
 `
 
 const StyledParagraph = styled(Paragraph)`
   text-align: center;
-  text-shadow: 2px 2px 10px #000;
   font-size: ${({ theme }) => theme.fontSize.m};
-  font-weight: ${({ theme }) => theme.bold};
+`
+
+const StyledListContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: ${({ theme }) => theme.white};
+  font-size: ${({ theme }) => theme.fontSize.m};
 `
 
 const ProjectButtons = styled.div`
@@ -113,12 +120,26 @@ class SecondProject extends React.Component {
         <ProjectDescription>
           <StyledHeading big>HousePin</StyledHeading>
           <StyledParagraph>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam
-            id odit unde quasi molestiae rerum. Voluptatibus veritatis saepe
-            quae beatae facilis, in natus nam laborum eum autem neque impedit
-            sapiente odio soluta repellat, doloribus suscipit voluptates
-            aliquid.
+            That's my diploma work. It's gathering data from polish real estate
+            sites like OLX and otodom and then placing each offer on map. The
+            idea is to give users better understanding of potential house
+            location and neighborhood. Users can filter offers by price, type or
+            even distance from given point.
+            <br />
+            <br />
           </StyledParagraph>
+          <StyledListContainer>
+            Technologies used:
+            <ul>
+              <li>React</li>
+              <li>Redux</li>
+              <li>Jest </li>
+              <li>Google APIs</li>
+              <li>Node.js</li>
+              <li>MongoDB</li>
+              <li>REST API</li>
+            </ul>
+          </StyledListContainer>
           <ProjectButtons>
             <StyledButton>Preview</StyledButton>
             <StyledNavLink>GitHub Code</StyledNavLink>
