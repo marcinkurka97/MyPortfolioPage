@@ -66,6 +66,11 @@ const ProjectDescription = styled.div`
   width: 40%;
   height: 50%;
 
+  ${media.tablet`
+    width: 60%;
+    height: auto;
+  `}
+
   ${media.phone`
     width: 80%;
     height: auto;
@@ -82,9 +87,18 @@ const StyledHeading = styled(Heading)`
       ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
+  ${media.laptop`
+    font-size: 6rem;
+    margin-bottom: 1rem;
+  `}
+
+  ${media.tablet`
+    font-size: ${({ theme }) => theme.fontSize.xxl};
+    margin-bottom: 2rem;
+  `}
+
   ${media.phone`
     font-size: ${({ theme }) => theme.fontSize.xl};
-    margin-bottom: 2rem;
   `}
 `
 
@@ -97,6 +111,14 @@ const StyledParagraph = styled(Paragraph)`
     css`
       ${TextSlideIn} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.laptop`
+    font-size: 1.8rem;
+  `}
+
+  ${media.tablet`
+    font-size: ${({ theme }) => theme.fontSize.l};
+  `}
 
   ${media.phone`
     font-size: ${({ theme }) => theme.fontSize.s};
@@ -117,6 +139,14 @@ const StyledListContainer = styled.div`
     css`
       ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.laptop`
+    font-size: 1.8rem;
+  `}
+
+  ${media.tablet`
+    font-size: ${({ theme }) => theme.fontSize.l};
+  `}
 
   ${media.phone`
     font-size: ${({ theme }) => theme.fontSize.s};
@@ -150,6 +180,10 @@ const StyledNavLink = styled(NavLink)`
     transform: initial;
     border-bottom: 1px solid ${({ theme }) => theme.yellow};
   }
+
+  ${media.tablet`
+    font-size: 2.5rem;
+  `}
 
   ${media.phone`
     font-size: ${({ theme }) => theme.fontSize.xs};

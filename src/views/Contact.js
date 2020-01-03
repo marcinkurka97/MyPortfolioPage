@@ -42,6 +42,11 @@ const ContactContainer = styled.div`
       ${FadeIn} 0.5s 0.7s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
+  ${media.tablet`
+    width: 50%;
+    height: 25vh;
+  `}
+
   ${media.phone`
     width: 100%;
     height: 50%;
@@ -50,8 +55,8 @@ const ContactContainer = styled.div`
 
 const StyledButton = styled(Button)`
   margin-top: 2rem;
-  width: 200px;
-  height: 80px;
+  width: 25%;
+  height: 25%;
   font-size: ${({ theme }) => theme.fontSize.m};
   color: ${({ theme }) => theme.white};
 
@@ -62,6 +67,16 @@ const StyledButton = styled(Button)`
   &:after {
     border: 1px solid ${({ theme }) => theme.black};
   }
+
+  ${media.tablet`
+    width: 30%;
+    height: 15%;
+  `}
+
+  ${media.phone`
+    width: 30%;
+    height: 25%;
+  `}
 `
 
 const StyledForm = styled(Form)`

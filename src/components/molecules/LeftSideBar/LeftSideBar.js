@@ -20,7 +20,7 @@ const SideBarContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 1;
 
   ${media.phone`
     display: none;
@@ -34,6 +34,10 @@ const StyledParagraph = styled(Paragraph)`
   color: ${({ theme }) => theme.gray};
   opacity: 0;
   animation: ${FadeIn} 1.3s 0.15s cubic-bezier(0.34, 0.615, 0.4, 0.985) both;
+
+  ${media.tablet`
+    font-size: 2rem;
+  `}
 `
 
 const LeftSideBar = () => (

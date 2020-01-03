@@ -45,6 +45,16 @@ const LandingPageBox = styled.div`
     animation: ${ScaleBox} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both;
   }
 
+  ${media.laptop`
+    width: 70%;
+    height: 60%;
+  `}
+
+  ${media.tablet`
+    width: 70%;
+    height: 45%;
+  `}
+
   ${media.phone`
     width: 90%;
     height: 50%;

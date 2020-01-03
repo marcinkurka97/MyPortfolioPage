@@ -23,9 +23,16 @@ const StyledLogo = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  z-index: 15;
+
+  ${media.tablet`
+    flex: 40% 0 0;
+    height: 100px;
+  `}
 
   ${media.phone`
     flex: 50% 0 0;
+    height: 100%;
   `}
 `
 
@@ -42,7 +49,14 @@ const HeaderContainer = styled.header`
   ${media.phone`
     padding: 0;
     top: 3vh;
-    width: 95%;
+    width: 90%;
+    justify-content: space-between;
+  `}
+
+  ${media.tablet`
+    padding: 0;
+    top: 3vh;
+    width: 85%;
     justify-content: space-between;
   `}
 `
@@ -51,7 +65,7 @@ const StyledParagraph = styled(Paragraph)`
   color: ${({ theme }) => theme.gray};
   font-size: ${({ theme }) => theme.fontSize.s};
 
-  ${media.phone`
+  ${media.tablet`
     display: none;
   `}
 `
@@ -77,7 +91,7 @@ const NavLinksContainer = styled.div`
     }
   }
 
-  ${media.phone`
+  ${media.tablet`
     display: none;
   `}
 `

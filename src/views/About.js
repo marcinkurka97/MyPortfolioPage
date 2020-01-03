@@ -34,6 +34,10 @@ const StyledHeading = styled(Heading)`
       ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
+  ${media.tablet`
+    font-size: 6rem;
+  `}
+
   ${media.phone`
     font-size: 3rem;
   `}
@@ -52,6 +56,16 @@ const StyledParagraph = styled(Paragraph)`
       ${TextSlideIn} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
+  ${media.laptop`
+    width: 60%;
+    font-size: 1.8rem;
+  `}
+
+  ${media.tablet`
+    width: 80%;
+    font-size: 2.5rem;
+  `}
+
   ${media.phone`
     width: 90%;
     font-size: 1.2rem;
@@ -68,6 +82,14 @@ const SkillsContainer = styled.div`
     css`
       ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.laptop`
+    width: 80%;
+  `}
+
+  ${media.tablet`
+    width: 80%;
+  `}
 
   ${media.phone`
     width: 100%;
@@ -94,8 +116,25 @@ const Skills = styled.div`
     color: #98b755;
   }
 
+  ${media.laptop`
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+  `}
+
+  ${media.tablet`
+    &:first-of-type {
+      width: auto;
+    }
+
+    &:last-of-type {
+      width: auto;
+    }
+
+    font-size: 2.5rem;
+    line-height: 3rem;
+  `}
+
   ${media.phone`
-    width: 50%;
     font-size: 1.1rem;
     line-height: 1.8rem;
   `}

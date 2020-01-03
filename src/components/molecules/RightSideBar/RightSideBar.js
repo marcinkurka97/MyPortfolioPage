@@ -131,6 +131,11 @@ const ProgressDot = styled.span`
     transform: scale(1.25) !important;
     background: ${({ theme }) => theme.yellow} !important;
   }
+
+  ${media.tablet`
+    width: 2rem;
+    height: 2rem;
+  `}
 `
 
 class RightSideBar extends React.Component {

@@ -19,6 +19,11 @@ const ProjectContent = styled.div`
   justify-content: center;
   align-items: center;
 
+  ${media.tablet`
+    width: 80%;
+    flex-direction: column;
+  `}
+
   ${media.phone`
     width: 100%;
     flex-direction: column;

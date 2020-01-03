@@ -101,7 +101,7 @@ const ProjectDescription = styled.div`
       ${FadeIn} 1s 2s cubic-bezier(.34,.615,.4,.985) both
     `};
 
-  ${media.phone`
+  ${media.tablet`
     left: 2.5%;
     width: 95%;
   `}
@@ -112,6 +112,10 @@ const StyledParagraph = styled(Paragraph)`
   color: ${({ theme }) => theme.black};
   font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: ${({ theme }) => theme.bold};
+
+  ${media.tablet`
+    font-size: 2.5rem;
+  `}
 
   ${media.phone`
     font-size: ${({ theme }) => theme.fontSize.s};
@@ -139,6 +143,10 @@ const StyledNavLink = styled(NavLink)`
     transform: initial;
     border-bottom: 1px solid ${({ theme }) => theme.yellow};
   }
+
+  ${media.tablet`
+    font-size: 2.5rem;
+  `}
 
   ${media.phone`
     font-size: ${({ theme }) => theme.fontSize.xs};

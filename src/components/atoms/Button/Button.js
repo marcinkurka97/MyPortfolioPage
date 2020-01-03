@@ -48,6 +48,10 @@ const Button = styled.button`
     }
   }
 
+  ${media.tablet`
+    font-size: ${({ theme }) => theme.fontSize.l};
+  `}
+
   ${media.phone`
     width: 100px;
     height: 40px;

@@ -1,6 +1,7 @@
 import React from "react"
 import styled, { keyframes, css } from "styled-components"
 import NavLink from "../components/atoms/NavLink/NavLink"
+import media from "../theme/media"
 
 const ScaleInBox = keyframes`
   0% {
@@ -28,6 +29,8 @@ const MobileMenuContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
+
   ${({ hamburgerIsOpen }) =>
     hamburgerIsOpen
       ? css`
@@ -46,30 +49,48 @@ const StyledList = styled.ul`
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  opacity: ${({ hamburgerIsOpen }) => (hamburgerIsOpen ? 1 : 0)};
+  padding: 0;
+  z-index: 3;
   ${({ hamburgerIsOpen }) =>
     hamburgerIsOpen
       ? css`
+          opacity: 1;
           transition: opacity 0.5s 0.7s ease-in;
+          display: initial;
         `
       : css`
-          display: none;
+          opacity: 0;
           transition: opacity 0.1s ease-in;
+          display: none;
         `};
 
-  padding: 0;
+  ${media.tablet`
+    li {
+      list-style: none;
 
-  li {
-    list-style: none;
-
-    a {
-      font-size: 5.5rem;
-      span {
-        vertical-align: super;
-        font-size: ${({ theme }) => theme.fontSize.xs};
+      a {
+        font-size: 10rem;
+        span {
+          vertical-align: super;
+          font-size: ${({ theme }) => theme.fontSize.l};
+        }
       }
     }
-  }
+  `}
+
+  ${media.phone`
+    li {
+      list-style: none;
+
+      a {
+        font-size: 5.5rem;
+        span {
+          vertical-align: super;
+          font-size: ${({ theme }) => theme.fontSize.xs};
+        }
+      }
+    }
+  `}
 `
 
 const MobileMenu = ({ hamburgerIsOpen, scrollTo }) => {
