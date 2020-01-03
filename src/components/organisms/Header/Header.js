@@ -22,6 +22,7 @@ const StyledLogo = styled.div`
   background: url(${Logo});
   background-repeat: no-repeat;
   background-size: contain;
+  cursor: pointer;
 
   ${media.phone`
     flex: 50% 0 0;
@@ -91,7 +92,7 @@ class Header extends React.Component {
   render() {
     return (
       <HeaderContainer>
-        <StyledLogo />
+        <StyledLogo onClick={() => this.props.scrollTo("landing-page")} />
         <StyledParagraph>Marcin Kurka Portfolio</StyledParagraph>
         <NavLinksContainer id="nav-links" ref={this.navLinksRef}>
           <NavLink onClick={() => this.props.scrollTo("landing-page")}>

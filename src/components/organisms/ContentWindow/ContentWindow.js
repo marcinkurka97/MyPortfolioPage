@@ -53,7 +53,7 @@ class ContentWindow extends Component {
         <SecondProject
           active={
             this.state.currentScrollHeight >=
-            (this.state.componentHeight * 2) / 1.1
+            (this.state.componentHeight * 2) / 1.2
               ? true
               : false
           }
@@ -61,7 +61,7 @@ class ContentWindow extends Component {
         <ThirdProject
           active={
             this.state.currentScrollHeight >=
-            (this.state.componentHeight * 3) / 1.1
+            (this.state.componentHeight * 3) / 1.2
               ? true
               : false
           }
@@ -69,7 +69,7 @@ class ContentWindow extends Component {
         <FourthProject
           active={
             this.state.currentScrollHeight >=
-            (this.state.componentHeight * 4) / 1.1
+            (this.state.componentHeight * 4) / 1.2
               ? true
               : false
           }
@@ -77,7 +77,7 @@ class ContentWindow extends Component {
         <About
           active={
             this.state.currentScrollHeight >=
-            (this.state.componentHeight * 5) / 1.1
+            (this.state.componentHeight * 5) / 1.2
               ? true
               : false
           }

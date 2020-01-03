@@ -57,10 +57,14 @@ const LandingHeading = styled(Heading)`
   line-height: 14rem;
   transform: translate3d(0px, 0%, 0px);
 
-  span {
+  .caret {
     margin-left: 1rem;
     border-right: 0.05em solid;
     animation: ${Caret} 1s steps(1) infinite;
+  }
+
+  .exclamationMark {
+    color: ${({ theme }) => theme.yellow};
   }
 
   ${media.phone`
@@ -73,20 +77,28 @@ const LandingHeading = styled(Heading)`
 class LandingPage extends React.Component {
   constructor(props) {
     super(props)
-    this.dataText = ["Hello World!"]
+    this.dataText = "Hello World"
     this.state = {}
   }
 
   componentDidMount = () => {
     setTimeout(() => {
-      this.typeWriter(this.dataText[0], 0)
+      this.typeWriter(this.dataText, 0)
     }, 1000)
   }
 
   typeWriter = (text, i, fnCallback) => {
     if (i < text.length) {
-      document.getElementById("text-typing").innerHTML =
-        text.substring(0, i + 1) + '<span aria-hidden="true"></span>'
+      if (i === text.length - 1) {
+        document.getElementById("text-typing").innerHTML =
+          text.substring(0, i + 1) +
+          "<span class='exclamationMark'>!</span>" +
+          '<span aria-hidden="true" class="caret"></span>'
+      } else {
+        document.getElementById("text-typing").innerHTML =
+          text.substring(0, i + 1) +
+          '<span aria-hidden="true" class="caret"></span>'
+      }
 
       setTimeout(() => {
         this.typeWriter(text, i + 1, fnCallback)

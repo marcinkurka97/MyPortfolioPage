@@ -1,8 +1,19 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 import Heading from "../components/atoms/Heading/Heading"
 import Paragraph from "../components/atoms/Paragraph/Paragraph"
 import media from "../theme/media"
+
+const TextSlideIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: translate3d(-200%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+`
 
 const AboutContainer = styled.div`
   width: 100%;
@@ -16,6 +27,12 @@ const AboutContainer = styled.div`
 const StyledHeading = styled(Heading)`
   color: ${({ theme }) => theme.yellow};
   font-size: 6rem;
+  opacity: 0;
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
 
   ${media.phone`
     font-size: 3rem;
@@ -28,6 +45,12 @@ const StyledParagraph = styled(Paragraph)`
   color: ${({ theme }) => theme.gray};
   font-size: 1.8rem;
   margin: 3% 0;
+  opacity: 0;
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${TextSlideIn} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
 
   ${media.phone`
     width: 90%;
@@ -39,6 +62,12 @@ const SkillsContainer = styled.div`
   width: 50%;
   display: flex;
   justify-content: space-evenly;
+  opacity: 0;
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
 
   ${media.phone`
     width: 100%;
@@ -75,14 +104,26 @@ const Skills = styled.div`
 class About extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = { activeTab: false }
+  }
+
+  componentDidUpdate() {
+    if (
+      this.props.active === true &&
+      this.props.active !== this.state.activeTab
+    ) {
+      this.setState({ activeTab: this.props.active })
+    }
   }
 
   render() {
+    const { activeTab } = this.state
     return (
       <AboutContainer id="about-page">
-        <StyledHeading big>About me</StyledHeading>
-        <StyledParagraph>
+        <StyledHeading big active={activeTab}>
+          About me
+        </StyledHeading>
+        <StyledParagraph active={activeTab}>
           My name is Marcin Kurka. I'm 23 years old and currently I'm studying
           computer science at University of Economics in Katowice. I graduated
           in computer science at Mechanical Technical High School in Racibórz. I
@@ -96,7 +137,7 @@ class About extends React.Component {
           projects in vanilla JS as well as in React. I really like working in
           groups.
         </StyledParagraph>
-        <SkillsContainer>
+        <SkillsContainer active={activeTab}>
           <Skills>
             <span className="const-style">const</span>
             <span className="variable-style"> hardSkills</span> = &#123;

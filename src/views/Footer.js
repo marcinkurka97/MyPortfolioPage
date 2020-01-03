@@ -1,17 +1,51 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 import Contact from "./Contact"
 import Heading from "../components/atoms/Heading/Heading"
 import media from "../theme/media"
 
+const ScaleBox = keyframes`
+  0% {
+    min-height: 0%;
+    opacity: 1;
+  }
+  100% {
+    min-height: 100%;
+    opacity: 1;
+  }
+`
+
+const FadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
+
 const FooterContainer = styled.footer`
   position: relative;
   width: 100%;
-  height: 70%;
-  background: ${({ theme }) => theme.yellow};
+  min-height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 100%;
+    background: ${({ theme }) => theme.yellow};
+    opacity: 0;
+    animation: ${({ active }) =>
+      active &&
+      css`
+        ${ScaleBox} 0.7s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      `};
+  }
 
   ${media.phone`
     height: 80%;
@@ -25,6 +59,12 @@ const StyledHeading = styled(Heading)`
   border-radius: 0.5rem;
   padding: 2rem 4rem;
   font-size: 6rem;
+  opacity: 0;
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${FadeIn} 0.5s 0.7s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
 
   ${media.phone`
     top: -3rem;
@@ -51,9 +91,9 @@ class FirstProject extends React.Component {
   render() {
     const { activeTab } = this.state
     return (
-      <FooterContainer id="footer-page">
-        <StyledHeading>Contact me</StyledHeading>
-        <Contact />
+      <FooterContainer id="footer-page" active={activeTab}>
+        <StyledHeading active={activeTab}>Contact me</StyledHeading>
+        <Contact active={activeTab} />
       </FooterContainer>
     )
   }

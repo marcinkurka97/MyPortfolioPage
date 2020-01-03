@@ -13,7 +13,20 @@ module.exports = {
         path: `${__dirname}/src/pages/`,
       },
     },
+    {
+      resolve: "gatsby-plugin-netlify-cache",
+      options: {
+        cachePublic: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        displayName: true,
+      },
+    },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,

@@ -6,17 +6,6 @@ import { Formik, Form, Field } from "formik"
 import axios from "axios"
 import * as Yup from "yup"
 
-const ScaleBox = keyframes`
-  0% {
-    min-width: 0%;
-    opacity: 1;
-  }
-  100% {
-    min-width: 100%;
-    opacity: 1;
-  }
-`
-
 const FadeIn = keyframes`
   0% {
     opacity: 0;
@@ -40,42 +29,23 @@ const SignupSchema = Yup.object().shape({
 })
 
 const ContactContainer = styled.div`
+  position: relative;
   width: 50%;
-  height: 60%;
+  height: 40vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${FadeIn} 0.5s 0.7s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
 
   ${media.phone`
     width: 100%;
     height: 50%;
   `}
-`
-
-const ContactContent = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  :before {
-    content: "";
-    position: absolute;
-    right: 0;
-    min-width: 100%;
-    height: 100%;
-    background: ${({ theme }) => theme.yellow};
-    z-index: -1;
-    opacity: 0;
-    animation: ${({ active }) =>
-      active &&
-      css`
-        ${ScaleBox} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
-      `};
-  }
 `
 
 const StyledButton = styled(Button)`
@@ -102,11 +72,6 @@ const StyledForm = styled(Form)`
   align-items: center;
   flex-direction: column;
   margin-top: 2rem;
-  animation: ${({ active }) =>
-    active &&
-    css`
-      ${FadeIn} 1.3s 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
-    `};
 
   .contact-inputs {
     width: 100%;
@@ -163,72 +128,69 @@ class Contact extends React.Component {
   }
 
   render() {
-    const { activeTab } = this.state
     return (
-      <ContactContainer active={activeTab}>
-        <ContactContent active={activeTab}>
-          <Formik
-            initialValues={{ email: "", subject: "", content: "" }}
-            validate={values => {
-              let errors = {}
-              if (!values.email) {
-                errors.email = "Required"
-              } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-              ) {
-                errors.email = "Invalid email address"
-              }
-              return errors
-            }}
-            validationSchema={SignupSchema}
-            onSubmit={(values, { resetForm }) => {
-              SignupSchema.isValid({
-                email: values.email,
-                subject: values.subject,
-                content: values.content,
-              })
-                .then(function() {
-                  axios({
-                    method: "post",
-                    url:
-                      "https://cors-anywhere.herokuapp.com/https://o30d2yrza3.execute-api.eu-west-1.amazonaws.com/default/portfolio_lambda",
-                    data: {
-                      email: values.email,
-                      subject: values.subject,
-                      content: values.content,
-                    },
+      <ContactContainer active={this.props.active}>
+        <Formik
+          initialValues={{ email: "", subject: "", content: "" }}
+          validate={values => {
+            let errors = {}
+            if (!values.email) {
+              errors.email = "Required"
+            } else if (
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+            ) {
+              errors.email = "Invalid email address"
+            }
+            return errors
+          }}
+          validationSchema={SignupSchema}
+          onSubmit={(values, { resetForm }) => {
+            SignupSchema.isValid({
+              email: values.email,
+              subject: values.subject,
+              content: values.content,
+            })
+              .then(function() {
+                axios({
+                  method: "post",
+                  url:
+                    "https://cors-anywhere.herokuapp.com/https://o30d2yrza3.execute-api.eu-west-1.amazonaws.com/default/portfolio_lambda",
+                  data: {
+                    email: values.email,
+                    subject: values.subject,
+                    content: values.content,
+                  },
+                })
+                  .then(function() {
+                    resetForm()
+                    alert.success("Message sent!")
                   })
-                    .then(function() {
-                      resetForm()
-                      alert.success("Message sent!")
-                    })
-                    .catch(function() {
-                      alert.error("Error :/")
-                    })
-                })
-                .catch(function() {
-                  alert.show("Fill in all the fields")
-                })
-            }}
-          >
-            {({ isSubmitting }) => (
-              <StyledForm active={activeTab}>
-                <div className="contact-inputs">
-                  <Field name="email" type="email" placeholder="E-mail" />
-                  <Field name="subject" type="text" placeholder="Subject" />
-                </div>
-                <Field
-                  name="content"
-                  component="textarea"
-                  placeholder="Message"
-                />
-                <StyledButton type="submit" disabled={isSubmitting}>
-                  Submit
-                </StyledButton>
-              </StyledForm>
-            )}
-          </Formik>
-        </ContactContent>
+                  .catch(function() {
+                    alert.error("Error :/")
+                  })
+              })
+              .catch(function() {
+                alert.show("Fill in all the fields")
+              })
+          }}
+        >
+          {({ isSubmitting }) => (
+            <StyledForm>
+              <div className="contact-inputs">
+                <Field name="email" type="email" placeholder="E-mail" />
+                <Field name="subject" type="text" placeholder="Subject" />
+              </div>
+              <Field
+                name="content"
+                component="textarea"
+                placeholder="Message"
+              />
+              <StyledButton type="submit" disabled={isSubmitting}>
+                Submit
+              </StyledButton>
+            </StyledForm>
+          )}
+        </Formik>
       </ContactContainer>
     )
   }

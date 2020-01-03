@@ -134,7 +134,6 @@ class IndexPage extends React.Component {
 
   handleHamburgerOpening = () => {
     this.setState({ hamburgerIsOpen: !this.state.hamburgerIsOpen })
-    console.log(this.state.hamburgerIsOpen)
   }
 
   render() {

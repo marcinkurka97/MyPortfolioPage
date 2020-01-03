@@ -18,6 +18,17 @@ const ScaleBox = keyframes`
   }
 `
 
+const TextSlideIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -200%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0%, 0);
+  }
+`
+
 const ProjectContainer = styled.div`
   position: relative;
   width: 100%;
@@ -38,7 +49,7 @@ const ProjectContainer = styled.div`
     width: 100%;
     min-height: 100%;
     top: 0;
-    filter: blur(1px);
+    filter: blur(3px);
     animation: ${({ active }) =>
       active &&
       css`
@@ -64,6 +75,12 @@ const ProjectDescription = styled.div`
 const StyledHeading = styled(Heading)`
   font-size: 6rem;
   color: ${({ theme }) => theme.yellow};
+  opacity: 0;
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
 
   ${media.phone`
     font-size: ${({ theme }) => theme.fontSize.xl};
@@ -74,6 +91,12 @@ const StyledHeading = styled(Heading)`
 const StyledParagraph = styled(Paragraph)`
   text-align: center;
   font-size: ${({ theme }) => theme.fontSize.m};
+  opacity: 0;
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${TextSlideIn} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
 
   ${media.phone`
     font-size: ${({ theme }) => theme.fontSize.s};
@@ -88,6 +111,12 @@ const StyledListContainer = styled.div`
   flex-direction: column;
   color: ${({ theme }) => theme.white};
   font-size: ${({ theme }) => theme.fontSize.m};
+  opacity: 0;
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
 
   ${media.phone`
     font-size: ${({ theme }) => theme.fontSize.s};
@@ -99,6 +128,12 @@ const ProjectButtons = styled.div`
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
+  opacity: 0;
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
 `
 
 const StyledButton = styled(Button)`
@@ -141,8 +176,10 @@ class SecondProject extends React.Component {
     return (
       <ProjectContainer active={activeTab} id="second-project-page">
         <ProjectDescription>
-          <StyledHeading big>HousePin</StyledHeading>
-          <StyledParagraph>
+          <StyledHeading active={activeTab} big>
+            HousePin
+          </StyledHeading>
+          <StyledParagraph active={activeTab}>
             That's my diploma work. It's gathering data from polish real estate
             sites like OLX and otodom and then placing each offer on map. The
             idea is to give users better understanding of potential house
@@ -151,7 +188,7 @@ class SecondProject extends React.Component {
             <br />
             <br />
           </StyledParagraph>
-          <StyledListContainer>
+          <StyledListContainer active={activeTab}>
             Technologies used:
             <ul>
               <li>React</li>
@@ -163,7 +200,7 @@ class SecondProject extends React.Component {
               <li>REST API</li>
             </ul>
           </StyledListContainer>
-          <ProjectButtons>
+          <ProjectButtons active={activeTab}>
             <StyledButton>Preview</StyledButton>
             <StyledNavLink>GitHub Code</StyledNavLink>
           </ProjectButtons>

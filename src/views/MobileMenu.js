@@ -53,6 +53,7 @@ const StyledList = styled.ul`
           transition: opacity 0.5s 0.7s ease-in;
         `
       : css`
+          display: none;
           transition: opacity 0.1s ease-in;
         `};
 
