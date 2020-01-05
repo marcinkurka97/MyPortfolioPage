@@ -29,7 +29,7 @@ const ScaleBoxAfter = keyframes`
     opacity: 1;
   }
   100% {
-    transform: translate(2.5%, 5%);
+    transform: translate(2.5%, -5%);
     opacity: 1;
     min-height: 100%;
   }
@@ -46,34 +46,18 @@ const TextSlideIn = keyframes`
   }
 `
 
-const ProjectDescriptionContainer = styled.div`
-  height: 100%;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  ${media.tablet`
-    width: 100%;
-    height: auto;
-  `}
-
-  ${media.phone`
-    width: 100%;
-    height: auto;
-  `}
-`
-
 const ProjectDescription = styled.div`
-  width: 70%;
-  height: auto;
+  width: 100%;
+  height: 75%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
 
 const ProjectImage = styled.div`
   position: relative;
-  height: 40%;
-  width: 50%;
+  height: 100%;
+  width: 60%;
 
   &:before {
     content: "";
@@ -115,7 +99,7 @@ const ProjectImage = styled.div`
 
 const StyledHeading = styled(Heading)`
   color: ${({ theme }) => theme.yellow};
-  margin-bottom: 3rem;
+  padding-bottom: 3rem;
   width: 100%;
   opacity: 0;
   animation: ${({ active }) =>
@@ -138,8 +122,11 @@ const StyledHeading = styled(Heading)`
 `
 
 const StyledParagraph = styled(Paragraph)`
+  font-family: font44146, sans-serif;
+  font-size: 2.4rem;
   width: 100%;
-  text-align: left;
+  text-align: justify;
+  padding-bottom: 5rem;
   color: ${({ theme }) => theme.gray};
   opacity: 0;
   animation: ${({ active }) =>
@@ -157,9 +144,22 @@ const StyledParagraph = styled(Paragraph)`
   `}
 `
 
+const RightDescription = styled.div`
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
 const StyledList = styled.ul`
+  font-family: font44146, sans-serif;
+  line-height: 3rem;
   color: ${({ theme }) => theme.gray};
+  font-size: 2rem;
   opacity: 0;
+  padding: 0 0 0 8rem;
+  margin: 0;
   animation: ${({ active }) =>
     active &&
     css`
@@ -177,8 +177,10 @@ const StyledList = styled.ul`
 
 const ProjectButtons = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-evenly;
+  flex-direction: column;
+  padding: 0 0 0 8rem;
   opacity: 0;
   animation: ${({ active }) =>
     active &&
@@ -190,6 +192,7 @@ const ProjectButtons = styled.div`
 const StyledNavLink = styled(NavLink)`
   border-bottom: 1px solid ${({ theme }) => theme.gray};
   font-size: ${({ theme }) => theme.fontSize.s};
+  font-weight: 300;
 
   &:hover {
     transform: initial;
@@ -235,22 +238,31 @@ class FirstProject extends React.Component {
   render() {
     const { activeTab } = this.state
     return (
-      <ContentTemplate id="first-project-page">
-        <ProjectDescriptionContainer>
-          <ProjectDescription>
-            <StyledHeading big active={activeTab}>
-              Sorting Visualizer App
-            </StyledHeading>
-            <StyledParagraph active={activeTab}>
-              App made in React showing how particular sorting algorithms works.
-              This app will help you understand:
-            </StyledParagraph>
+      <ContentTemplate
+        id="first-project-page"
+        type="Projects."
+        active={activeTab}
+      >
+        <StyledHeading big active={activeTab}>
+          Sorting Visualizer App
+        </StyledHeading>
+        <StyledParagraph active={activeTab}>
+          App made in React showing how particular sorting algorithms works. App
+          made in React showing how particular sorting algorithms works. App
+          made in React showing how particular sorting algorithms works. App
+          made in React showing how particular sorting algorithms works. App
+          made in React showing how particular sorting algorithms works. This
+          app will help you understand:
+        </StyledParagraph>
+        <ProjectDescription>
+          <ProjectImage active={activeTab} />
+          <RightDescription>
             <StyledList active={activeTab}>
-              <li>Bubble Sort</li>
-              <li>Selection Sort</li>
-              <li>Insertion Sort</li>
-              <li>Quick Sort</li>
-              <li>Merge Sort</li>
+              <li>bubble sort</li>
+              <li>selection sort</li>
+              <li>insertion sort</li>
+              <li>quick sort</li>
+              <li>merge sort</li>
             </StyledList>
             <ProjectButtons active={activeTab}>
               <a
@@ -269,9 +281,8 @@ class FirstProject extends React.Component {
                 GitHub Code
               </StyledNavLink>
             </ProjectButtons>
-          </ProjectDescription>
-        </ProjectDescriptionContainer>
-        <ProjectImage active={activeTab} />
+          </RightDescription>
+        </ProjectDescription>
       </ContentTemplate>
     )
   }

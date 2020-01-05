@@ -34,16 +34,28 @@ const StyledParagraph = styled(Paragraph)`
   color: ${({ theme }) => theme.gray};
   opacity: 0;
   animation: ${FadeIn} 1.3s 0.15s cubic-bezier(0.34, 0.615, 0.4, 0.985) both;
+  transition: color 0.5s ease-in;
 
   ${media.tablet`
     font-size: 2rem;
   `}
 `
 
-const LeftSideBar = () => (
-  <SideBarContainer>
-    <StyledParagraph>Check out my portfolio!</StyledParagraph>
-  </SideBarContainer>
-)
+class LeftSideBar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.leftBar = React.createRef()
+    this.state = {}
+  }
+  render() {
+    return (
+      <SideBarContainer>
+        <StyledParagraph ref={this.leftBar}>
+          Check out my portfolio!
+        </StyledParagraph>
+      </SideBarContainer>
+    )
+  }
+}
 
 export default LeftSideBar

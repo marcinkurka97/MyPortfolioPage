@@ -1,6 +1,26 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 import media from "../theme/media"
+
+const FadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
+
+const ScaleBox = keyframes`
+  0% {
+    min-height: 0%;
+    opacity: 1;
+  }
+  100% {
+    min-height: 100%;
+    opacity: 1;
+  }
+`
 
 const ContentContainer = styled.section`
   position: relative;
@@ -13,8 +33,8 @@ const ContentContainer = styled.section`
 
 const ProjectContent = styled.div`
   position: relative;
-  width: 70%;
-  height: 100%;
+  width: 60%;
+  height: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,10 +50,78 @@ const ProjectContent = styled.div`
   `}
 `
 
-const ContentTemplate = ({ children, id }) => (
+const ProjectLeft = styled.div`
+  position: relative;
+  height: 100%;
+  width: calc(7.5% + 5rem);
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    background: ${({ theme, imageContent }) =>
+      imageContent ? theme.yellow : ""};
+    z-index: -1;
+    opacity: 0;
+
+    animation: ${({ active }) =>
+      active &&
+      css`
+        ${ScaleBox} 1s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      `};
+  }
+`
+
+const SectionTitle = styled.h3`
+  opacity: 0;
+  color: ${({ theme, imageContent }) =>
+    imageContent ? theme.black : theme.gray};
+  padding: ${({ imageContent }) =>
+    imageContent ? "3.5rem 0 0 0" : "1.5rem 0 0 0"};
+  margin: 0;
+  font-size: 1.6rem;
+  padding-left: 2rem;
+
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${FadeIn} 2s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
+`
+
+const ProjectDescriptionContainer = styled.div`
+  height: 100%;
+  width: calc(92.5% - 5rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+
+  ${media.tablet`
+    width: 100%;
+    height: auto;
+  `}
+
+  ${media.phone`
+    width: 100%;
+    height: auto;
+  `}
+`
+
+const ContentTemplate = ({ children, id, imageContent, type, active }) => (
   <>
     <ContentContainer id={id}>
-      <ProjectContent>{children}</ProjectContent>
+      <ProjectContent>
+        <ProjectLeft imageContent={imageContent} active={active}>
+          <SectionTitle imageContent={imageContent} active={active}>
+            {type}
+          </SectionTitle>
+        </ProjectLeft>
+        <ProjectDescriptionContainer imageContent={imageContent}>
+          {children}
+        </ProjectDescriptionContainer>
+      </ProjectContent>
     </ContentContainer>
   </>
 )

@@ -32,6 +32,8 @@ class IndexPage extends React.Component {
     this.appRef = React.createRef()
     this.rightSideBar = React.createRef()
     this.headerRef = React.createRef()
+    this.leftBar = React.createRef()
+    this.bottomLine = React.createRef()
     this.state = { componentHeight: 0, hamburgerIsOpen: false }
   }
 
@@ -150,10 +152,10 @@ class IndexPage extends React.Component {
             hamburgerIsOpen={this.state.hamburgerIsOpen}
             scrollTo={this.scrollTo}
           />
-          <LeftSideBar />
-          {this.appRef !== null ? <ContentWindow appRef={this.appRef} /> : ""}
+          <LeftSideBar ref={this.leftBar} />
+          <ContentWindow leftBar={this.leftBar} bottomLine={this.bottomLine} />
           <RightSideBar ref={this.rightSideBar} />
-          <Footer />
+          <Footer ref={this.bottomLine} />
           <MobileMenu
             hamburgerIsOpen={this.state.hamburgerIsOpen}
             scrollTo={this.scrollTo}

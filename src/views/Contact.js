@@ -58,7 +58,7 @@ const StyledButton = styled(Button)`
   width: 25%;
   height: 25%;
   font-size: ${({ theme }) => theme.fontSize.m};
-  color: ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.black};
 
   &:before {
     border: 1px solid ${({ theme }) => theme.white};
@@ -86,7 +86,7 @@ const StyledForm = styled(Form)`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 2rem;
+  margin-top: 10%;
 
   .contact-inputs {
     width: 100%;
@@ -101,11 +101,11 @@ const StyledForm = styled(Form)`
     padding: 10px 14px;
     margin: 0 10px;
     font-size: ${({ theme }) => theme.fontSize.m};
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.black};
     font-family: "Montserrat", sans-serif;
 
     ::placeholder {
-      color: ${({ theme }) => theme.white};
+      color: ${({ theme }) => theme.black};
     }
   }
 
@@ -117,12 +117,12 @@ const StyledForm = styled(Form)`
     padding: 1rem 1.4rem;
     margin: 2rem 1rem 0 1rem;
     font-size: ${({ theme }) => theme.fontSize.m};
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.black};
     resize: none;
     font-family: "Montserrat", sans-serif;
 
     ::placeholder {
-      color: ${({ theme }) => theme.white};
+      color: ${({ theme }) => theme.black};
     }
   }
 `

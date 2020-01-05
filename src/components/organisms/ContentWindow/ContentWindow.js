@@ -40,6 +40,7 @@ class ContentWindow extends Component {
   }
 
   render() {
+    const { bottomLine, leftBar } = this.props
     return (
       <ContentContainer id="content-container">
         <LandingPage />
@@ -83,6 +84,8 @@ class ContentWindow extends Component {
           }
         />
         <Footer
+          bottomLine={bottomLine}
+          leftBar={leftBar}
           active={
             this.state.currentScrollHeight >=
             (this.state.componentHeight * 6) / 1.1

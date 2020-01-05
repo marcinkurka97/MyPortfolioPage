@@ -28,8 +28,8 @@ const LandingPageContainer = styled.section`
 
 const LandingPageBox = styled.div`
   position: relative;
-  width: 70%;
-  height: 70%;
+  width: 60%;
+  height: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,7 +63,7 @@ const LandingPageBox = styled.div`
 
 const LandingHeading = styled(Heading)`
   font-size: 16rem;
-  width: 55rem;
+  width: 50rem;
   line-height: 14rem;
   transform: translate3d(0px, 0%, 0px);
 

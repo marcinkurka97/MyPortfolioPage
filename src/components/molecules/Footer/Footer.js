@@ -29,14 +29,24 @@ const FooterContainer = styled.div`
 const FooterLine = styled.span`
   width: 75%;
   height: 1px;
-  background-color: ${({ theme }) => theme.gray};
+  background: ${({ theme }) => theme.gray};
   animation: ${ExpandLine} 2s cubic-bezier(0.34, 0.615, 0.4, 0.985) both;
+  transition: background 0.5s ease-in;
 `
 
-const Footer = () => (
-  <FooterContainer>
-    <FooterLine />
-  </FooterContainer>
-)
+class Footer extends React.Component {
+  constructor(props) {
+    super(props)
+    this.bottomLine = React.createRef()
+    this.state = {}
+  }
+  render() {
+    return (
+      <FooterContainer>
+        <FooterLine ref={this.bottomLine} />
+      </FooterContainer>
+    )
+  }
+}
 
 export default Footer

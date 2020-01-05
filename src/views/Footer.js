@@ -2,6 +2,7 @@ import React from "react"
 import styled, { keyframes, css } from "styled-components"
 import Contact from "./Contact"
 import Heading from "../components/atoms/Heading/Heading"
+import Paragraph from "../components/atoms/Paragraph/Paragraph"
 import media from "../theme/media"
 
 const ScaleBox = keyframes`
@@ -27,10 +28,46 @@ const FadeIn = keyframes`
 const FooterContainer = styled.footer`
   position: relative;
   width: 100%;
-  min-height: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+`
+
+const FooterDescription = styled.div`
+  position: relative;
+  width: 60%;
+  height: 15%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+`
+
+const DescriptionLeft = styled.div`
+  width: calc(7.5% + 5rem);
+  color: ${({ theme }) => theme.gray};
+  padding: 1.5rem 0 0 0;
+  margin: 0;
+  font-size: 1.6rem;
+  padding-left: 2rem;
+`
+
+const DescriptionRight = styled.div`
+  width: calc(92.5% - 5rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+`
+
+const FooterYellowBox = styled.div`
+  position: relative;
+  width: 100%;
+  min-height: 65%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 
   &:before {
     content: "";
@@ -53,13 +90,10 @@ const FooterContainer = styled.footer`
 `
 
 const StyledHeading = styled(Heading)`
-  position: absolute;
-  top: -5rem;
-  background-color: #af8800;
-  border-radius: 0.5rem;
-  padding: 2rem 4rem;
-  font-size: 6rem;
+  font-size: 4rem;
+  padding: 0 0 1rem 0;
   opacity: 0;
+  color: ${({ theme }) => theme.yellow};
   animation: ${({ active }) =>
     active &&
     css`
@@ -71,6 +105,17 @@ const StyledHeading = styled(Heading)`
     padding: 2rem 4rem;
     font-size: 3rem;
   `}
+`
+
+const StyledParagraph = styled(Paragraph)`
+  color: ${({ theme }) => theme.gray};
+  opacity: 0;
+
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${FadeIn} 0.5s 0.7s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
 `
 
 class FirstProject extends React.Component {
@@ -86,14 +131,36 @@ class FirstProject extends React.Component {
     ) {
       this.setState({ activeTab: this.props.active })
     }
+
+    if (this.props.active === true) {
+      this.props.leftBar.current.leftBar.current.style.color = "#282828"
+      this.props.bottomLine.current.bottomLine.current.style.background =
+        "#282828"
+    } else {
+      this.props.leftBar.current.leftBar.current.style.color = "#a6a6a6"
+      this.props.bottomLine.current.bottomLine.current.style.background =
+        "#a6a6a6"
+    }
   }
 
   render() {
     const { activeTab } = this.state
     return (
-      <FooterContainer id="footer-page" active={activeTab}>
-        <StyledHeading active={activeTab}>Contact me</StyledHeading>
-        <Contact active={activeTab} />
+      <FooterContainer id="footer-page">
+        <FooterDescription>
+          <DescriptionLeft>Contact.</DescriptionLeft>
+          <DescriptionRight>
+            <StyledHeading active={activeTab}>Contact me</StyledHeading>
+            <StyledParagraph active={activeTab}>
+              If you have any questions for me or you are interested in
+              collaboration, just leave me a message and I will answer asap. You
+              can also check my Linked In and GitHub accounts.
+            </StyledParagraph>
+          </DescriptionRight>
+        </FooterDescription>
+        <FooterYellowBox active={activeTab}>
+          <Contact active={activeTab} />
+        </FooterYellowBox>
       </FooterContainer>
     )
   }

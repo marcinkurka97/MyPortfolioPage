@@ -2,7 +2,7 @@ import React from "react"
 import styled, { keyframes } from "styled-components"
 import Paragraph from "../../atoms/Paragraph/Paragraph"
 import NavLink from "../../atoms/NavLink/NavLink"
-import Logo from "../../../assets/logoWhite.svg"
+import Logo from "../../../assets/logo.svg"
 import media from "../../../theme/media"
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu"
 

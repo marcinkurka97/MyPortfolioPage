@@ -4,9 +4,9 @@ import Heading from "../components/atoms/Heading/Heading"
 import Paragraph from "../components/atoms/Paragraph/Paragraph"
 import Button from "../components/atoms/Button/Button"
 import NavLink from "../components/atoms/NavLink/NavLink"
-import PathfindingImg from "../assets/PathfindingVisualization.png"
-import ContentTemplate from "../template/ContentTemplate"
 import media from "../theme/media"
+import ContentTemplate from "../template/ContentTemplate"
+import PathfindingImg from "../assets/PathfindingVisualization.png"
 
 const ScaleBox = keyframes`
   0% {
@@ -29,7 +29,7 @@ const ScaleBoxAfter = keyframes`
     opacity: 1;
   }
   100% {
-    transform: translate(2.5%, 5%);
+    transform: translate(2.5%, -5%);
     opacity: 1;
     min-height: 100%;
   }
@@ -46,41 +46,62 @@ const TextSlideIn = keyframes`
   }
 `
 
-const ProjectDescriptionContainer = styled.div`
-  height: 100%;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+const StyledHeading = styled(Heading)`
+  width: 100%;
+  opacity: 0;
+  margin-bottom: 3rem;
+  color: ${({ theme }) => theme.yellow};
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
+
+  ${media.laptop`
+    font-size: 6rem;
+    margin-bottom: 1rem;
+  `}
 
   ${media.tablet`
-    width: 80%;
-    height: auto;
+    font-size: ${({ theme }) => theme.fontSize.xxl};
+    margin-bottom: 2rem;
   `}
 
   ${media.phone`
-    width: 100%;
-    height: auto;
+    font-size: ${({ theme }) => theme.fontSize.xl};
   `}
 `
 
-const ProjectDescription = styled.div`
-  width: 70%;
-  height: auto;
+const DescriptionContainer = styled.div`
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+`
+
+const LeftDescription = styled.div`
+  width: 40%;
+  height: 100%;
+`
+
+const RightDescription = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 const ProjectImage = styled.div`
   position: relative;
-  height: 40%;
-  width: 50%;
+  height: 100%;
+  width: 100%;
 
   &:before {
     content: "";
     position: absolute;
     width: 100%;
     min-height: 100%;
-    z-index: 1;
     opacity: 0;
     background: ${({ theme }) => theme.yellow};
     animation: ${({ active }) =>
@@ -95,7 +116,6 @@ const ProjectImage = styled.div`
     position: absolute;
     width: 100%;
     min-height: 100%;
-    z-index: 1;
     opacity: 0;
     background-image: url(${PathfindingImg});
     background-size: cover;
@@ -109,83 +129,43 @@ const ProjectImage = styled.div`
   }
 
   ${media.tablet`
+    margin-top: 3rem;
     height: 30%;
     width: 90%;
-    margin-bottom: 3rem;
-  `}
-`
-
-const StyledHeading = styled(Heading)`
-  color: ${({ theme }) => theme.yellow};
-  margin-bottom: 3rem;
-  text-align: center;
-  width: 100%;
-  opacity: 0;
-  animation: ${({ active }) =>
-    active &&
-    css`
-      ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
-    `};
-
-  ${media.tablet`
-    font-size: ${({ theme }) => theme.fontSize.xl};
-    text-align: center;
-    margin: 2rem 0;
-  `}
-
-  ${media.phone`
-    font-size: ${({ theme }) => theme.fontSize.m};
-    text-align: center;
-    margin-bottom: 1rem;
   `}
 `
 
 const StyledParagraph = styled(Paragraph)`
   width: 100%;
-  text-align: left;
-  color: ${({ theme }) => theme.gray};
+  padding: 0 0 3rem 0;
   opacity: 0;
-  animation: ${({ active }) =>
-    active &&
-    css`
-      ${TextSlideIn} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
-    `};
-
-  ${media.tablet`
-    font-size: 2.5rem;
-  `}
-
-  ${media.phone`
-    font-size: 1.4rem;
-  `}
-`
-
-const ListContainer = styled.div`
+  font-family: font44146, sans-serif;
+  font-size: 2.4rem;
+  line-height: 2.8rem;
+  text-align: justify;
   color: ${({ theme }) => theme.gray};
   animation: ${({ active }) =>
     active &&
     css`
       ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
-  opacity: 0;
+
+  ${media.laptop`
+    font-size: 1.8rem;
+  `}
 
   ${media.tablet`
-    font-size: 2.5rem;
+    font-size: ${({ theme }) => theme.fontSize.l};
   `}
 
   ${media.phone`
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.fontSize.s};
   `}
 `
 
-const StyledList = styled.ul`
+const Technologies = styled.span`
+  width: 100%;
   color: ${({ theme }) => theme.gray};
-`
-
-const ProjectButtons = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
   opacity: 0;
   animation: ${({ active }) =>
     active &&
@@ -194,28 +174,41 @@ const ProjectButtons = styled.div`
     `};
 `
 
+const ProjectButtons = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  opacity: 0;
+  animation: ${({ active }) =>
+    active &&
+    css`
+      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+    `};
+`
+
+const StyledButton = styled(Button)`
+  margin: 3rem 0;
+  color: ${({ theme }) => theme.gray};
+`
+
 const StyledNavLink = styled(NavLink)`
+  color: ${({ theme }) => theme.gray};
   border-bottom: 1px solid ${({ theme }) => theme.gray};
   font-size: ${({ theme }) => theme.fontSize.s};
+  font-weight: 300;
 
   &:hover {
     transform: initial;
     border-bottom: 1px solid ${({ theme }) => theme.yellow};
   }
+
   ${media.tablet`
     font-size: 2.5rem;
   `}
 
   ${media.phone`
     font-size: ${({ theme }) => theme.fontSize.xs};
-  `}
-`
-
-const StyledButton = styled(Button)`
-  margin: 3rem 0;
-
-  ${media.phone`
-    margin: 1rem 0;
   `}
 `
 
@@ -237,30 +230,33 @@ class ThirdProject extends React.Component {
   render() {
     const { activeTab } = this.state
     return (
-      <ContentTemplate id="third-project-page">
-        <ProjectImage active={activeTab} />
-        <ProjectDescriptionContainer>
-          <ProjectDescription>
-            <StyledHeading big active={activeTab}>
-              Pathfinding and Maze Generation App
-            </StyledHeading>
+      <ContentTemplate
+        id="third-project-page"
+        active={activeTab}
+        type="Projects."
+      >
+        <StyledHeading active={activeTab} big>
+          Pathfinding and Maze Generation App
+        </StyledHeading>
+        <DescriptionContainer>
+          <LeftDescription>
             <StyledParagraph active={activeTab}>
+              React app visualizing building mazes and then finding the best
+              path between two given points. React app visualizing building
+              mazes and then finding the best path between two given points.
               React app visualizing building mazes and then finding the best
               path between two given points.
               <br />
               <br />
             </StyledParagraph>
-            <ListContainer active={activeTab}>
-              Maze generation algorithms:
-              <StyledList>
-                <li>Recursive Division</li>
-                <li>Recursive Backtracking</li>
-              </StyledList>
-              Pathfinding algorithms:
-              <StyledList>
-                <li>Dijkstra Algorithm</li>
-              </StyledList>
-            </ListContainer>
+            <Technologies active={activeTab}>
+              React - Styled Components - Recursive Division Maze Generation -
+              Recursive Backtracking Maze Generation - Dijkstra's Pathfinding
+              Algorithm
+            </Technologies>
+          </LeftDescription>
+          <RightDescription>
+            <ProjectImage active={activeTab} />
             <ProjectButtons active={activeTab}>
               <a
                 style={{ textDecoration: "none" }}
@@ -270,7 +266,6 @@ class ThirdProject extends React.Component {
               >
                 <StyledButton>Preview</StyledButton>
               </a>
-
               <StyledNavLink
                 target="_blank"
                 rel="noopener noreferrer"
@@ -279,8 +274,8 @@ class ThirdProject extends React.Component {
                 GitHub Code
               </StyledNavLink>
             </ProjectButtons>
-          </ProjectDescription>
-        </ProjectDescriptionContainer>
+          </RightDescription>
+        </DescriptionContainer>
       </ContentTemplate>
     )
   }

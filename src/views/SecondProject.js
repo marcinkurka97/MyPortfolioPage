@@ -4,19 +4,9 @@ import Heading from "../components/atoms/Heading/Heading"
 import Paragraph from "../components/atoms/Paragraph/Paragraph"
 import Button from "../components/atoms/Button/Button"
 import NavLink from "../components/atoms/NavLink/NavLink"
-import HomePingImg from "../assets/HomePin.png"
+import HomePinImg from "../assets/HomePin.png"
 import media from "../theme/media"
-
-const ScaleBox = keyframes`
-  0% {
-    min-height: 0%;
-    opacity: 1;
-  }
-  100% {
-    min-height: 100%;
-    opacity: 0.5;
-  }
-`
+import ContentTemplate from "../template/ContentTemplate"
 
 const TextSlideIn = keyframes`
   0% {
@@ -29,58 +19,47 @@ const TextSlideIn = keyframes`
   }
 `
 
-const ProjectContainer = styled.div`
-  position: relative;
+const ScaleBox = keyframes`
+  0% {
+    min-width: 0%;
+    opacity: 1;
+  }
+  100% {
+    min-wdith: 100%;
+    opacity: 1;
+  }
+`
+
+const ContentContainer = styled.div`
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  overflow: hidden;
 
   &:before {
     content: "";
     position: absolute;
-    background-image: url(${HomePingImg});
+    left: 0;
+    min-width: 100%;
+    height: 100%;
+    background: url(${HomePinImg});
     background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center 0;
+    filter: blur(5px);
+    transform: scale(1.05);
     opacity: 0;
-    z-index: -1;
-    width: 100%;
-    min-height: 100%;
-    top: 0;
-    filter: blur(3px);
     animation: ${({ active }) =>
       active &&
       css`
-        ${ScaleBox} 1.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+        ${ScaleBox} 1.3s 1s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
       `};
   }
 `
 
-const ProjectDescription = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 40%;
-  height: 50%;
-
-  ${media.tablet`
-    width: 60%;
-    height: auto;
-  `}
-
-  ${media.phone`
-    width: 80%;
-    height: auto;
-  `}
-`
-
 const StyledHeading = styled(Heading)`
-  font-size: 6rem;
-  color: ${({ theme }) => theme.yellow};
+  width: 100%;
   opacity: 0;
+  padding: 2rem 0 3rem 2rem;
+  color: ${({ theme }) => theme.yellow};
   animation: ${({ active }) =>
     active &&
     css`
@@ -102,10 +81,35 @@ const StyledHeading = styled(Heading)`
   `}
 `
 
+const DescriptionContainer = styled.div`
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+`
+
+const LeftDescription = styled.div`
+  width: 60%;
+  height: 100%;
+`
+
+const RightDescription = styled.div`
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
 const StyledParagraph = styled(Paragraph)`
-  text-align: center;
-  font-size: ${({ theme }) => theme.fontSize.m};
+  width: 100%;
+  padding: 0 2rem 3rem 2rem;
   opacity: 0;
+  font-family: font44146, sans-serif;
+  font-size: 2.4rem;
+  line-height: 2.8rem;
+  text-align: justify;
+  color: ${({ theme }) => theme.white};
   animation: ${({ active }) =>
     active &&
     css`
@@ -125,15 +129,13 @@ const StyledParagraph = styled(Paragraph)`
   `}
 `
 
-const StyledListContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: ${({ theme }) => theme.white};
-  font-size: ${({ theme }) => theme.fontSize.m};
+const StyledList = styled.ul`
+  margin: 0 0 0 2rem;
   opacity: 0;
+  font-family: font44146, sans-serif;
+  font-size: ${({ theme }) => theme.fontSize.m};
+  line-height: 3rem;
+  color: ${({ theme }) => theme.white};
   animation: ${({ active }) =>
     active &&
     css`
@@ -175,6 +177,7 @@ const StyledNavLink = styled(NavLink)`
   color: ${({ theme }) => theme.white};
   border-bottom: 1px solid ${({ theme }) => theme.white};
   font-size: ${({ theme }) => theme.fontSize.s};
+  font-weight: 300;
 
   &:hover {
     transform: initial;
@@ -208,38 +211,46 @@ class SecondProject extends React.Component {
   render() {
     const { activeTab } = this.state
     return (
-      <ProjectContainer active={activeTab} id="second-project-page">
-        <ProjectDescription>
+      <ContentTemplate
+        id="second-project-page"
+        active={activeTab}
+        type="Projects."
+        imageContent
+      >
+        <ContentContainer active={activeTab}>
           <StyledHeading active={activeTab} big>
             HousePin
           </StyledHeading>
-          <StyledParagraph active={activeTab}>
-            That's my diploma work. It's gathering data from polish real estate
-            sites like OLX and otodom and then placing each offer on map. The
-            idea is to give users better understanding of potential house
-            location and neighborhood. Users can filter offers by price, type or
-            even distance from given point.
-            <br />
-            <br />
-          </StyledParagraph>
-          <StyledListContainer active={activeTab}>
-            Technologies used:
-            <ul>
-              <li>React</li>
-              <li>Redux</li>
-              <li>Jest </li>
-              <li>Google APIs</li>
-              <li>Node.js</li>
-              <li>MongoDB</li>
-              <li>REST API</li>
-            </ul>
-          </StyledListContainer>
-          <ProjectButtons active={activeTab}>
-            <StyledButton>Preview</StyledButton>
-            <StyledNavLink>GitHub Code</StyledNavLink>
-          </ProjectButtons>
-        </ProjectDescription>
-      </ProjectContainer>
+          <DescriptionContainer>
+            <LeftDescription>
+              <StyledParagraph active={activeTab}>
+                That's my diploma work. It's gathering data from polish real
+                estate sites like OLX and otodom and then placing each offer on
+                map. The idea is to give users better understanding of potential
+                house location and neighborhood. Users can filter offers by
+                price, type or even distance from given point.
+                <br />
+                <br />
+              </StyledParagraph>
+            </LeftDescription>
+            <RightDescription>
+              <StyledList active={activeTab}>
+                <li>React</li>
+                <li>Redux</li>
+                <li>Jest </li>
+                <li>Google APIs</li>
+                <li>Node.js</li>
+                <li>MongoDB</li>
+                <li>REST API</li>
+              </StyledList>
+              <ProjectButtons active={activeTab}>
+                <StyledButton>Preview</StyledButton>
+                <StyledNavLink>GitHub Code</StyledNavLink>
+              </ProjectButtons>
+            </RightDescription>
+          </DescriptionContainer>
+        </ContentContainer>
+      </ContentTemplate>
     )
   }
 }
