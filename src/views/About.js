@@ -32,7 +32,10 @@ const StyledHeading = styled(Heading)`
   `}
 
   ${media.phone`
-    font-size: 3rem;
+    font-size: ${({ theme }) => theme.fontSize.m};
+    text-align: left;
+    padding: 0 1rem 1rem 1rem;
+    margin: 0;
   `}
 `
 
@@ -41,16 +44,31 @@ const DescriptionContainer = styled.div`
   height: 80%;
   display: flex;
   justify-content: space-between;
+
+  ${media.phone`
+    height: auto;
+    padding: 0 1rem;
+    flex-direction: column;
+  `}
 `
 
 const LeftDescription = styled.div`
   width: 50%;
   height: 100%;
+
+  ${media.phone`
+    width: 100%;
+    padding-bottom: 2rem;
+  `}
 `
 
 const RightDescription = styled.div`
   width: 50%;
   height: 100%;
+
+  ${media.phone`
+    width: 100%;
+  `}
 `
 
 const StyledParagraph = styled(Paragraph)`
@@ -76,8 +94,9 @@ const StyledParagraph = styled(Paragraph)`
   `}
 
   ${media.phone`
-    width: 90%;
-    font-size: 1.2rem;
+    width: 100%;
+    font-size: 1.4rem;
+    margin: 0;
   `}
 `
 
@@ -105,6 +124,8 @@ const SkillsContainer = styled.div`
 
   ${media.phone`
     width: 100%;
+    padding: 0;
+    flex-direction: row;
   `}
 `
 
@@ -170,7 +191,7 @@ class About extends React.Component {
   render() {
     const { activeTab } = this.state
     return (
-      <ContentTemplate id="about-page" type="About.">
+      <ContentTemplate id="about-page" active={activeTab} type="About.">
         <StyledHeading big active={activeTab}>
           About me
         </StyledHeading>

@@ -49,7 +49,7 @@ const ContactContainer = styled.div`
 
   ${media.phone`
     width: 100%;
-    height: 50%;
+    height: 70%;
   `}
 `
 
@@ -68,14 +68,9 @@ const StyledButton = styled(Button)`
     border: 1px solid ${({ theme }) => theme.black};
   }
 
-  ${media.tablet`
-    width: 30%;
-    height: 15%;
-  `}
-
   ${media.phone`
     width: 30%;
-    height: 25%;
+    height: 30%;
   `}
 `
 
@@ -125,6 +120,21 @@ const StyledForm = styled(Form)`
       color: ${({ theme }) => theme.black};
     }
   }
+
+  ${media.phone`
+    margin-top: 10%;
+
+    input {
+      padding: 10px 10px;
+      font-size: 1.4rem;
+    }
+
+    textarea {
+      padding: 10px 10px;
+      font-size: 1.4rem;
+      height: 100%;
+    }
+  `}
 `
 
 class Contact extends React.Component {

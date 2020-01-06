@@ -14,15 +14,17 @@ const ExpandLine = keyframes`
 
 const FooterContainer = styled.div`
   position: fixed;
-  bottom: 5vh;
-  height: ${({ theme }) => theme.fontSize.s};
-  width: 87.5%;
+  bottom: 0;
+  height: 15vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: ${({ theme }) => theme.black};
+  transition: background 0.25s ease-in;
 
   ${media.phone`
-    bottom: 3vh;
+    height: 10vh;
   `}
 `
 
@@ -31,7 +33,7 @@ const FooterLine = styled.span`
   height: 1px;
   background: ${({ theme }) => theme.gray};
   animation: ${ExpandLine} 2s cubic-bezier(0.34, 0.615, 0.4, 0.985) both;
-  transition: background 0.5s ease-in;
+  transition: background 0.25s ease-in;
 `
 
 class Footer extends React.Component {

@@ -80,7 +80,7 @@ const LandingHeading = styled(Heading)`
   ${media.phone`
       font-size: 7rem;
       line-height: 5.5rem;
-      width: 75%;
+      width: 67.5%;
   `}
 `
 

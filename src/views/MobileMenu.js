@@ -5,23 +5,23 @@ import media from "../theme/media"
 
 const ScaleInBox = keyframes`
   0% {
-    min-width: 0%;
+    transform: translateX(200%);
   }
   100% {
-    min-width: 100vw;
+    transform: translateX(0);
   }
 `
 const ScaleOutBox = keyframes`
   0% {
-    min-width: 100vw;
+    transform: translateX(0);
   }
   100% {
-    min-width: 0;
+    transform: translateX(200%);
   }
 `
 
 const MobileMenuContainer = styled.div`
-  position: absolute;
+  position: fixed;
   right: 0;
   min-width: 100vw;
   height: 100vh;
@@ -30,6 +30,7 @@ const MobileMenuContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2;
+  opacity: 0.9;
 
   ${({ hamburgerIsOpen }) =>
     hamburgerIsOpen
@@ -38,45 +39,26 @@ const MobileMenuContainer = styled.div`
             both;
         `
       : css`
-          animation: ${ScaleOutBox} 0.7s 0.15s
-            cubic-bezier(0.34, 0.615, 0.4, 0.985) both;
+          animation: ${ScaleOutBox} 1.4s cubic-bezier(0.34, 0.615, 0.4, 0.985)
+            both;
         `};
 `
 
 const StyledList = styled.ul`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   padding: 0;
   z-index: 3;
+
   ${({ hamburgerIsOpen }) =>
     hamburgerIsOpen
       ? css`
           opacity: 1;
           transition: opacity 0.5s 0.7s ease-in;
-          display: initial;
         `
       : css`
           opacity: 0;
-          transition: opacity 0.1s ease-in;
-          display: none;
+          transition: opacity 0.5s ease-in;
         `};
-
-  ${media.tablet`
-    li {
-      list-style: none;
-
-      a {
-        font-size: 10rem;
-        span {
-          vertical-align: super;
-          font-size: ${({ theme }) => theme.fontSize.l};
-        }
-      }
-    }
-  `}
 
   ${media.phone`
     li {
@@ -95,10 +77,7 @@ const StyledList = styled.ul`
 
 const MobileMenu = ({ hamburgerIsOpen, scrollTo }) => {
   return (
-    <>
-      <MobileMenuContainer
-        hamburgerIsOpen={hamburgerIsOpen}
-      ></MobileMenuContainer>
+    <MobileMenuContainer hamburgerIsOpen={hamburgerIsOpen}>
       <StyledList hamburgerIsOpen={hamburgerIsOpen}>
         <li>
           <NavLink onClick={() => scrollTo("landing-page")}>
@@ -121,7 +100,7 @@ const MobileMenu = ({ hamburgerIsOpen, scrollTo }) => {
           </NavLink>
         </li>
       </StyledList>
-    </>
+    </MobileMenuContainer>
   )
 }
 

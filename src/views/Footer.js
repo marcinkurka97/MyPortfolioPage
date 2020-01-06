@@ -42,6 +42,12 @@ const FooterDescription = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
+  ${media.phone`
+    width: 100%;
+    height: 25%;
+    flex-direction: column;
+  `}
 `
 
 const DescriptionLeft = styled.div`
@@ -51,6 +57,11 @@ const DescriptionLeft = styled.div`
   margin: 0;
   font-size: 1.6rem;
   padding-left: 2rem;
+
+  ${media.phone`
+    width: 100%;
+    padding: 0 1rem;
+  `}
 `
 
 const DescriptionRight = styled.div`
@@ -59,6 +70,14 @@ const DescriptionRight = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: column;
+
+  ${media.phone`
+    width: 100%;
+    font-size: ${({ theme }) => theme.fontSize.m};
+    text-align: left;
+    padding: 0 1rem;
+    margin: 0;
+  `}
 `
 
 const FooterYellowBox = styled.div`
@@ -85,7 +104,7 @@ const FooterYellowBox = styled.div`
   }
 
   ${media.phone`
-    height: 80%;
+    min-height: 60%;
   `}
 `
 
@@ -101,9 +120,10 @@ const StyledHeading = styled(Heading)`
     `};
 
   ${media.phone`
-    top: -3rem;
-    padding: 2rem 4rem;
-    font-size: 3rem;
+    width: 100%;
+    margin: 0;
+    font-size: ${({ theme }) => theme.fontSize.m};
+    text-align: left;
   `}
 `
 
@@ -116,6 +136,11 @@ const StyledParagraph = styled(Paragraph)`
     css`
       ${FadeIn} 0.5s 0.7s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.phone`
+    width: 100%;
+    font-size: 1.4rem;
+  `}
 `
 
 class FirstProject extends React.Component {
@@ -136,10 +161,14 @@ class FirstProject extends React.Component {
       this.props.leftBar.current.leftBar.current.style.color = "#282828"
       this.props.bottomLine.current.bottomLine.current.style.background =
         "#282828"
+      this.props.bottomLine.current.bottomLine.current.parentNode.style.background =
+        "#F2C218"
     } else {
       this.props.leftBar.current.leftBar.current.style.color = "#a6a6a6"
       this.props.bottomLine.current.bottomLine.current.style.background =
         "#a6a6a6"
+      this.props.bottomLine.current.bottomLine.current.parentNode.style.background =
+        "#282828"
     }
   }
 

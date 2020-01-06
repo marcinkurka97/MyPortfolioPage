@@ -52,6 +52,10 @@ const ProjectDescription = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  ${media.phone`
+    flex-direction: column;
+  `}
 `
 
 const ProjectImage = styled.div`
@@ -90,10 +94,10 @@ const ProjectImage = styled.div`
       `};
   }
 
-  ${media.tablet`
-    margin-top: 3rem;
-    height: 30%;
-    width: 90%;
+  ${media.phone`
+    height: 25vh;
+    width: calc(100% - 2rem);
+    order: 1;
   `}
 `
 
@@ -108,16 +112,11 @@ const StyledHeading = styled(Heading)`
       ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
-  ${media.tablet`
-    font-size: 4.5rem;
-    text-align: center;
-    margin-bottom: 2rem;
-  `}
-
   ${media.phone`
     font-size: ${({ theme }) => theme.fontSize.m};
-    text-align: center;
-    margin-bottom: 1rem;
+    text-align: left;
+    padding: 0 1rem 1rem 1rem;
+    margin: 0;
   `}
 `
 
@@ -135,12 +134,9 @@ const StyledParagraph = styled(Paragraph)`
       ${TextSlideIn} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
-  ${media.tablet`
-    font-size: 2.5rem;
-  `}
-
   ${media.phone`
     font-size: 1.4rem;
+    padding: 0 1rem 3rem 1rem;
   `}
 `
 
@@ -150,6 +146,14 @@ const RightDescription = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  ${media.phone`
+    order: 2;
+    width: 100%;
+    height: auto;
+    padding: 3rem 1rem 0 1rem;
+    flex-direction: row;
+  `}
 `
 
 const StyledList = styled.ul`
@@ -171,7 +175,10 @@ const StyledList = styled.ul`
   `}
 
   ${media.phone`
+    width: 50%;
     font-size: 1.4rem;
+    line-height: 2rem;
+    padding:  0 0 0 2rem;
   `}
 `
 
@@ -187,6 +194,15 @@ const ProjectButtons = styled.div`
     css`
       ${TextSlideIn} 1.3s 0.75s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.phone`
+    height: 100%;
+    width: 50%;
+    font-size: 1.4rem;
+    padding: 0;
+    justify-content: space-around;
+    align-items: flex-end;
+  `}
 `
 
 const StyledNavLink = styled(NavLink)`

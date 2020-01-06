@@ -8,26 +8,6 @@ import KasiaPortfolio from "../assets/kasiaPortfolio.jpg"
 import media from "../theme/media"
 import ContentTemplate from "../template/ContentTemplate"
 
-const ScaleBox = keyframes`
-  0% {
-    min-width: 0%;
-    opacity: 1;
-  }
-  100% {
-    min-width: 100%;
-    opacity: 1;
-  }
-`
-
-const FadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`
-
 const TextSlideIn = keyframes`
   0% {
     opacity: 0;
@@ -39,42 +19,36 @@ const TextSlideIn = keyframes`
   }
 `
 
-const ContentContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-
-  &:before {
-    content: "";
-    position: absolute;
-    right: 0;
+const ScaleBox = keyframes`
+  0% {
+    min-width: 0%;
+    opacity: 1;
+  }
+  100% {
     min-width: 100%;
-    height: 100%;
-    background: url(${KasiaPortfolio});
-    background-size: cover;
-    filter: blur(2px);
-    transform: scale(1.05);
-    z-index: -1;
-    opacity: 0;
-    animation: ${({ active }) =>
-      active &&
-      css`
-        ${ScaleBox} 1.3s 1s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
-      `};
+    opacity: 1;
+  }
+`
+const ScaleBoxAfter = keyframes`
+  0% {
+    min-width: 0%;
+    opacity: 1;
+  }
+  100% {
+    min-width: 100%;
+    opacity: 1;
   }
 `
 
 const StyledHeading = styled(Heading)`
   width: 100%;
   opacity: 0;
-  padding: 0 0 3rem 0;
+  padding: 2rem 0 3rem 2rem;
   color: ${({ theme }) => theme.yellow};
-  text-align: center;
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${TextSlideIn} 1.3s 2s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
   ${media.laptop`
@@ -88,40 +62,97 @@ const StyledHeading = styled(Heading)`
   `}
 
   ${media.phone`
-    font-size: ${({ theme }) => theme.fontSize.xl};
+    font-size: ${({ theme }) => theme.fontSize.m};
+    text-align: left;
+    padding: 1rem;
+    margin: 0;
   `}
 `
 
 const DescriptionContainer = styled.div`
-  width: 35%;
+  width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  background: rgba(0, 0, 0, 0.65);
-  z-index: 2;
-  opacity: 0;
+  justify-content: space-between;
 
-  animation: ${({ active }) =>
-    active &&
-    css`
-      ${FadeIn} 1.3s 2s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
-    `};
+  ${media.phone`
+    flex-direction: column;
+  `}
+`
+
+const LeftDescription = styled.div`
+  width: 40%;
+  height: 100%;
+
+  ${media.phone`
+    width: 100%;
+    height: auto;
+    order: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  `}
+`
+
+const ProjectImage = styled.div`
+  position: relative;
+  height: 100%;
+  width: 55%;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    min-width: 100%;
+    height: 100%;
+    opacity: 0;
+    background: ${({ theme }) => theme.yellow};
+    animation: ${({ active }) =>
+      active &&
+      css`
+        ${ScaleBoxAfter} 2s 1s cubic-bezier(.34,.615,.4,.985) both
+      `};
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    min-width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-image: url(${KasiaPortfolio});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 60% center;
+    animation: ${({ active }) =>
+      active &&
+      css`
+        ${ScaleBox} 1s 1.75s cubic-bezier(.34,.615,.4,.985) both
+      `};
+  }
+
+  ${media.phone`
+    height: 25vh;
+    width: 100%;
+    order: 1;
+  `}
 `
 
 const StyledParagraph = styled(Paragraph)`
   width: 100%;
-  padding: 0 2rem 2rem 2rem;
+  padding: 0 2rem 3rem 2rem;
   opacity: 0;
   font-family: font44146, sans-serif;
   font-size: 2.4rem;
   line-height: 2.8rem;
   text-align: justify;
-  color: ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.gray};
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${TextSlideIn} 1.3s 2.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
   ${media.laptop`
@@ -133,34 +164,37 @@ const StyledParagraph = styled(Paragraph)`
   `}
 
   ${media.phone`
-    font-size: ${({ theme }) => theme.fontSize.s};
+    font-size: 1.4rem;
+    padding: 0 1rem 1rem 1rem;
+    height: auto;
   `}
 `
 
 const ProjectButtons = styled.div`
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   width: 100%;
-  height: 20%;
-  padding: 0 2rem;
   opacity: 0;
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${TextSlideIn} 1.3s 2.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.phone`
+    width: 90%;
+    justify-content: space-between;
+  `}
 `
 
 const StyledButton = styled(Button)`
-  margin: 0;
-  color: ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.gray};
 `
 
 const StyledNavLink = styled(NavLink)`
-  color: ${({ theme }) => theme.white};
-  border-bottom: 1px solid ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.gray};
+  border-bottom: 1px solid ${({ theme }) => theme.gray};
   font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: 300;
 
@@ -178,7 +212,7 @@ const StyledNavLink = styled(NavLink)`
   `}
 `
 
-class FourthProject extends React.Component {
+class SecondProject extends React.Component {
   constructor(props) {
     super(props)
     this.state = { activeTab: false }
@@ -202,16 +236,15 @@ class FourthProject extends React.Component {
         type="Projects."
         imageContent
       >
-        <ContentContainer active={activeTab}>
-          <DescriptionContainer active={activeTab}>
+        <DescriptionContainer>
+          <ProjectImage active={activeTab} />
+          <LeftDescription>
             <StyledHeading active={activeTab} big>
               Graphic designer Portfolio
             </StyledHeading>
             <StyledParagraph active={activeTab}>
               Simple one page portfolio for a graphic designer. Site made in
               Gatsby. Sending mails handled by AWS Lambda.
-              <br />
-              <br />
             </StyledParagraph>
             <ProjectButtons active={activeTab}>
               <a
@@ -231,11 +264,11 @@ class FourthProject extends React.Component {
                 GitHub Code
               </StyledNavLink>
             </ProjectButtons>
-          </DescriptionContainer>
-        </ContentContainer>
+          </LeftDescription>
+        </DescriptionContainer>
       </ContentTemplate>
     )
   }
 }
 
-export default FourthProject
+export default SecondProject

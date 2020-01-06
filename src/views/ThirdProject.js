@@ -29,7 +29,7 @@ const ScaleBoxAfter = keyframes`
     opacity: 1;
   }
   100% {
-    transform: translate(2.5%, -5%);
+    transform: translate(-2.5%, 5%);
     opacity: 1;
     min-height: 100%;
   }
@@ -68,7 +68,10 @@ const StyledHeading = styled(Heading)`
   `}
 
   ${media.phone`
-    font-size: ${({ theme }) => theme.fontSize.xl};
+    font-size: ${({ theme }) => theme.fontSize.m};
+    text-align: left;
+    padding: 0 1rem 1rem 1rem;
+    margin: 0;
   `}
 `
 
@@ -77,11 +80,21 @@ const DescriptionContainer = styled.div`
   height: 80%;
   display: flex;
   justify-content: space-between;
+
+  ${media.phone`
+    flex-direction: column;
+    height: auto;
+  `}
 `
 
 const LeftDescription = styled.div`
   width: 40%;
   height: 100%;
+
+  ${media.phone`
+    width: 100%;
+    height: auto;
+  `}
 `
 
 const RightDescription = styled.div`
@@ -90,6 +103,12 @@ const RightDescription = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  ${media.phone`
+    width: 100%;
+    height: auto;
+    padding: 3rem 0 0 0;
+  `}
 `
 
 const ProjectImage = styled.div`
@@ -128,10 +147,9 @@ const ProjectImage = styled.div`
       `};
   }
 
-  ${media.tablet`
-    margin-top: 3rem;
-    height: 30%;
-    width: 90%;
+  ${media.phone`
+    height: 25vh;
+    width: calc(100% - 2rem);
   `}
 `
 
@@ -159,7 +177,10 @@ const StyledParagraph = styled(Paragraph)`
   `}
 
   ${media.phone`
-    font-size: ${({ theme }) => theme.fontSize.s};
+    width: 100%;
+    height: auto;
+    font-size: 1.4rem;
+    padding: 0 1rem 1rem 1rem;
   `}
 `
 
@@ -172,6 +193,12 @@ const Technologies = styled.span`
     css`
       ${TextSlideIn} 1.3s 0.75s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.phone`
+    width: 100%;
+    font-size: 1.4rem;
+    padding: 0 1rem 1rem 1rem;
+  `}
 `
 
 const ProjectButtons = styled.div`
@@ -246,8 +273,6 @@ class ThirdProject extends React.Component {
               mazes and then finding the best path between two given points.
               React app visualizing building mazes and then finding the best
               path between two given points.
-              <br />
-              <br />
             </StyledParagraph>
             <Technologies active={activeTab}>
               React - Styled Components - Recursive Division Maze Generation -

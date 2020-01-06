@@ -71,6 +71,11 @@ const ProjectLeft = styled.div`
         ${ScaleBox} 1s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
       `};
   }
+
+  ${media.phone`
+    width: 100%;
+    height: auto;
+  `}
 `
 
 const SectionTitle = styled.h3`
@@ -88,6 +93,11 @@ const SectionTitle = styled.h3`
     css`
       ${FadeIn} 2s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.phone`
+    width: 100%;
+    padding: 0 1rem 0 1rem;
+  `}
 `
 
 const ProjectDescriptionContainer = styled.div`
