@@ -43,7 +43,7 @@ const ScaleBoxAfter = keyframes`
 const StyledHeading = styled(Heading)`
   width: 100%;
   opacity: 0;
-  padding: 2rem 0 3rem 2rem;
+  padding: 0 2rem 3rem 2rem;
   color: ${({ theme }) => theme.yellow};
   animation: ${({ active }) =>
     active &&
@@ -62,9 +62,9 @@ const StyledHeading = styled(Heading)`
   `}
 
   ${media.phone`
-    font-size: ${({ theme }) => theme.fontSize.m};
+    font-size: 2.8rem;
     text-align: left;
-    padding: 1rem;
+    padding: 1rem 0;
     margin: 0;
   `}
 `
@@ -77,6 +77,7 @@ const DescriptionContainer = styled.div`
 
   ${media.phone`
     flex-direction: column;
+    width: calc(100% - 6rem);
   `}
 `
 
@@ -111,7 +112,7 @@ const ProjectImage = styled.div`
     animation: ${({ active }) =>
       active &&
       css`
-        ${ScaleBoxAfter} 2s 1s cubic-bezier(.34,.615,.4,.985) both
+        ${ScaleBoxAfter} 2s 1.5s cubic-bezier(.34,.615,.4,.985) both
       `};
   }
 
@@ -129,7 +130,7 @@ const ProjectImage = styled.div`
     animation: ${({ active }) =>
       active &&
       css`
-        ${ScaleBox} 1s 1.75s cubic-bezier(.34,.615,.4,.985) both
+        ${ScaleBox} 1.5s 2.25s cubic-bezier(.34,.615,.4,.985) both
       `};
   }
 
@@ -144,7 +145,7 @@ const StyledParagraph = styled(Paragraph)`
   width: 100%;
   padding: 0 2rem 3rem 2rem;
   opacity: 0;
-  font-family: font44146, sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 2.4rem;
   line-height: 2.8rem;
   text-align: justify;
@@ -165,7 +166,7 @@ const StyledParagraph = styled(Paragraph)`
 
   ${media.phone`
     font-size: 1.4rem;
-    padding: 0 1rem 1rem 1rem;
+    padding: 0 0 1rem 0;
     height: auto;
   `}
 `
@@ -183,20 +184,21 @@ const ProjectButtons = styled.div`
     `};
 
   ${media.phone`
-    width: 90%;
+    width: 100%;
     justify-content: space-between;
   `}
 `
 
 const StyledButton = styled(Button)`
   color: ${({ theme }) => theme.gray};
+  font-family: "Lato", sans-serif;
 `
 
 const StyledNavLink = styled(NavLink)`
   color: ${({ theme }) => theme.gray};
   border-bottom: 1px solid ${({ theme }) => theme.gray};
   font-size: ${({ theme }) => theme.fontSize.s};
-  font-weight: 300;
+  font-family: "Lato", sans-serif;
 
   &:hover {
     transform: initial;
@@ -243,8 +245,8 @@ class SecondProject extends React.Component {
               Graphic designer Portfolio
             </StyledHeading>
             <StyledParagraph active={activeTab}>
-              Simple one page portfolio for a graphic designer. Site made in
-              Gatsby. Sending mails handled by AWS Lambda.
+              One page portfolio for a graphic designer made in Gatsby. Sending
+              mails handled by AWS Lambda.
             </StyledParagraph>
             <ProjectButtons active={activeTab}>
               <a

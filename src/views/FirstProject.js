@@ -55,6 +55,7 @@ const ProjectDescription = styled.div`
 
   ${media.phone`
     flex-direction: column;
+    width: calc(100% - 6rem);
   `}
 `
 
@@ -73,7 +74,7 @@ const ProjectImage = styled.div`
     animation: ${({ active }) =>
       active &&
       css`
-        ${ScaleBoxAfter} 2s cubic-bezier(.34,.615,.4,.985) both
+        ${ScaleBoxAfter} 2s 0.25s cubic-bezier(.34,.615,.4,.985) both
       `};
   }
 
@@ -90,13 +91,13 @@ const ProjectImage = styled.div`
     animation: ${({ active }) =>
       active &&
       css`
-        ${ScaleBox} 1s 0.25s cubic-bezier(.34,.615,.4,.985) both
+        ${ScaleBox} 1s 0.5s cubic-bezier(.34,.615,.4,.985) both
       `};
   }
 
   ${media.phone`
     height: 25vh;
-    width: calc(100% - 2rem);
+    width: 100%;
     order: 1;
   `}
 `
@@ -109,19 +110,20 @@ const StyledHeading = styled(Heading)`
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${TextSlideIn} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
   ${media.phone`
-    font-size: ${({ theme }) => theme.fontSize.m};
+    font-size: 2.8rem;
     text-align: left;
-    padding: 0 1rem 1rem 1rem;
+    width: calc(100% - 6rem);
+    padding: 0 0 1rem 0;
     margin: 0;
   `}
 `
 
 const StyledParagraph = styled(Paragraph)`
-  font-family: font44146, sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 2.4rem;
   width: 100%;
   text-align: justify;
@@ -131,12 +133,13 @@ const StyledParagraph = styled(Paragraph)`
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
   ${media.phone`
     font-size: 1.4rem;
-    padding: 0 1rem 3rem 1rem;
+    width: calc(100% - 6rem);
+    padding-bottom: 3rem;
   `}
 `
 
@@ -151,13 +154,13 @@ const RightDescription = styled.div`
     order: 2;
     width: 100%;
     height: auto;
-    padding: 3rem 1rem 0 1rem;
+    padding: 3rem 0 0 0;
     flex-direction: row;
   `}
 `
 
 const StyledList = styled.ul`
-  font-family: font44146, sans-serif;
+  font-family: "Lato", sans-serif;
   line-height: 3rem;
   color: ${({ theme }) => theme.gray};
   font-size: 2rem;
@@ -167,7 +170,7 @@ const StyledList = styled.ul`
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${TextSlideIn} 1.3s 0.75s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
   ${media.tablet`
@@ -192,7 +195,7 @@ const ProjectButtons = styled.div`
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s 0.75s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${TextSlideIn} 1.3s 1s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
   ${media.phone`
@@ -208,7 +211,7 @@ const ProjectButtons = styled.div`
 const StyledNavLink = styled(NavLink)`
   border-bottom: 1px solid ${({ theme }) => theme.gray};
   font-size: ${({ theme }) => theme.fontSize.s};
-  font-weight: 300;
+  font-family: "Lato", sans-serif;
 
   &:hover {
     transform: initial;
@@ -226,6 +229,7 @@ const StyledNavLink = styled(NavLink)`
 
 const StyledButton = styled(Button)`
   margin: 3rem 0;
+  font-family: "Lato", sans-serif;
 
   ${media.tablet`
     margin: 1rem 0;
@@ -263,12 +267,9 @@ class FirstProject extends React.Component {
           Sorting Visualizer App
         </StyledHeading>
         <StyledParagraph active={activeTab}>
-          App made in React showing how particular sorting algorithms works. App
-          made in React showing how particular sorting algorithms works. App
-          made in React showing how particular sorting algorithms works. App
-          made in React showing how particular sorting algorithms works. App
-          made in React showing how particular sorting algorithms works. This
-          app will help you understand:
+          App made in React showing how particular sorting algorithms works.
+          Visual representation helps you understand how every algorithm works
+          under the hood. You can also compare algorithm performance.
         </StyledParagraph>
         <ProjectDescription>
           <ProjectImage active={activeTab} />

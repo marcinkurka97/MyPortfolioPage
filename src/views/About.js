@@ -32,10 +32,12 @@ const StyledHeading = styled(Heading)`
   `}
 
   ${media.phone`
-    font-size: ${({ theme }) => theme.fontSize.m};
+    font-size: 2.8rem;
     text-align: left;
-    padding: 0 1rem 1rem 1rem;
+    padding: 0 0 1rem 0;
     margin: 0;
+    width: calc(100% - 6rem);
+
   `}
 `
 
@@ -47,8 +49,8 @@ const DescriptionContainer = styled.div`
 
   ${media.phone`
     height: auto;
-    padding: 0 1rem;
     flex-direction: column;
+    width: calc(100% - 6rem);
   `}
 `
 
@@ -75,6 +77,8 @@ const StyledParagraph = styled(Paragraph)`
   width: 100%;
   text-align: justify;
   color: ${({ theme }) => theme.gray};
+  font-family: "Lato", sans-serif;
+
   font-size: 1.8rem;
   opacity: 0;
   animation: ${({ active }) =>
@@ -214,7 +218,9 @@ class About extends React.Component {
               Udemy, FreeCodeCamp and many YouTube tutorials and made several
               projects in vanilla JS as well as in React. <br />
               <br />
-              Working in group......
+              Working in group gets me motivated and focused to deliver best
+              possible solution. It's also possibility to learn something new
+              from other, more experienced developers.
             </StyledParagraph>
           </LeftDescription>
           <RightDescription>

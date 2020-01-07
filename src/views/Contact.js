@@ -48,7 +48,7 @@ const ContactContainer = styled.div`
   `}
 
   ${media.phone`
-    width: 100%;
+    width: calc(100% - 6rem);
     height: 70%;
   `}
 `
@@ -59,6 +59,7 @@ const StyledButton = styled(Button)`
   height: 25%;
   font-size: ${({ theme }) => theme.fontSize.m};
   color: ${({ theme }) => theme.black};
+  font-family: "Lato", sans-serif;
 
   &:before {
     border: 1px solid ${({ theme }) => theme.white};
@@ -69,8 +70,8 @@ const StyledButton = styled(Button)`
   }
 
   ${media.phone`
-    width: 30%;
-    height: 30%;
+    width: 40%;
+    height: 35%;
   `}
 `
 
@@ -97,7 +98,7 @@ const StyledForm = styled(Form)`
     margin: 0 10px;
     font-size: ${({ theme }) => theme.fontSize.m};
     color: ${({ theme }) => theme.black};
-    font-family: "Montserrat", sans-serif;
+    font-family: "Lato", sans-serif;
 
     ::placeholder {
       color: ${({ theme }) => theme.black};
@@ -114,7 +115,7 @@ const StyledForm = styled(Form)`
     font-size: ${({ theme }) => theme.fontSize.m};
     color: ${({ theme }) => theme.black};
     resize: none;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Lato", sans-serif;
 
     ::placeholder {
       color: ${({ theme }) => theme.black};
@@ -124,7 +125,13 @@ const StyledForm = styled(Form)`
   ${media.phone`
     margin-top: 10%;
 
+    .contact-inputs {
+      justify-content: space-between;
+    }
+
     input {
+      width: 45%;
+      margin: 0;
       padding: 10px 10px;
       font-size: 1.4rem;
     }
@@ -133,6 +140,8 @@ const StyledForm = styled(Form)`
       padding: 10px 10px;
       font-size: 1.4rem;
       height: 100%;
+      width: 100%;
+      margin: 3rem 0 0 0;
     }
   `}
 `

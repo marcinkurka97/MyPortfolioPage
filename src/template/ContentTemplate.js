@@ -46,6 +46,7 @@ const ProjectContent = styled.div`
 
   ${media.phone`
     width: 100%;
+    height: auto;
     flex-direction: column;
   `}
 `
@@ -68,13 +69,15 @@ const ProjectLeft = styled.div`
     animation: ${({ active }) =>
       active &&
       css`
-        ${ScaleBox} 1s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+        ${ScaleBox} 1.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
       `};
   }
 
   ${media.phone`
-    width: 100%;
+    width: calc(100% - 6rem);
     height: auto;
+    display: flex;
+    justify-content: center;
   `}
 `
 
@@ -83,7 +86,7 @@ const SectionTitle = styled.h3`
   color: ${({ theme, imageContent }) =>
     imageContent ? theme.black : theme.gray};
   padding: ${({ imageContent }) =>
-    imageContent ? "3.5rem 0 0 0" : "1.5rem 0 0 0"};
+    imageContent ? "1.5rem 0 0 0" : "1.5rem 0 0 0"};
   margin: 0;
   font-size: 1.6rem;
   padding-left: 2rem;
@@ -96,7 +99,7 @@ const SectionTitle = styled.h3`
 
   ${media.phone`
     width: 100%;
-    padding: 0 1rem 0 1rem;
+    padding: 0;
   `}
 `
 
@@ -111,6 +114,7 @@ const ProjectDescriptionContainer = styled.div`
   ${media.tablet`
     width: 100%;
     height: auto;
+    align-items: center;
   `}
 
   ${media.phone`

@@ -8,14 +8,12 @@ import HomePinImg from "../assets/HomePinMap.png"
 import media from "../theme/media"
 import ContentTemplate from "../template/ContentTemplate"
 
-const TextSlideIn = keyframes`
+const FadeIn = keyframes`
   0% {
     opacity: 0;
-    transform: translate3d(0, -200%, 0);
   }
   100% {
     opacity: 1;
-    transform: translate3d(0, 0%, 0);
   }
 `
 
@@ -34,7 +32,7 @@ const ScaleBoxAfter = keyframes`
     min-height: 0%;
     opacity: 1;
   }
-  40% {
+  50% {
     transform: translate(0, 0);
     min-height: 100%;
     opacity: 1;
@@ -49,18 +47,18 @@ const ScaleBoxAfter = keyframes`
 const StyledHeading = styled(Heading)`
   width: 100%;
   opacity: 0;
-  padding: 2rem 0 3rem 2rem;
+  padding: 0 0 1rem 0;
   color: ${({ theme }) => theme.yellow};
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${FadeIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
   ${media.phone`
-    font-size: ${({ theme }) => theme.fontSize.m};
+    font-size: 2.8rem;
     text-align: left;
-    padding: 1rem;
+    padding: 1rem 0;
     margin: 0;
   `}
 `
@@ -73,17 +71,19 @@ const DescriptionContainer = styled.div`
 
   ${media.phone`
     flex-direction: column;
+    align-items: center;
   `}
 `
 
 const LeftDescription = styled.div`
   width: 50%;
   height: 100%;
+  padding: 0 5rem;
 
   ${media.phone`
-    width: 100%;
+    width: calc(100% - 6rem);
     height: auto;
-    padding-bottom: 3rem;
+    padding: 0 0 3rem 0;
   `}
 `
 
@@ -102,7 +102,7 @@ const ProjectImage = styled.div`
     animation: ${({ active }) =>
       active &&
       css`
-        ${ScaleBoxAfter} 2.5s cubic-bezier(.34,.615,.4,.985) both
+        ${ScaleBoxAfter} 3s cubic-bezier(.34,.615,.4,.985) both
       `};
   }
 
@@ -119,30 +119,28 @@ const ProjectImage = styled.div`
     animation: ${({ active }) =>
       active &&
       css`
-        ${ScaleBox} 1s 0.25s cubic-bezier(.34,.615,.4,.985) both
+        ${ScaleBox} 1.5s 0.5s cubic-bezier(.34,.615,.4,.985) both
       `};
   }
 
   ${media.phone`
     height: 25vh;
-    width: calc(100% - 2rem);
+    width: calc(100% - 6rem);
     order: 1;
   `}
 `
 
 const StyledParagraph = styled(Paragraph)`
   width: 100%;
-  padding: 0 2rem;
   opacity: 0;
-  font-family: font44146, sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 2.4rem;
-  line-height: 2.8rem;
   text-align: justify;
   color: ${({ theme }) => theme.gray};
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${FadeIn} 1.3s 0.75s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
   ${media.laptop`
@@ -155,7 +153,7 @@ const StyledParagraph = styled(Paragraph)`
 
   ${media.phone`
     font-size: 1.4rem;
-    padding: 0 1rem;
+    padding: 0;
     height: auto;
   `}
 `
@@ -163,7 +161,6 @@ const StyledParagraph = styled(Paragraph)`
 const ListAndButtons = styled.div`
   width: 100%;
   display: flex;
-  padding: 0 2rem;
 `
 
 const StyledList = styled.ul`
@@ -171,14 +168,14 @@ const StyledList = styled.ul`
   padding-left: 2rem;
   margin: 0;
   opacity: 0;
-  font-family: font44146, sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: ${({ theme }) => theme.fontSize.m};
   line-height: 3rem;
   color: ${({ theme }) => theme.gray};
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${FadeIn} 1.3s 1s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
   ${media.laptop`
@@ -191,7 +188,7 @@ const StyledList = styled.ul`
 
   ${media.phone`
     font-size: 1.4rem;
-    padding-left: 1rem;
+    padding-left: 2rem;
     line-height: 2rem;
 
   `}
@@ -199,15 +196,16 @@ const StyledList = styled.ul`
 
 const ProjectButtons = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-around;
   flex-direction: column;
+  font-family: "Lato", sans-serif;
   width: 50%;
   opacity: 0;
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${FadeIn} 1.3s 1.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
   ${media.phone`
@@ -223,7 +221,7 @@ const StyledNavLink = styled(NavLink)`
   color: ${({ theme }) => theme.gray};
   border-bottom: 1px solid ${({ theme }) => theme.gray};
   font-size: ${({ theme }) => theme.fontSize.s};
-  font-weight: 300;
+  font-family: "Lato", sans-serif;
 
   &:hover {
     transform: initial;
@@ -270,7 +268,7 @@ class SecondProject extends React.Component {
             </StyledHeading>
             <StyledParagraph active={activeTab}>
               That's my diploma work. It's gathering data from polish real
-              estate sites like OLX and otodom and then placing each offer on
+              estate sites like OLX and otodom. Then it's placing each offer on
               map. The idea is to give users better understanding of potential
               house location and neighborhood. Users can filter offers by price,
               type or even distance from given point.

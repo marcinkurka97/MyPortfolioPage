@@ -54,7 +54,7 @@ const StyledHeading = styled(Heading)`
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${TextSlideIn} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
   ${media.laptop`
@@ -68,9 +68,10 @@ const StyledHeading = styled(Heading)`
   `}
 
   ${media.phone`
-    font-size: ${({ theme }) => theme.fontSize.m};
+    font-size: 2.8rem;
     text-align: left;
-    padding: 0 1rem 1rem 1rem;
+    padding: 0 0 1rem 0;
+    width: calc(100% - 6rem);
     margin: 0;
   `}
 `
@@ -84,6 +85,7 @@ const DescriptionContainer = styled.div`
   ${media.phone`
     flex-direction: column;
     height: auto;
+    width: calc(100% - 6rem);
   `}
 `
 
@@ -126,7 +128,7 @@ const ProjectImage = styled.div`
     animation: ${({ active }) =>
       active &&
       css`
-        ${ScaleBoxAfter} 2s cubic-bezier(.34,.615,.4,.985) both
+        ${ScaleBoxAfter} 2s 0.25s cubic-bezier(.34,.615,.4,.985) both
       `};
   }
 
@@ -143,13 +145,13 @@ const ProjectImage = styled.div`
     animation: ${({ active }) =>
       active &&
       css`
-        ${ScaleBox} 1s 0.25s cubic-bezier(.34,.615,.4,.985) both
+        ${ScaleBox} 1s 0.5s cubic-bezier(.34,.615,.4,.985) both
       `};
   }
 
   ${media.phone`
     height: 25vh;
-    width: calc(100% - 2rem);
+    width: 100%;
   `}
 `
 
@@ -157,9 +159,8 @@ const StyledParagraph = styled(Paragraph)`
   width: 100%;
   padding: 0 0 3rem 0;
   opacity: 0;
-  font-family: font44146, sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 2.4rem;
-  line-height: 2.8rem;
   text-align: justify;
   color: ${({ theme }) => theme.gray};
   animation: ${({ active }) =>
@@ -180,12 +181,14 @@ const StyledParagraph = styled(Paragraph)`
     width: 100%;
     height: auto;
     font-size: 1.4rem;
-    padding: 0 1rem 1rem 1rem;
+    padding: 0 0 1rem 0;
   `}
 `
 
 const Technologies = styled.span`
   width: 100%;
+  text-align: justify;
+  font-family: "Lato", sans-serif;
   color: ${({ theme }) => theme.gray};
   opacity: 0;
   animation: ${({ active }) =>
@@ -197,7 +200,7 @@ const Technologies = styled.span`
   ${media.phone`
     width: 100%;
     font-size: 1.4rem;
-    padding: 0 1rem 1rem 1rem;
+    padding: 0 0 1rem 0;
   `}
 `
 
@@ -210,7 +213,7 @@ const ProjectButtons = styled.div`
   animation: ${({ active }) =>
     active &&
     css`
-      ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
+      ${TextSlideIn} 1.3s 1s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 `
 
@@ -269,10 +272,8 @@ class ThirdProject extends React.Component {
           <LeftDescription>
             <StyledParagraph active={activeTab}>
               React app visualizing building mazes and then finding the best
-              path between two given points. React app visualizing building
-              mazes and then finding the best path between two given points.
-              React app visualizing building mazes and then finding the best
-              path between two given points.
+              path between two given points. User can change start and finish
+              position and build obstacles.
             </StyledParagraph>
             <Technologies active={activeTab}>
               React - Styled Components - Recursive Division Maze Generation -

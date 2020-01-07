@@ -12,6 +12,15 @@ const ScaleBox = keyframes`
   }
 `
 
+const ScaleBoxMobile = keyframes`
+  0% {
+    min-height: 0%;
+  }
+  100% {
+    min-height: 50%;
+  }
+`
+
 const Caret = keyframes`
   50% {
     border-color: transparent;
@@ -34,30 +43,33 @@ const LandingPageBox = styled.div`
   justify-content: center;
   align-items: center;
 
-  &:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    min-width: 50%;
-    height: 100%;
-    background-color: ${({ theme }) => theme.yellow};
-    z-index: -1;
-    animation: ${ScaleBox} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both;
+  @media (min-width: 1601px) {
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      min-width: 50%;
+      height: 100%;
+      z-index: -1;
+      background-color: ${({ theme }) => theme.yellow};
+      animation: ${ScaleBox} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both;
+    }
   }
 
-  ${media.laptop`
-    width: 70%;
-    height: 60%;
-  `}
-
-  ${media.tablet`
-    width: 70%;
-    height: 45%;
-  `}
-
   ${media.phone`
-    width: 90%;
-    height: 50%;
+    width: calc(100% - 6rem);
+    height: 70%;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 100%;
+      min-height: 50%;
+      z-index: -1;
+      background-color: ${({ theme }) => theme.yellow};
+      animation: ${ScaleBoxMobile} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both;
+    }
   `}
 `
 
@@ -78,9 +90,10 @@ const LandingHeading = styled(Heading)`
   }
 
   ${media.phone`
-      font-size: 7rem;
-      line-height: 5.5rem;
-      width: 67.5%;
+      font-size: 8rem;
+      line-height: 8rem;
+      width: 85%;
+      height: 16rem;
   `}
 `
 

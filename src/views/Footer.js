@@ -47,6 +47,7 @@ const FooterDescription = styled.div`
     width: 100%;
     height: 25%;
     flex-direction: column;
+    align-items: center;
   `}
 `
 
@@ -59,8 +60,8 @@ const DescriptionLeft = styled.div`
   padding-left: 2rem;
 
   ${media.phone`
-    width: 100%;
-    padding: 0 1rem;
+    width: calc(100% - 6rem);
+    padding: 0;
   `}
 `
 
@@ -72,10 +73,10 @@ const DescriptionRight = styled.div`
   flex-direction: column;
 
   ${media.phone`
-    width: 100%;
+    width: calc(100% - 6rem);
     font-size: ${({ theme }) => theme.fontSize.m};
     text-align: left;
-    padding: 0 1rem;
+    padding: 0;
     margin: 0;
   `}
 `
@@ -122,7 +123,7 @@ const StyledHeading = styled(Heading)`
   ${media.phone`
     width: 100%;
     margin: 0;
-    font-size: ${({ theme }) => theme.fontSize.m};
+    font-size: 2.8rem;
     text-align: left;
   `}
 `
@@ -130,6 +131,7 @@ const StyledHeading = styled(Heading)`
 const StyledParagraph = styled(Paragraph)`
   color: ${({ theme }) => theme.gray};
   opacity: 0;
+  font-family: "Lato", sans-serif;
 
   animation: ${({ active }) =>
     active &&
