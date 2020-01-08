@@ -52,13 +52,14 @@ const StyledHeading = styled(Heading)`
     `};
 
   ${media.laptop`
-    font-size: 6rem;
+    font-size: 4rem;
+    padding: 0 2rem 0 2rem;
     margin-bottom: 1rem;
   `}
 
   ${media.tablet`
-    font-size: ${({ theme }) => theme.fontSize.xxl};
-    margin-bottom: 2rem;
+    font-size: 5rem;
+    padding: 2rem 0;
   `}
 
   ${media.phone`
@@ -75,6 +76,10 @@ const DescriptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
 
+  ${media.tablet`
+    flex-direction: column;
+  `}
+
   ${media.phone`
     flex-direction: column;
     width: calc(100% - 6rem);
@@ -84,6 +89,10 @@ const DescriptionContainer = styled.div`
 const LeftDescription = styled.div`
   width: 40%;
   height: 100%;
+
+  ${media.tablet`
+    width: 100%;
+  `}
 
   ${media.phone`
     width: 100%;
@@ -134,6 +143,11 @@ const ProjectImage = styled.div`
       `};
   }
 
+  ${media.tablet`
+    height: 40vh;
+    width: 100%;
+  `}
+
   ${media.phone`
     height: 25vh;
     width: 100%;
@@ -157,11 +171,12 @@ const StyledParagraph = styled(Paragraph)`
     `};
 
   ${media.laptop`
-    font-size: 1.8rem;
+    font-size: 2rem;
   `}
 
   ${media.tablet`
-    font-size: ${({ theme }) => theme.fontSize.l};
+    font-size: 3rem;
+    padding: 0 0 2rem 0;
   `}
 
   ${media.phone`
@@ -182,6 +197,20 @@ const ProjectButtons = styled.div`
     css`
       ${TextSlideIn} 1.3s 2.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.laptop`
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 30%;
+    padding: 0 2rem;
+  `}
+
+  ${media.tablet`
+    padding: 3rem 0;
+    height: auto;
+    flex-direction: row;
+  `}
 
   ${media.phone`
     width: 100%;

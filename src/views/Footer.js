@@ -43,6 +43,12 @@ const FooterDescription = styled.div`
   justify-content: center;
   align-items: flex-start;
 
+  ${media.tablet`
+    width: 60%;
+    height: 20%;
+    flex-direction: column;
+  `}
+
   ${media.phone`
     width: 100%;
     height: 25%;
@@ -59,7 +65,13 @@ const DescriptionLeft = styled.div`
   font-size: 1.6rem;
   padding-left: 2rem;
 
+  ${media.tablet`
+    font-size: 3rem;
+    padding: 1.5rem 0 0 0;
+  `}
+
   ${media.phone`
+    font-size: 1.6rem;
     width: calc(100% - 6rem);
     padding: 0;
   `}
@@ -71,6 +83,10 @@ const DescriptionRight = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: column;
+
+  ${media.tablet`
+    width: 100%;
+  `}
 
   ${media.phone`
     width: calc(100% - 6rem);
@@ -120,6 +136,14 @@ const StyledHeading = styled(Heading)`
       ${FadeIn} 0.5s 0.7s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
+  ${media.laptop`
+    padding: 0;
+  `}
+
+  ${media.tablet`
+    font-size: 5rem;
+  `}
+
   ${media.phone`
     width: 100%;
     margin: 0;
@@ -138,6 +162,15 @@ const StyledParagraph = styled(Paragraph)`
     css`
       ${FadeIn} 0.5s 0.7s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.laptop`
+    font-size: 1.8rem;
+  `}
+
+  ${media.tablet`
+    width: 100%;
+    font-size: 2.4rem;
+  `}
 
   ${media.phone`
     width: 100%;
@@ -165,12 +198,14 @@ class FirstProject extends React.Component {
         "#282828"
       this.props.bottomLine.current.bottomLine.current.parentNode.style.background =
         "#F2C218"
+      this.props.bottomLine.current.bottomLine.current.parentNode.childNodes[0].style.opacity = 1
     } else {
       this.props.leftBar.current.leftBar.current.style.color = "#a6a6a6"
       this.props.bottomLine.current.bottomLine.current.style.background =
         "#a6a6a6"
       this.props.bottomLine.current.bottomLine.current.parentNode.style.background =
         "#282828"
+      this.props.bottomLine.current.bottomLine.current.parentNode.childNodes[0].style.opacity = 0
     }
   }
 

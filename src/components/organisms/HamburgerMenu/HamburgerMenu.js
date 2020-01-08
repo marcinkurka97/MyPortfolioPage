@@ -23,7 +23,6 @@ const HamburgerMenuBars = styled.span`
   position: relative;
   width: 100%;
   background: ${({ theme }) => theme.gray};
-  border-radius: 10px;
   transition: transform 0.25s ease-in;
 
   ${media.tablet`
@@ -44,7 +43,6 @@ const HamburgerMenuBars = styled.span`
     position: absolute;
     width: 100%;
     background: ${({ theme }) => theme.gray};
-    border-radius: 10px;
     opacity: 1;
 
     ${media.tablet`

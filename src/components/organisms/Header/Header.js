@@ -27,7 +27,7 @@ const StyledLogo = styled.div`
   z-index: 15;
 
   ${media.tablet`
-    flex: 40% 0 0;
+    flex: 50% 0 0;
     height: 100px;
   `}
 
@@ -48,6 +48,10 @@ const HeaderContainer = styled.nav`
   justify-content: center;
   background: ${({ theme }) => theme.black};
 
+  ${media.tablet`
+    height: 10vh;
+  `}
+
   ${media.phone`
     height: 10vh;
   `}
@@ -60,6 +64,11 @@ const HeaderContent = styled.div`
   display: flex;
   align-items: center;
 
+  ${media.tablet`
+    width: 90%;
+    justify-content: space-between;
+  `}
+
   ${media.phone`
     width: 90%;
     justify-content: space-between;
@@ -69,6 +78,10 @@ const HeaderContent = styled.div`
 const StyledParagraph = styled(Paragraph)`
   color: ${({ theme }) => theme.gray};
   font-size: ${({ theme }) => theme.fontSize.s};
+
+  ${media.laptop`
+    padding-left: 5rem;
+  `}
 
   ${media.tablet`
     display: none;

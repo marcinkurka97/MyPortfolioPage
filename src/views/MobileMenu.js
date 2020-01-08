@@ -60,16 +60,31 @@ const StyledList = styled.ul`
           transition: opacity 0.5s ease-in;
         `};
 
-  ${media.phone`
+  ${media.tablet`
     li {
       list-style: none;
+      text-align: center;
 
       a {
-        font-size: 5.5rem;
+        font-size: 12rem;
+
         span {
           vertical-align: super;
-          font-size: ${({ theme }) => theme.fontSize.xs};
+          font-size: 3rem;
         }
+      }
+    }
+  `}
+
+  ${media.phone`
+    li {
+      a {
+        font-size: 5.5rem;
+
+        span {
+            vertical-align: super;
+            font-size: ${({ theme }) => theme.fontSize.xs};
+          }
       }
     }
   `}

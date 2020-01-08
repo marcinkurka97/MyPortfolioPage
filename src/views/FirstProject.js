@@ -53,6 +53,12 @@ const ProjectDescription = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  ${media.tablet`
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 60%;
+  `}
+
   ${media.phone`
     flex-direction: column;
     width: calc(100% - 6rem);
@@ -95,6 +101,11 @@ const ProjectImage = styled.div`
       `};
   }
 
+  ${media.tablet`
+    height: 30vh;
+    width: 100%;
+  `}
+
   ${media.phone`
     height: 25vh;
     width: 100%;
@@ -112,6 +123,11 @@ const StyledHeading = styled(Heading)`
     css`
       ${TextSlideIn} 1.3s 0.25s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.tablet`
+    font-size: 5rem;
+    padding-bottom: 1rem;
+  `}
 
   ${media.phone`
     font-size: 2.8rem;
@@ -136,6 +152,15 @@ const StyledParagraph = styled(Paragraph)`
       ${TextSlideIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
+  ${media.laptop`
+    font-size: 2rem;
+  `}
+
+  ${media.tablet`
+    font-size: 3rem;
+    padding-bottom: 5rem;
+  `}
+
   ${media.phone`
     font-size: 1.4rem;
     width: calc(100% - 6rem);
@@ -150,10 +175,17 @@ const RightDescription = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
+  ${media.tablet`
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+    padding: 3rem 0 0 0;
+  `}
+
   ${media.phone`
     order: 2;
     width: 100%;
-    height: auto;
+    height: 100%;
     padding: 3rem 0 0 0;
     flex-direction: row;
   `}
@@ -173,12 +205,18 @@ const StyledList = styled.ul`
       ${TextSlideIn} 1.3s 0.75s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
+  ${media.laptop`
+    font-size: 2rem;
+  `}
+
   ${media.tablet`
-    font-size: 2.5rem;
+    font-size: 3rem;
+    padding: 0 0 0 3rem;
   `}
 
   ${media.phone`
     width: 50%;
+    height: 100%;
     font-size: 1.4rem;
     line-height: 2rem;
     padding:  0 0 0 2rem;
@@ -198,8 +236,13 @@ const ProjectButtons = styled.div`
       ${TextSlideIn} 1.3s 1s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
+  ${media.tablet`
+
+    justify-content: flex-start;
+    align-items: flex-end;
+  `}
+
   ${media.phone`
-    height: 100%;
     width: 50%;
     font-size: 1.4rem;
     padding: 0;
@@ -218,10 +261,6 @@ const StyledNavLink = styled(NavLink)`
     border-bottom: 1px solid ${({ theme }) => theme.yellow};
   }
 
-  ${media.tablet`
-    font-size: 2.5rem;
-  `}
-
   ${media.phone`
     font-size: ${({ theme }) => theme.fontSize.xs};
   `}
@@ -232,7 +271,7 @@ const StyledButton = styled(Button)`
   font-family: "Lato", sans-serif;
 
   ${media.tablet`
-    margin: 1rem 0;
+    margin: 0 0 3rem 0;
   `}
 
   ${media.phone`

@@ -58,13 +58,12 @@ const StyledHeading = styled(Heading)`
     `};
 
   ${media.laptop`
-    font-size: 6rem;
+    font-size: 4rem;
     margin-bottom: 1rem;
   `}
 
   ${media.tablet`
-    font-size: ${({ theme }) => theme.fontSize.xxl};
-    margin-bottom: 2rem;
+    font-size: 5rem;
   `}
 
   ${media.phone`
@@ -82,6 +81,10 @@ const DescriptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
 
+  ${media.tablet`
+    flex-direction: column;
+  `}
+
   ${media.phone`
     flex-direction: column;
     height: auto;
@@ -92,6 +95,11 @@ const DescriptionContainer = styled.div`
 const LeftDescription = styled.div`
   width: 40%;
   height: 100%;
+
+  ${media.tablet`
+    width: 100%;
+    height: auto;
+  `}
 
   ${media.phone`
     width: 100%;
@@ -105,6 +113,11 @@ const RightDescription = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  ${media.tablet`
+    width: 100%;
+    padding: 3rem 0 0 0;
+  `}
 
   ${media.phone`
     width: 100%;
@@ -170,11 +183,11 @@ const StyledParagraph = styled(Paragraph)`
     `};
 
   ${media.laptop`
-    font-size: 1.8rem;
+    font-size: 2rem;
   `}
 
   ${media.tablet`
-    font-size: ${({ theme }) => theme.fontSize.l};
+    font-size: 3rem;
   `}
 
   ${media.phone`
@@ -197,6 +210,15 @@ const Technologies = styled.span`
       ${TextSlideIn} 1.3s 0.75s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
+  ${media.laptop`
+    font-size: 1.6rem;
+  `}
+
+  ${media.tablet`
+    font-size: 3rem;
+    text-align: justify;
+  `}
+
   ${media.phone`
     width: 100%;
     font-size: 1.4rem;
@@ -215,6 +237,10 @@ const ProjectButtons = styled.div`
     css`
       ${TextSlideIn} 1.3s 1s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
+
+  ${media.tablet`
+    padding: 3rem 0 0 0;
+  `}
 `
 
 const StyledButton = styled(Button)`

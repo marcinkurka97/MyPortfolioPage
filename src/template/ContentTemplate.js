@@ -40,7 +40,8 @@ const ProjectContent = styled.div`
   align-items: center;
 
   ${media.tablet`
-    width: 80%;
+    width: 60%;
+    height: 80%;
     flex-direction: column;
   `}
 
@@ -73,6 +74,13 @@ const ProjectLeft = styled.div`
       `};
   }
 
+  ${media.tablet`
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+  `}
+
   ${media.phone`
     width: calc(100% - 6rem);
     height: auto;
@@ -97,9 +105,17 @@ const SectionTitle = styled.h3`
       ${FadeIn} 2s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
+  ${media.tablet`
+    width: 100%;
+    padding: 0;
+    font-size: 3rem;
+  `}
+
   ${media.phone`
     width: 100%;
     padding: 0;
+    font-size: 1.6rem;
+
   `}
 `
 
@@ -113,8 +129,10 @@ const ProjectDescriptionContainer = styled.div`
 
   ${media.tablet`
     width: 100%;
-    height: auto;
+    height: 100%;
     align-items: center;
+    justify-content: flex-start;
+
   `}
 
   ${media.phone`

@@ -27,8 +27,8 @@ const StyledHeading = styled(Heading)`
       ${TextSlideIn} 1.3s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
-  ${media.tablet`
-    font-size: 6rem;
+  ${media.laptop`
+    margin-bottom: 1rem;
   `}
 
   ${media.phone`
@@ -47,6 +47,11 @@ const DescriptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
 
+  ${media.tablet`
+    height: auto;
+    flex-direction: column;
+  `}
+
   ${media.phone`
     height: auto;
     flex-direction: column;
@@ -58,6 +63,14 @@ const LeftDescription = styled.div`
   width: 50%;
   height: 100%;
 
+  ${media.laptop`
+    width: 55%;
+  `}
+
+  ${media.tablet`
+    width: 100%;
+  `}
+
   ${media.phone`
     width: 100%;
     padding-bottom: 2rem;
@@ -67,6 +80,15 @@ const LeftDescription = styled.div`
 const RightDescription = styled.div`
   width: 50%;
   height: 100%;
+
+  ${media.laptop`
+    width: 45%;
+  `}
+
+  ${media.tablet`
+    width: 100%;
+    padding: 5rem 0 0 0;
+  `}
 
   ${media.phone`
     width: 100%;
@@ -88,13 +110,11 @@ const StyledParagraph = styled(Paragraph)`
     `};
 
   ${media.laptop`
-    width: 60%;
     font-size: 1.8rem;
   `}
 
   ${media.tablet`
-    width: 80%;
-    font-size: 2.5rem;
+    font-size: 3rem;
   `}
 
   ${media.phone`
@@ -119,11 +139,14 @@ const SkillsContainer = styled.div`
     `};
 
   ${media.laptop`
-    width: 80%;
+    width: 100%;
+    padding-left: 3rem;
   `}
 
   ${media.tablet`
-    width: 80%;
+    width: 100%;
+    flex-direction: row;
+    padding: 0;
   `}
 
   ${media.phone`
@@ -154,7 +177,7 @@ const Skills = styled.div`
   }
 
   ${media.laptop`
-    font-size: 1.8rem;
+    font-size: 2rem;
     line-height: 2.2rem;
   `}
 
@@ -167,7 +190,7 @@ const Skills = styled.div`
       width: auto;
     }
 
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     line-height: 3rem;
   `}
 

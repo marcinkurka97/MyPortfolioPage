@@ -43,8 +43,8 @@ const ContactContainer = styled.div`
     `};
 
   ${media.tablet`
-    width: 50%;
-    height: 25vh;
+    width: 60%;
+    height: 40vh;
   `}
 
   ${media.phone`
@@ -68,6 +68,11 @@ const StyledButton = styled(Button)`
   &:after {
     border: 1px solid ${({ theme }) => theme.black};
   }
+
+  ${media.tablet`
+    width: 35%;
+    height: 20%;
+  `}
 
   ${media.phone`
     width: 40%;
@@ -121,6 +126,29 @@ const StyledForm = styled(Form)`
       color: ${({ theme }) => theme.black};
     }
   }
+
+  ${media.tablet`
+    margin-top: 10%;
+
+    .contact-inputs {
+      justify-content: space-between;
+    }
+
+    input {
+      width: 45%;
+      margin: 0;
+      padding: 1.5rem 1rem;
+      font-size: 2rem;
+    }
+
+    textarea {
+      padding: 1.5rem 1rem;
+      font-size: 2rem;
+      height: 100%;
+      width: 100%;
+      margin: 3rem 0 0 0;
+    }
+  `}
 
   ${media.phone`
     margin-top: 10%;
@@ -188,7 +216,7 @@ class Contact extends React.Component {
                 axios({
                   method: "post",
                   url:
-                    "https://cors-anywhere.herokuapp.com/https://o30d2yrza3.execute-api.eu-west-1.amazonaws.com/default/portfolio_lambda",
+                    "https://cors-anywhere.herokuapp.com/https://o30d2yrza3.execute-api.eu-west-1.amazonaws.com/default/marcin-kurka-portfolio",
                   data: {
                     email: values.email,
                     subject: values.subject,
@@ -197,14 +225,14 @@ class Contact extends React.Component {
                 })
                   .then(function() {
                     resetForm()
-                    alert.success("Message sent!")
+                    alert("Message sent!")
                   })
                   .catch(function() {
-                    alert.error("Error :/")
+                    alert("Error :/")
                   })
               })
               .catch(function() {
-                alert.show("Fill in all the fields")
+                alert("Fill in all the fields")
               })
           }}
         >

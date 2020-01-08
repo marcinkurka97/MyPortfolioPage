@@ -55,6 +55,11 @@ const StyledHeading = styled(Heading)`
       ${FadeIn} 1.3s 0.5s cubic-bezier(0.34, 0.615, 0.4, 0.985) both
     `};
 
+  ${media.tablet`
+    font-size: 5rem;
+    padding: 1rem 0;
+  `}
+
   ${media.phone`
     font-size: 2.8rem;
     text-align: left;
@@ -69,6 +74,11 @@ const DescriptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
 
+  ${media.tablet`
+    flex-direction: column;
+    align-items: center;
+  `}
+
   ${media.phone`
     flex-direction: column;
     align-items: center;
@@ -79,6 +89,15 @@ const LeftDescription = styled.div`
   width: 50%;
   height: 100%;
   padding: 0 5rem;
+
+  ${media.laptop`
+    padding: 0 2rem;
+  `}
+
+  ${media.tablet`
+    padding: 0;
+    width: 100%;
+  `}
 
   ${media.phone`
     width: calc(100% - 6rem);
@@ -123,6 +142,11 @@ const ProjectImage = styled.div`
       `};
   }
 
+  ${media.tablet`
+    height: 50vh;
+    width: 100%;
+  `}
+
   ${media.phone`
     height: 25vh;
     width: calc(100% - 6rem);
@@ -133,7 +157,7 @@ const ProjectImage = styled.div`
 const StyledParagraph = styled(Paragraph)`
   width: 100%;
   opacity: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 2.4rem;
   text-align: justify;
   color: ${({ theme }) => theme.gray};
@@ -144,11 +168,11 @@ const StyledParagraph = styled(Paragraph)`
     `};
 
   ${media.laptop`
-    font-size: 1.8rem;
+    font-size: 2rem;
   `}
 
   ${media.tablet`
-    font-size: ${({ theme }) => theme.fontSize.l};
+    font-size: 3rem;
   `}
 
   ${media.phone`
@@ -179,11 +203,14 @@ const StyledList = styled.ul`
     `};
 
   ${media.laptop`
-    font-size: 1.8rem;
+    font-size: 2rem;
+    line-height: 2.2rem;
   `}
 
   ${media.tablet`
-    font-size: ${({ theme }) => theme.fontSize.l};
+    font-size: 3rem;
+    line-height: 3.2rem;
+    padding-left: 3rem;
   `}
 
   ${media.phone`
