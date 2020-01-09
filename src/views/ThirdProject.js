@@ -6,7 +6,7 @@ import Button from "../components/atoms/Button/Button"
 import NavLink from "../components/atoms/NavLink/NavLink"
 import media from "../theme/media"
 import ContentTemplate from "../template/ContentTemplate"
-import PathfindingImg from "../assets/PathfindingVisualization.png"
+import PathfindingImg from "../assets/PathfindingVisualization.gif"
 
 const ScaleBox = keyframes`
   0% {

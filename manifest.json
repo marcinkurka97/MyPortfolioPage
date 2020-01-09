@@ -1,0 +1,10 @@
+{
+  "short_name": "Marcin Kurka Portfolio",
+  "name": "Marcin Kurka Portfolio",
+  "description": "Junior Frontend developer portfolio page",
+  "start_url": "/?source=pwa",
+  "background_color": "#282828",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#282828"
+}
