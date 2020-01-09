@@ -65,9 +65,7 @@ function SEO({ description, lang, meta, title }) {
           content: "#282828",
         },
       ].concat(meta)}
-    >
-      <link rel="manifest" href="/manifest.json" />
-    </Helmet>
+    />
   )
 }
 
