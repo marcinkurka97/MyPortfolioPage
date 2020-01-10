@@ -306,9 +306,9 @@ class FirstProject extends React.Component {
           Sorting Visualizer App
         </StyledHeading>
         <StyledParagraph active={activeTab}>
-          App made in React showing how particular sorting algorithms works.
-          Visual representation helps you understand how every algorithm works
-          under the hood. You can also compare algorithm performance.
+          Made in React showing how different sorting algorithms works. Visual
+          representation helps you understand how particular algorithms works
+          under the hood. You can also compare their performance.
         </StyledParagraph>
         <ProjectDescription>
           <ProjectImage active={activeTab} />
@@ -327,7 +327,7 @@ class FirstProject extends React.Component {
                 rel="noopener noreferrer"
                 href="https://patinos123.github.io/sorting-app/"
               >
-                <StyledButton>Preview</StyledButton>
+                <StyledButton>View</StyledButton>
               </a>
               <StyledNavLink
                 target="_blank"

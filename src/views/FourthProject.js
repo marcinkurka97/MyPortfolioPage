@@ -275,7 +275,7 @@ class SecondProject extends React.Component {
             </StyledHeading>
             <StyledParagraph active={activeTab}>
               One page portfolio for a graphic designer made in Gatsby. Sending
-              mails handled by AWS Lambda.
+              mails is handled by AWS Lambda.
             </StyledParagraph>
             <ProjectButtons active={activeTab}>
               <a
@@ -284,7 +284,7 @@ class SecondProject extends React.Component {
                 rel="noopener noreferrer"
                 href="https://kasiamichalska.netlify.com/"
               >
-                <StyledButton>Preview</StyledButton>
+                <StyledButton>View</StyledButton>
               </a>
 
               <StyledNavLink

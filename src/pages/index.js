@@ -14,6 +14,7 @@ const AppContainer = styled.div`
   display: flex;
   justify-content: center;
   overflow-y: scroll;
+  scrollbar-color: rgba(0, 0, 0, 0);
 
   &::-webkit-scrollbar {
     display: none;

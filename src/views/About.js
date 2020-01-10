@@ -225,25 +225,28 @@ class About extends React.Component {
         <DescriptionContainer>
           <LeftDescription>
             <StyledParagraph active={activeTab}>
-              My name is Marcin Kurka. I'm 23 years old and currently I'm
-              studying computer science at University of Economics in Katowice.
-              I graduated in computer science at Mechanical Technical High
-              School in Racibórz.
+              My name is Marcin Kurka. I'm 23 years old and currently I'm on my
+              last year studying Computer Science at University of Economics in
+              Katowice. I'am a graduate in Computer Science from the Mechanical
+              Technical High School in Racibórz.
               <br />
               <br />I have about 7 years of IT education, during which I learned
               everything from building Arduino watches, fixing mechanical issues
-              in computer, creating and managing databases in MySQL to
+              in computer hardware, creating and managing databases in MySQL to
               programming in C++, PHP, JS and C#. <br />
               <br />
-              But building web applications was always most entertaining for me.
-              Therefore I dedicated last year to learn frontend technologies
-              (mostly React). In that time I was learning from Frontend Masters,
-              Udemy, FreeCodeCamp and many YouTube tutorials and made several
-              projects in vanilla JS as well as in React. <br />
+              Over time building web applications became the most entertaining
+              form of programming for me. Therefore I dedicated last year to
+              learn frontend technologies (mostly React). In that time I
+              educated myself from Frontend Masters, Udemy, FreeCodeCamp and
+              many YouTube tutorials and made several projects in vanilla JS as
+              well as in React. <br />
               <br />
-              Working in group gets me motivated and focused to deliver best
-              possible solution. It's also possibility to learn something new
-              from other, more experienced developers.
+              I'am aware that creating web applications requires an effort from
+              different parties, and the idea of collaboration gets me motivated
+              and focused to perform as good as I can. Coworking is also a
+              possibility to learn something new from other, more experienced
+              developers.
             </StyledParagraph>
           </LeftDescription>
           <RightDescription>

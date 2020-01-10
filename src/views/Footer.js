@@ -220,7 +220,7 @@ class FirstProject extends React.Component {
             <StyledParagraph active={activeTab}>
               If you have any questions for me or you are interested in
               collaboration, just leave me a message and I will answer asap. You
-              can also check my Linked In and GitHub accounts.
+              can also check my LinkedIn and GitHub accounts.
             </StyledParagraph>
           </DescriptionRight>
         </FooterDescription>

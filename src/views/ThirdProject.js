@@ -297,9 +297,9 @@ class ThirdProject extends React.Component {
         <DescriptionContainer>
           <LeftDescription>
             <StyledParagraph active={activeTab}>
-              React app visualizing building mazes and then finding the best
-              path between two given points. User can change start and finish
-              position and build obstacles.
+              App visualizing building mazes and finding the best path between
+              two given points. User can change start and finish position and
+              also build obstacles.
             </StyledParagraph>
             <Technologies active={activeTab}>
               React - Styled Components - Recursive Division Maze Generation -
@@ -316,7 +316,7 @@ class ThirdProject extends React.Component {
                 rel="noopener noreferrer"
                 href="https://patinos123.github.io/pathfinding-app/"
               >
-                <StyledButton>Preview</StyledButton>
+                <StyledButton>View</StyledButton>
               </a>
               <StyledNavLink
                 target="_blank"

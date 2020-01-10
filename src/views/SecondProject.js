@@ -294,11 +294,11 @@ class SecondProject extends React.Component {
               HousePin
             </StyledHeading>
             <StyledParagraph active={activeTab}>
-              That's my diploma work. It's gathering data from polish real
-              estate sites like OLX and otodom. Then it's placing each offer on
-              map. The idea is to give users better understanding of potential
-              house location and neighborhood. Users can filter offers by price,
-              type or even distance from given point.
+              My diploma work, which is gathering data from polish real estate
+              sites like OLX and otodom. It's placing each offer on map so users
+              can have a better look at the place and neighborhood in which they
+              are seeking potential houses. You can filter offers by price, type
+              or most importantly by distance from a given point.
               <br />
               <br />
             </StyledParagraph>
@@ -313,7 +313,7 @@ class SecondProject extends React.Component {
                 <li>REST API</li>
               </StyledList>
               <ProjectButtons active={activeTab}>
-                <StyledButton>Preview</StyledButton>
+                <StyledButton>View</StyledButton>
                 <StyledNavLink>GitHub Code</StyledNavLink>
               </ProjectButtons>
             </ListAndButtons>
