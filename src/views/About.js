@@ -110,7 +110,7 @@ const StyledParagraph = styled(Paragraph)`
     `};
 
   ${media.laptop`
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   `}
 
   ${media.tablet`
@@ -140,7 +140,7 @@ const SkillsContainer = styled.div`
 
   ${media.laptop`
     width: 100%;
-    padding-left: 3rem;
+    padding-left: 5rem;
   `}
 
   ${media.tablet`
@@ -177,8 +177,8 @@ const Skills = styled.div`
   }
 
   ${media.laptop`
-    font-size: 2rem;
-    line-height: 2.2rem;
+    font-size: 1.6rem;
+    line-height: 2rem;
   `}
 
   ${media.tablet`

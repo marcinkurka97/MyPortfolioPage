@@ -168,7 +168,7 @@ const StyledParagraph = styled(Paragraph)`
     `};
 
   ${media.laptop`
-    font-size: 2rem;
+    font-size: 1.8rem;
   `}
 
   ${media.tablet`
@@ -185,6 +185,7 @@ const StyledParagraph = styled(Paragraph)`
 const ListAndButtons = styled.div`
   width: 100%;
   display: flex;
+  justify-self: flex-end;
 `
 
 const StyledList = styled.ul`
@@ -203,7 +204,7 @@ const StyledList = styled.ul`
     `};
 
   ${media.laptop`
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 2.2rem;
   `}
 
@@ -242,6 +243,10 @@ const ProjectButtons = styled.div`
 
 const StyledButton = styled(Button)`
   color: ${({ theme }) => theme.gray};
+
+  ${media.laptop`
+    font-size: 1.8rem;
+  `}
 `
 
 const StyledNavLink = styled(NavLink)`
@@ -254,6 +259,10 @@ const StyledNavLink = styled(NavLink)`
     transform: initial;
     border-bottom: 1px solid ${({ theme }) => theme.yellow};
   }
+
+  ${media.laptop`
+    font-size: 1.8rem;
+  `}
 
   ${media.tablet`
     font-size: 2.5rem;
@@ -313,8 +322,21 @@ class SecondProject extends React.Component {
                 <li>REST API</li>
               </StyledList>
               <ProjectButtons active={activeTab}>
-                <StyledButton>View</StyledButton>
-                <StyledNavLink>GitHub Code</StyledNavLink>
+                <a
+                  style={{ textDecoration: "none" }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://housepin.herokuapp.com/"
+                >
+                  <StyledButton>View</StyledButton>
+                </a>
+                <StyledNavLink
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://github.com/patinos123/DiplomaScrapper"
+                >
+                  GitHub Code
+                </StyledNavLink>
               </ProjectButtons>
             </ListAndButtons>
           </LeftDescription>

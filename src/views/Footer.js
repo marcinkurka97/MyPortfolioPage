@@ -43,6 +43,11 @@ const FooterDescription = styled.div`
   justify-content: center;
   align-items: flex-start;
 
+  ${media.laptop`
+    width: 60%;
+    height: 20%;
+  `}
+
   ${media.tablet`
     width: 60%;
     height: 20%;
@@ -164,7 +169,7 @@ const StyledParagraph = styled(Paragraph)`
     `};
 
   ${media.laptop`
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   `}
 
   ${media.tablet`

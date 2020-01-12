@@ -119,6 +119,13 @@ const LandingHeading = styled(Heading)`
     color: ${({ theme }) => theme.yellow};
   }
 
+  ${media.laptop`
+      font-size: 14rem;
+      height: 24rem;
+      line-height: 12rem;
+      width: 44rem;
+  `}
+
   ${media.tablet`
       height: 32rem;
       line-height: 16rem;

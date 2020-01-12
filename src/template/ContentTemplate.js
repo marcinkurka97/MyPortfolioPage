@@ -39,6 +39,11 @@ const ProjectContent = styled.div`
   justify-content: center;
   align-items: center;
 
+  ${media.laptop`
+    width: 60%;
+    height: 70%;
+  `}
+
   ${media.tablet`
     width: 60%;
     height: 80%;
@@ -132,7 +137,6 @@ const ProjectDescriptionContainer = styled.div`
     height: 100%;
     align-items: center;
     justify-content: flex-start;
-
   `}
 
   ${media.phone`
