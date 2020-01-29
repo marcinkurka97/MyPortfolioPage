@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled, { keyframes, css } from "styled-components"
 import Contact from "./Contact"
 import Heading from "../components/atoms/Heading/Heading"
@@ -183,58 +183,47 @@ const StyledParagraph = styled(Paragraph)`
   `}
 `
 
-class FirstProject extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { activeTab: false }
-  }
+const Footer = ({ active, leftBar, bottomLine }) => {
+  const [activeTab, setActiveTab] = useState(false)
 
-  componentDidUpdate() {
-    if (
-      this.props.active === true &&
-      this.props.active !== this.state.activeTab
-    ) {
-      this.setState({ activeTab: this.props.active })
+  useEffect(() => {
+    if (active === true && active !== activeTab) {
+      setActiveTab(active)
     }
 
-    if (this.props.active === true) {
-      this.props.leftBar.current.leftBar.current.style.color = "#282828"
-      this.props.bottomLine.current.bottomLine.current.style.background =
-        "#282828"
-      this.props.bottomLine.current.bottomLine.current.parentNode.style.background =
+    if (active === true) {
+      leftBar.current.leftBar.current.style.color = "#282828"
+      bottomLine.current.bottomLine.current.style.background = "#282828"
+      bottomLine.current.bottomLine.current.parentNode.style.background =
         "#F2C218"
-      this.props.bottomLine.current.bottomLine.current.parentNode.childNodes[0].style.opacity = 1
+      bottomLine.current.bottomLine.current.parentNode.childNodes[0].style.opacity = 1
     } else {
-      this.props.leftBar.current.leftBar.current.style.color = "#a6a6a6"
-      this.props.bottomLine.current.bottomLine.current.style.background =
-        "#a6a6a6"
-      this.props.bottomLine.current.bottomLine.current.parentNode.style.background =
+      leftBar.current.leftBar.current.style.color = "#a6a6a6"
+      bottomLine.current.bottomLine.current.style.background = "#a6a6a6"
+      bottomLine.current.bottomLine.current.parentNode.style.background =
         "#282828"
-      this.props.bottomLine.current.bottomLine.current.parentNode.childNodes[0].style.opacity = 0
+      bottomLine.current.bottomLine.current.parentNode.childNodes[0].style.opacity = 0
     }
-  }
+  }, [activeTab, active, bottomLine, leftBar])
 
-  render() {
-    const { activeTab } = this.state
-    return (
-      <FooterContainer id="footer-page">
-        <FooterDescription>
-          <DescriptionLeft>Contact.</DescriptionLeft>
-          <DescriptionRight>
-            <StyledHeading active={activeTab}>Contact me</StyledHeading>
-            <StyledParagraph active={activeTab}>
-              If you have any questions for me or you are interested in
-              collaboration, just leave me a message and I will answer asap. You
-              can also check my LinkedIn and GitHub accounts.
-            </StyledParagraph>
-          </DescriptionRight>
-        </FooterDescription>
-        <FooterYellowBox active={activeTab}>
-          <Contact active={activeTab} />
-        </FooterYellowBox>
-      </FooterContainer>
-    )
-  }
+  return (
+    <FooterContainer id="footer-page">
+      <FooterDescription>
+        <DescriptionLeft>Contact.</DescriptionLeft>
+        <DescriptionRight>
+          <StyledHeading active={activeTab}>Contact me</StyledHeading>
+          <StyledParagraph active={activeTab}>
+            If you have any questions for me or you are interested in
+            collaboration, just leave me a message and I will answer asap. You
+            can also check my LinkedIn and GitHub accounts.
+          </StyledParagraph>
+        </DescriptionRight>
+      </FooterDescription>
+      <FooterYellowBox active={activeTab}>
+        <Contact active={activeTab} />
+      </FooterYellowBox>
+    </FooterContainer>
+  )
 }
 
-export default FirstProject
+export default Footer

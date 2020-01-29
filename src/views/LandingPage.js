@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled, { keyframes } from "styled-components"
 import Heading from "../components/atoms/Heading/Heading"
 import media from "../theme/media"
@@ -139,20 +139,11 @@ const LandingHeading = styled(Heading)`
   `}
 `
 
-class LandingPage extends React.Component {
-  constructor(props) {
-    super(props)
-    this.dataText = "Hello World"
-    this.state = {}
-  }
+const LandingPage = () => {
+  const dataText = "Hello World"
 
-  componentDidMount = () => {
-    setTimeout(() => {
-      this.typeWriter(this.dataText, 0)
-    }, 1000)
-  }
-
-  typeWriter = (text, i, fnCallback) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const typeWriter = (text, i, fnCallback) => {
     if (i < text.length) {
       if (i === text.length - 1) {
         document.getElementById("text-typing").innerHTML =
@@ -166,20 +157,25 @@ class LandingPage extends React.Component {
       }
 
       setTimeout(() => {
-        this.typeWriter(text, i + 1, fnCallback)
+        typeWriter(text, i + 1, fnCallback)
       }, 150)
     }
   }
 
-  render() {
-    return (
-      <LandingPageContainer id="landing-page">
-        <LandingPageBox>
-          <LandingHeading id="text-typing"></LandingHeading>
-        </LandingPageBox>
-      </LandingPageContainer>
-    )
-  }
+  useEffect(() => {
+    setTimeout(() => {
+      typeWriter(dataText, 0)
+    }, 1000)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  return (
+    <LandingPageContainer id="landing-page">
+      <LandingPageBox>
+        <LandingHeading id="text-typing"></LandingHeading>
+      </LandingPageBox>
+    </LandingPageContainer>
+  )
 }
 
 export default LandingPage

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled, { keyframes, css } from "styled-components"
 import Heading from "../components/atoms/Heading/Heading"
 import Paragraph from "../components/atoms/Paragraph/Paragraph"
@@ -200,99 +200,90 @@ const Skills = styled.div`
   `}
 `
 
-class About extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { activeTab: false }
-  }
+const About = ({ active }) => {
+  const [activeTab, setActiveTab] = useState(false)
 
-  componentDidUpdate() {
-    if (
-      this.props.active === true &&
-      this.props.active !== this.state.activeTab
-    ) {
-      this.setState({ activeTab: this.props.active })
+  useEffect(() => {
+    if (active === true && active !== activeTab) {
+      setActiveTab(active)
     }
-  }
+  }, [activeTab, active])
 
-  render() {
-    const { activeTab } = this.state
-    return (
-      <ContentTemplate id="about-page" active={activeTab} type="About.">
-        <StyledHeading big active={activeTab}>
-          About me
-        </StyledHeading>
-        <DescriptionContainer>
-          <LeftDescription>
-            <StyledParagraph active={activeTab}>
-              My name is Marcin Kurka. I'm 23 years old and currently I'm on my
-              last year studying Computer Science at University of Economics in
-              Katowice. I'am a graduate in Computer Science from the Mechanical
-              Technical High School in Racibórz.
+  return (
+    <ContentTemplate id="about-page" active={activeTab} type="About.">
+      <StyledHeading big active={activeTab}>
+        About me
+      </StyledHeading>
+      <DescriptionContainer>
+        <LeftDescription>
+          <StyledParagraph active={activeTab}>
+            My name is Marcin Kurka. I'm 23 years old and currently I'm on my
+            last year studying Computer Science at University of Economics in
+            Katowice. I'am a graduate in Computer Science from the Mechanical
+            Technical High School in Racibórz.
+            <br />
+            <br />I have about 7 years of IT education, during which I learned
+            everything from building Arduino watches, fixing mechanical issues
+            in computer hardware, creating and managing databases in MySQL to
+            programming in C++, PHP, JS and C#. <br />
+            <br />
+            Over time building web applications became the most entertaining
+            form of programming for me. Therefore I dedicated last year to learn
+            frontend technologies (mostly React). In that time I educated myself
+            from Frontend Masters, Udemy, FreeCodeCamp and many YouTube
+            tutorials and made several projects in vanilla JS as well as in
+            React. <br />
+            <br />
+            I'am aware that creating web applications requires an effort from
+            different parties, and the idea of collaboration gets me motivated
+            and focused to perform as good as I can. Coworking is also a
+            possibility to learn something new from other, more experienced
+            developers.
+          </StyledParagraph>
+        </LeftDescription>
+        <RightDescription>
+          <SkillsContainer active={activeTab}>
+            <Skills>
+              <span className="const-style">const</span>
+              <span className="variable-style"> hardSkills</span> = &#123;
               <br />
-              <br />I have about 7 years of IT education, during which I learned
-              everything from building Arduino watches, fixing mechanical issues
-              in computer hardware, creating and managing databases in MySQL to
-              programming in C++, PHP, JS and C#. <br />
+              <span className="property-style">javaScript</span>:
+              <span className="value-style"> 'junior'</span>, <br />
+              <span className="property-style">html</span>:
+              <span className="value-style"> 'junior'</span>, <br />
+              <span className="property-style">css</span>:
+              <span className="value-style"> 'junior'</span>, <br />
+              <span className="property-style">react</span>:
+              <span className="value-style"> 'junior'</span>, <br />
+              <span className="property-style">mySql</span>:
+              <span className="value-style"> 'junior'</span>, <br />
+              <span className="property-style">git</span>:
+              <span className="value-style"> 'junior'</span>, <br />
+              <span className="property-style">figma</span>:
+              <span className="value-style"> 'junior'</span>, <br />
+              &#125;;
+            </Skills>
+            <Skills>
+              <span className="const-style">const</span>
+              <span className="variable-style"> softSkills</span> = &#123;
               <br />
-              Over time building web applications became the most entertaining
-              form of programming for me. Therefore I dedicated last year to
-              learn frontend technologies (mostly React). In that time I
-              educated myself from Frontend Masters, Udemy, FreeCodeCamp and
-              many YouTube tutorials and made several projects in vanilla JS as
-              well as in React. <br />
-              <br />
-              I'am aware that creating web applications requires an effort from
-              different parties, and the idea of collaboration gets me motivated
-              and focused to perform as good as I can. Coworking is also a
-              possibility to learn something new from other, more experienced
-              developers.
-            </StyledParagraph>
-          </LeftDescription>
-          <RightDescription>
-            <SkillsContainer active={activeTab}>
-              <Skills>
-                <span className="const-style">const</span>
-                <span className="variable-style"> hardSkills</span> = &#123;
-                <br />
-                <span className="property-style">javaScript</span>:
-                <span className="value-style"> 'junior'</span>, <br />
-                <span className="property-style">html</span>:
-                <span className="value-style"> 'junior'</span>, <br />
-                <span className="property-style">css</span>:
-                <span className="value-style"> 'junior'</span>, <br />
-                <span className="property-style">react</span>:
-                <span className="value-style"> 'junior'</span>, <br />
-                <span className="property-style">mySql</span>:
-                <span className="value-style"> 'junior'</span>, <br />
-                <span className="property-style">git</span>:
-                <span className="value-style"> 'junior'</span>, <br />
-                <span className="property-style">figma</span>:
-                <span className="value-style"> 'junior'</span>, <br />
-                &#125;;
-              </Skills>
-              <Skills>
-                <span className="const-style">const</span>
-                <span className="variable-style"> softSkills</span> = &#123;
-                <br />
-                <span className="property-style">english</span>:
-                <span className="value-style"> 'fluent'</span>, <br />
-                <span className="property-style">teamWork</span>:
-                <span className="value-style"> 'cooperative'</span>, <br />
-                <span className="property-style">communication</span>:
-                <span className="value-style"> 'open'</span>, <br />
-                <span className="property-style">timeManagement</span>:
-                <span className="value-style"> 'organized'</span>, <br />
-                <span className="property-style">desireToLearn</span>:
-                <span className="value-style"> 'very high'</span>, <br />
-                &#125;;
-              </Skills>
-            </SkillsContainer>
-          </RightDescription>
-        </DescriptionContainer>
-      </ContentTemplate>
-    )
-  }
+              <span className="property-style">english</span>:
+              <span className="value-style"> 'fluent'</span>, <br />
+              <span className="property-style">teamWork</span>:
+              <span className="value-style"> 'cooperative'</span>, <br />
+              <span className="property-style">communication</span>:
+              <span className="value-style"> 'open'</span>, <br />
+              <span className="property-style">timeManagement</span>:
+              <span className="value-style"> 'organized'</span>, <br />
+              <span className="property-style">desireToLearn</span>:
+              <span className="value-style"> 'very high'</span>, <br />
+              &#125;;
+            </Skills>
+          </SkillsContainer>
+        </RightDescription>
+      </DescriptionContainer>
+    </ContentTemplate>
+  )
 }
 
 export default About

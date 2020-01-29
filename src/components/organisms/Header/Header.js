@@ -118,9 +118,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props)
     this.navLinksRef = React.createRef()
-    this.state = {}
   }
-
   render() {
     return (
       <HeaderContainer>

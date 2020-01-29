@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled, { keyframes, css } from "styled-components"
 import Heading from "../components/atoms/Heading/Heading"
 import Paragraph from "../components/atoms/Paragraph/Paragraph"
@@ -243,63 +243,54 @@ const StyledNavLink = styled(NavLink)`
   `}
 `
 
-class SecondProject extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { activeTab: false }
-  }
+const FourthProject = ({ active }) => {
+  const [activeTab, setActiveTab] = useState(false)
 
-  componentDidUpdate() {
-    if (
-      this.props.active === true &&
-      this.props.active !== this.state.activeTab
-    ) {
-      this.setState({ activeTab: this.props.active })
+  useEffect(() => {
+    if (active === true && active !== activeTab) {
+      setActiveTab(active)
     }
-  }
+  }, [activeTab, active])
 
-  render() {
-    const { activeTab } = this.state
-    return (
-      <ContentTemplate
-        id="fourth-project-page"
-        active={activeTab}
-        type="Projects."
-        imageContent
-      >
-        <DescriptionContainer>
-          <ProjectImage active={activeTab} />
-          <LeftDescription>
-            <StyledHeading active={activeTab} big>
-              Graphic designer Portfolio
-            </StyledHeading>
-            <StyledParagraph active={activeTab}>
-              One page portfolio for a graphic designer made in Gatsby. Sending
-              mails is handled by AWS Lambda.
-            </StyledParagraph>
-            <ProjectButtons active={activeTab}>
-              <a
-                style={{ textDecoration: "none" }}
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://kasiamichalska.netlify.com/"
-              >
-                <StyledButton>View</StyledButton>
-              </a>
+  return (
+    <ContentTemplate
+      id="fourth-project-page"
+      active={activeTab}
+      type="Projects."
+      imageContent
+    >
+      <DescriptionContainer>
+        <ProjectImage active={activeTab} />
+        <LeftDescription>
+          <StyledHeading active={activeTab} big>
+            Graphic designer Portfolio
+          </StyledHeading>
+          <StyledParagraph active={activeTab}>
+            One page portfolio for a graphic designer made in Gatsby. Sending
+            mails is handled by AWS Lambda.
+          </StyledParagraph>
+          <ProjectButtons active={activeTab}>
+            <a
+              style={{ textDecoration: "none" }}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://kasiamichalska.netlify.com/"
+            >
+              <StyledButton>View</StyledButton>
+            </a>
 
-              <StyledNavLink
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://github.com/patinos123/kasiamichalska-portfolio"
-              >
-                GitHub Code
-              </StyledNavLink>
-            </ProjectButtons>
-          </LeftDescription>
-        </DescriptionContainer>
-      </ContentTemplate>
-    )
-  }
+            <StyledNavLink
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/patinos123/kasiamichalska-portfolio"
+            >
+              GitHub Code
+            </StyledNavLink>
+          </ProjectButtons>
+        </LeftDescription>
+      </DescriptionContainer>
+    </ContentTemplate>
+  )
 }
 
-export default SecondProject
+export default FourthProject

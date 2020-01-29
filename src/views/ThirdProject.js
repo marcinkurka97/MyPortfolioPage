@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled, { keyframes, css } from "styled-components"
 import Heading from "../components/atoms/Heading/Heading"
 import Paragraph from "../components/atoms/Paragraph/Paragraph"
@@ -268,69 +268,60 @@ const StyledNavLink = styled(NavLink)`
   `}
 `
 
-class ThirdProject extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { activeTab: false }
-  }
+const ThirdProject = ({ active }) => {
+  const [activeTab, setActiveTab] = useState(false)
 
-  componentDidUpdate() {
-    if (
-      this.props.active === true &&
-      this.props.active !== this.state.activeTab
-    ) {
-      this.setState({ activeTab: this.props.active })
+  useEffect(() => {
+    if (active === true && active !== activeTab) {
+      setActiveTab(active)
     }
-  }
+  }, [activeTab, active])
 
-  render() {
-    const { activeTab } = this.state
-    return (
-      <ContentTemplate
-        id="third-project-page"
-        active={activeTab}
-        type="Projects."
-      >
-        <StyledHeading active={activeTab} big>
-          Pathfinding and Maze Generation App
-        </StyledHeading>
-        <DescriptionContainer>
-          <LeftDescription>
-            <StyledParagraph active={activeTab}>
-              App visualizing building mazes and finding the best path between
-              two given points. User can change start and finish position and
-              also build obstacles.
-            </StyledParagraph>
-            <Technologies active={activeTab}>
-              React - Styled Components - Recursive Division Maze Generation -
-              Recursive Backtracking Maze Generation - Dijkstra's Pathfinding
-              Algorithm
-            </Technologies>
-          </LeftDescription>
-          <RightDescription>
-            <ProjectImage active={activeTab} />
-            <ProjectButtons active={activeTab}>
-              <a
-                style={{ textDecoration: "none" }}
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://patinos123.github.io/pathfinding-app/"
-              >
-                <StyledButton>View</StyledButton>
-              </a>
-              <StyledNavLink
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://github.com/patinos123/pathfinding-app"
-              >
-                GitHub Code
-              </StyledNavLink>
-            </ProjectButtons>
-          </RightDescription>
-        </DescriptionContainer>
-      </ContentTemplate>
-    )
-  }
+  return (
+    <ContentTemplate
+      id="third-project-page"
+      active={activeTab}
+      type="Projects."
+    >
+      <StyledHeading active={activeTab} big>
+        Pathfinding and Maze Generation App
+      </StyledHeading>
+      <DescriptionContainer>
+        <LeftDescription>
+          <StyledParagraph active={activeTab}>
+            App visualizing building mazes and finding the best path between two
+            given points. User can change start and finish position and also
+            build obstacles.
+          </StyledParagraph>
+          <Technologies active={activeTab}>
+            React - Styled Components - Recursive Division Maze Generation -
+            Recursive Backtracking Maze Generation - Dijkstra's Pathfinding
+            Algorithm
+          </Technologies>
+        </LeftDescription>
+        <RightDescription>
+          <ProjectImage active={activeTab} />
+          <ProjectButtons active={activeTab}>
+            <a
+              style={{ textDecoration: "none" }}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://patinos123.github.io/pathfinding-app/"
+            >
+              <StyledButton>View</StyledButton>
+            </a>
+            <StyledNavLink
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/patinos123/pathfinding-app"
+            >
+              GitHub Code
+            </StyledNavLink>
+          </ProjectButtons>
+        </RightDescription>
+      </DescriptionContainer>
+    </ContentTemplate>
+  )
 }
 
 export default ThirdProject

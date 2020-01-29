@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled, { keyframes, css } from "styled-components"
 import media from "../theme/media"
 import Button from "../components/atoms/Button/Button"
@@ -174,88 +174,76 @@ const StyledForm = styled(Form)`
   `}
 `
 
-class Contact extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { activeTab: false }
-  }
+const Contact = ({ active }) => {
+  const [activeTab, setActiveTab] = useState(false)
 
-  componentDidUpdate() {
-    if (
-      this.props.active === true &&
-      this.props.active !== this.state.activeTab
-    ) {
-      this.setState({ activeTab: this.props.active })
+  useEffect(() => {
+    if (active === true && active !== activeTab) {
+      setActiveTab(active)
     }
-  }
+  }, [activeTab, active])
 
-  render() {
-    return (
-      <ContactContainer active={this.props.active}>
-        <Formik
-          initialValues={{ email: "", subject: "", content: "" }}
-          validate={values => {
-            let errors = {}
-            if (!values.email) {
-              errors.email = "Required"
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-              errors.email = "Invalid email address"
-            }
-            return errors
-          }}
-          validationSchema={SignupSchema}
-          onSubmit={(values, { resetForm }) => {
-            SignupSchema.isValid({
-              email: values.email,
-              subject: values.subject,
-              content: values.content,
-            })
-              .then(function() {
-                axios({
-                  method: "post",
-                  url:
-                    "https://cors-anywhere.herokuapp.com/https://o30d2yrza3.execute-api.eu-west-1.amazonaws.com/default/marcin-kurka-portfolio",
-                  data: {
-                    email: values.email,
-                    subject: values.subject,
-                    content: values.content,
-                  },
+  return (
+    <ContactContainer active={active}>
+      <Formik
+        initialValues={{ email: "", subject: "", content: "" }}
+        validate={values => {
+          let errors = {}
+          if (!values.email) {
+            errors.email = "Required"
+          } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+          ) {
+            errors.email = "Invalid email address"
+          }
+          return errors
+        }}
+        validationSchema={SignupSchema}
+        onSubmit={(values, { resetForm }) => {
+          SignupSchema.isValid({
+            email: values.email,
+            subject: values.subject,
+            content: values.content,
+          })
+            .then(function() {
+              axios({
+                method: "post",
+                url:
+                  "https://cors-anywhere.herokuapp.com/https://o30d2yrza3.execute-api.eu-west-1.amazonaws.com/default/marcin-kurka-portfolio",
+                data: {
+                  email: values.email,
+                  subject: values.subject,
+                  content: values.content,
+                },
+              })
+                .then(function() {
+                  resetForm()
+                  alert("Message sent!")
                 })
-                  .then(function() {
-                    resetForm()
-                    alert("Message sent!")
-                  })
-                  .catch(function() {
-                    alert("Error :/")
-                  })
-              })
-              .catch(function() {
-                alert("Fill in all the fields")
-              })
-          }}
-        >
-          {({ isSubmitting }) => (
-            <StyledForm>
-              <div className="contact-inputs">
-                <Field name="email" type="email" placeholder="E-mail" />
-                <Field name="subject" type="text" placeholder="Subject" />
-              </div>
-              <Field
-                name="content"
-                component="textarea"
-                placeholder="Message"
-              />
-              <StyledButton type="submit" disabled={isSubmitting}>
-                Submit
-              </StyledButton>
-            </StyledForm>
-          )}
-        </Formik>
-      </ContactContainer>
-    )
-  }
+                .catch(function() {
+                  alert("Error :/")
+                })
+            })
+            .catch(function() {
+              alert("Fill in all the fields")
+            })
+        }}
+      >
+        {({ isSubmitting }) => (
+          <StyledForm>
+            <div className="contact-inputs">
+              <Field name="email" type="email" placeholder="E-mail" />
+              <Field name="subject" type="text" placeholder="Subject" />
+            </div>
+            <Field name="content" component="textarea" placeholder="Message" />
+            <StyledButton type="submit" disabled={isSubmitting}>
+              Submit
+            </StyledButton>
+          </StyledForm>
+        )}
+      </Formik>
+    </ContactContainer>
+  )
 }
 
 export default Contact

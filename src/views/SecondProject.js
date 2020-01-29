@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled, { keyframes, css } from "styled-components"
 import Heading from "../components/atoms/Heading/Heading"
 import Paragraph from "../components/atoms/Paragraph/Paragraph"
@@ -273,78 +273,69 @@ const StyledNavLink = styled(NavLink)`
   `}
 `
 
-class SecondProject extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { activeTab: false }
-  }
+const SecondProject = ({ active }) => {
+  const [activeTab, setActiveTab] = useState(false)
 
-  componentDidUpdate() {
-    if (
-      this.props.active === true &&
-      this.props.active !== this.state.activeTab
-    ) {
-      this.setState({ activeTab: this.props.active })
+  useEffect(() => {
+    if (active === true && active !== activeTab) {
+      setActiveTab(active)
     }
-  }
+  }, [activeTab, active])
 
-  render() {
-    const { activeTab } = this.state
-    return (
-      <ContentTemplate
-        id="second-project-page"
-        active={activeTab}
-        type="Projects."
-        imageContent
-      >
-        <DescriptionContainer>
-          <LeftDescription>
-            <StyledHeading active={activeTab} big>
-              HousePin
-            </StyledHeading>
-            <StyledParagraph active={activeTab}>
-              My diploma work, which is gathering data from polish real estate
-              sites like OLX and otodom. It's placing each offer on map so users
-              can have a better look at the place and neighborhood in which they
-              are seeking potential houses. You can filter offers by price, type
-              or most importantly by distance from a given point.
-              <br />
-              <br />
-            </StyledParagraph>
-            <ListAndButtons>
-              <StyledList active={activeTab}>
-                <li>React</li>
-                <li>Redux</li>
-                <li>Jest </li>
-                <li>Google APIs</li>
-                <li>Node.js</li>
-                <li>MongoDB</li>
-                <li>REST API</li>
-              </StyledList>
-              <ProjectButtons active={activeTab}>
-                <a
-                  style={{ textDecoration: "none" }}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://housepin.herokuapp.com/"
-                >
-                  <StyledButton>View</StyledButton>
-                </a>
-                <StyledNavLink
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://github.com/patinos123/DiplomaScrapper"
-                >
-                  GitHub Code
-                </StyledNavLink>
-              </ProjectButtons>
-            </ListAndButtons>
-          </LeftDescription>
-          <ProjectImage active={activeTab} />
-        </DescriptionContainer>
-      </ContentTemplate>
-    )
-  }
+  return (
+    <ContentTemplate
+      id="second-project-page"
+      active={activeTab}
+      type="Projects."
+      imageContent
+    >
+      <DescriptionContainer>
+        <LeftDescription>
+          <StyledHeading active={activeTab} big>
+            HousePin
+          </StyledHeading>
+          <StyledParagraph active={activeTab}>
+            My diploma work, which is gathering data from polish real estate
+            sites like OLX and otodom. It's placing each offer on map so users
+            can have a better look at the place and neighborhood in which they
+            are seeking potential houses. You can filter offers by price, type
+            or most importantly by distance from a given point.
+            <br />
+            <br />
+          </StyledParagraph>
+          <ListAndButtons>
+            <StyledList active={activeTab}>
+              <li>React</li>
+              <li>Redux</li>
+              <li>Jest </li>
+              <li>Google APIs</li>
+              <li>Node.js</li>
+              <li>MongoDB</li>
+              <li>REST API</li>
+            </StyledList>
+            <ProjectButtons active={activeTab}>
+              <a
+                style={{ textDecoration: "none" }}
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://housepin.herokuapp.com/"
+              >
+                <StyledButton>View</StyledButton>
+              </a>
+              <StyledNavLink
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/patinos123/DiplomaScrapper"
+              >
+                GitHub Code
+              </StyledNavLink>
+            </ProjectButtons>
+          </ListAndButtons>
+        </LeftDescription>
+        <ProjectImage active={activeTab} />
+      </DescriptionContainer>
+    </ContentTemplate>
+  )
 }
 
 export default SecondProject

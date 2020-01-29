@@ -78,7 +78,6 @@ class Footer extends React.Component {
   constructor(props) {
     super(props)
     this.bottomLine = React.createRef()
-    this.state = {}
   }
   render() {
     return (

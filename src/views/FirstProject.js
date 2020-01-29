@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled, { keyframes, css } from "styled-components"
 import Heading from "../components/atoms/Heading/Heading"
 import Paragraph from "../components/atoms/Paragraph/Paragraph"
@@ -279,69 +279,60 @@ const StyledButton = styled(Button)`
   `}
 `
 
-class FirstProject extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { activeTab: false }
-  }
+const FirstProject = ({ active }) => {
+  const [activeTab, setActiveTab] = useState(false)
 
-  componentDidUpdate() {
-    if (
-      this.props.active === true &&
-      this.props.active !== this.state.activeTab
-    ) {
-      this.setState({ activeTab: this.props.active })
+  useEffect(() => {
+    if (active === true && active !== activeTab) {
+      setActiveTab(active)
     }
-  }
+  }, [activeTab, active])
 
-  render() {
-    const { activeTab } = this.state
-    return (
-      <ContentTemplate
-        id="first-project-page"
-        type="Projects."
-        active={activeTab}
-      >
-        <StyledHeading big active={activeTab}>
-          Sorting Visualizer App
-        </StyledHeading>
-        <StyledParagraph active={activeTab}>
-          Made in React showing how different sorting algorithms works. Visual
-          representation helps you understand how particular algorithms works
-          under the hood. You can also compare their performance.
-        </StyledParagraph>
-        <ProjectDescription>
-          <ProjectImage active={activeTab} />
-          <RightDescription>
-            <StyledList active={activeTab}>
-              <li>bubble sort</li>
-              <li>selection sort</li>
-              <li>insertion sort</li>
-              <li>quick sort</li>
-              <li>merge sort</li>
-            </StyledList>
-            <ProjectButtons active={activeTab}>
-              <a
-                style={{ textDecoration: "none" }}
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://patinos123.github.io/sorting-app/"
-              >
-                <StyledButton>View</StyledButton>
-              </a>
-              <StyledNavLink
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://github.com/patinos123/sorting-app"
-              >
-                GitHub Code
-              </StyledNavLink>
-            </ProjectButtons>
-          </RightDescription>
-        </ProjectDescription>
-      </ContentTemplate>
-    )
-  }
+  return (
+    <ContentTemplate
+      id="first-project-page"
+      type="Projects."
+      active={activeTab}
+    >
+      <StyledHeading big active={activeTab}>
+        Sorting Visualizer App
+      </StyledHeading>
+      <StyledParagraph active={activeTab}>
+        Made in React showing how different sorting algorithms works. Visual
+        representation helps you understand how particular algorithms works
+        under the hood. You can also compare their performance.
+      </StyledParagraph>
+      <ProjectDescription>
+        <ProjectImage active={activeTab} />
+        <RightDescription>
+          <StyledList active={activeTab}>
+            <li>bubble sort</li>
+            <li>selection sort</li>
+            <li>insertion sort</li>
+            <li>quick sort</li>
+            <li>merge sort</li>
+          </StyledList>
+          <ProjectButtons active={activeTab}>
+            <a
+              style={{ textDecoration: "none" }}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://patinos123.github.io/sorting-app/"
+            >
+              <StyledButton>View</StyledButton>
+            </a>
+            <StyledNavLink
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/patinos123/sorting-app"
+            >
+              GitHub Code
+            </StyledNavLink>
+          </ProjectButtons>
+        </RightDescription>
+      </ProjectDescription>
+    </ContentTemplate>
+  )
 }
 
 export default FirstProject

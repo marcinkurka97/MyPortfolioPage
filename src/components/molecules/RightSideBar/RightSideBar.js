@@ -137,12 +137,10 @@ const ProgressDot = styled.span`
     height: 2rem;
   `}
 `
-
 class RightSideBar extends React.Component {
   constructor(props) {
     super(props)
     this.dotsNode = React.createRef()
-    this.state = {}
   }
 
   scrollTo = element => {

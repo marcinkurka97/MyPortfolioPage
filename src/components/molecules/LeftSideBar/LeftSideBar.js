@@ -40,12 +40,10 @@ const StyledParagraph = styled(Paragraph)`
     font-size: 2rem;
   `}
 `
-
 class LeftSideBar extends React.Component {
   constructor(props) {
     super(props)
     this.leftBar = React.createRef()
-    this.state = {}
   }
   render() {
     return (
